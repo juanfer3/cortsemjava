@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Clientes</h3>
+                        <h3 class="panel-title">Pedidos</h3>
                         <div class="pull-right">
                             <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
 
@@ -48,7 +48,8 @@
                                 <th>Cantidad</th>
                                 
                                 <th>Valor Total</th>
-                                <th>Valor Total</th>
+                                
+                                <th></th>
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
@@ -62,6 +63,7 @@
                                 <td><%=mypedido.getCantidad()%></td>
                                 <td><%=mypedido.getValorUnitario()%></td>
                                 <td><%=mypedido.getValorTotal()%></td>
+                                <td><p class="id" style="visibility: hidden;"><%=mypedido.getId()%></p></td>
                                 <td><a href='#'class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a></td>
                             </tr>
                             

@@ -176,13 +176,18 @@ $(document).ready(function () {
                         $.get('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (tabla) {
 //                            alertify.success(id);
                             $("#tablaPedidosDetallados").html(tabla).show('slow');
-                             $("#tablaPedidosDetallados").load('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (){
-                               alert("refresco"); 
-                            });
+//                             $("#tablaPedidosDetallados").load('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (){
+//                               alert("refresco"); 
+//                            });con esto tambien muestro la tabla pero recarga cada vez. notal q la tabla que llamo tiene el script es muy importante que lo tenga
 //                            
                            
                                     
                         });
+                        
+                        
+                        //Carrito de compra Ejemplo//
+                        
+                        
 //                       $('.ListedePedidos').append(fila);
 //                       $('.eliminar').off('click');
 //                       $('.eliminar').on('click',function(){
@@ -231,6 +236,8 @@ $(document).ready(function () {
 //            alertify.success(cantidad);
 //            alertify.success(valor_unitario);
 //            alertify.success(valor_total);
+
+    // carrito de compra ejemplo//
         }
 
 

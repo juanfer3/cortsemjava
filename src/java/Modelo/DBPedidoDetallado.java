@@ -104,6 +104,39 @@ public class DBPedidoDetallado {
     }
     
     
+    public boolean EliminarPedidoDetallado(int pedido_id){
+    String habilitado="si";
+    String sql="DELETE FROM pedidos_detallados where id<=?;";
+    int r=0;
     
+    
+    
+    ConexionBD bd=new ConexionBD ();
+    Connection con= bd.conectar();
+    
+        try {
+            PreparedStatement pst= con.prepareStatement(sql);
+            
+            pst.setInt(1, pedido_id);
+            
+            r=pst.executeUpdate();
+            
+            pst.close();
+            con.close();
+            bd.cierraConexion();
+            
+            if(r!=0){
+            
+                return true;
+            
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return false ;
+    }
     
 }
