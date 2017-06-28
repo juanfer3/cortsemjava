@@ -173,10 +173,13 @@ $(document).ready(function () {
                         var id=$('#pedido_id').text();
                         alertify.success(id);
                         alertify.success("Insercion Correcta");
-                        $.get('jsp/tablaPedidosDetalladosPorID.jsp',{id:id} ,function (tabla) {
-
-                            $("#tablaPedidosDetallados").html(tabla).show('slow');
-                        
+                        $.get('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (tabla) {
+//                             $("#tablaPedidosDetallados").load('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (){
+//                               alert("refresco"); 
+//                            });
+//                            $("#tablaPedidosDetallados").html(tabla).show('slow');
+                           
+                                    
                         });
 //                       $('.ListedePedidos').append(fila);
 //                       $('.eliminar').off('click');

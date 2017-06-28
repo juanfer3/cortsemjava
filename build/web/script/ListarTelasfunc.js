@@ -14,7 +14,7 @@ $(document).ready(function () {
                     data: {id: id},
                     success: function (data) {
                         $('#tablaListarTelas').load('jsp/tablaTelas.jsp', function () {
-                            alertify.success("Registro Eliminado ")
+                            alertify.success("Registro Eliminado ");
                         });
                     }
 

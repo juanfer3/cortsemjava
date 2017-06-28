@@ -174,10 +174,12 @@ $(document).ready(function () {
                         alertify.success(id);
                         alertify.success("Insercion Correcta");
                         $.get('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (tabla) {
-//                             $("#tablaPedidosDetallados").load('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (){
-//                               alert("refresco"); 
-//                            });
-//                            $("#tablaPedidosDetallados").html(tabla).show('slow');
+//                            alertify.success(id);
+                            $("#tablaPedidosDetallados").html(tabla).show('slow');
+                             $("#tablaPedidosDetallados").load('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (){
+                               alert("refresco"); 
+                            });
+//                            
                            
                                     
                         });

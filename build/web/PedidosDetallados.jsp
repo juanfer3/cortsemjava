@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
         
         <script src="script/cambiotablas.js"></script>
-        <script src="script/PedidosDetalladosFunc.js"></script>
+        <script src="script/PedidosDetallados.js"></script>
         <script ></script>
         <title>Pedidos Detallados</title>
     </head>
@@ -49,7 +49,7 @@
             ListarTelas.clear();
             
             int pedido_id=pedidos.TomarUltimoId();
-            ListarPedido = pedidos.BuscarUltimoPedido(32);
+            ListarPedido = pedidos.BuscarUltimoPedido(pedido_id);
             ListarTelas = mytelas.ListarTelas();
          
         
@@ -149,7 +149,7 @@
             
                                                 <div id="tablaPedidosDetallados">
                                                     
-                                                    <%@include file="jsp/tablaPedidosDetalladosPorID.jsp" %>
+                                                    
                                                 </div>
             
             <!--form method="POST">

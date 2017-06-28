@@ -13,10 +13,16 @@
     ArrayList<PedidosDetallados>Listar=new ArrayList();
     Listar.clear();
     
-   
-    Listar=detalle.BuscarDetallesDePedidosPorIdPedido(32);
+    String id1;
+    int id;
+    
+    id1=(String) request.getParameter("id");
+    id=Integer.parseInt(id1);
+    
+    Listar=detalle.BuscarDetallesDePedidosPorIdPedido(id);
 
 %>
+<script src="script/llamadoDetallesTabla.js"></script>
 <form method="POST">
         <div class="row">
             <div class="col-md-12">
@@ -56,7 +62,7 @@
                                 <td><%=mypedido.getCantidad()%></td>
                                 <td><%=mypedido.getValorUnitario()%></td>
                                 <td><%=mypedido.getValorTotal()%></td>
-                                
+                                <td><a href='#'class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a></td>
                             </tr>
                             
                             <%}%>

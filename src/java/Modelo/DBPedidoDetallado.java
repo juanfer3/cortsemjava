@@ -69,7 +69,7 @@ public class DBPedidoDetallado {
         ResultSet rs=null;
         
         String habilitado = "si";
-        String sql = "SELECT * FROM pedidos_detallados WHERE pedido_id='"+id+"' AND habilitado='"+habilitado+"';";
+        String sql = "SELECT * FROM pedidos_detallados WHERE pedido_id='"+id+"' AND habilitado='"+habilitado+"'ORDER BY id DESC;";
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
 
