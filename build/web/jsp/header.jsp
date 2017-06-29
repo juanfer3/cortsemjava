@@ -8,7 +8,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
+<script src="script/cambiotablas.js"></script>
         <%HttpSession sesion= request.getSession();
         
         
@@ -18,6 +18,7 @@
            
         
         %>
+        
         <header>
             
             <hr class="rayainicial">

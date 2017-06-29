@@ -12,16 +12,18 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Controlador/EditarPedidos.java</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Modelo/DBClientes.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/ListarPedidosDetallados.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/tablaDetallesTabla.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/index.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/header.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Modelo/DBPedidoDetallado.java</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/PedidosDetalladosFunc.js</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Modelo/DBTelas.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Modelo/DBEmpleado.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Modelo/Listar.java</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/cambiotablas.js</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/tablaPedidosDetalladosPorID.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/llamadoDetallesTabla.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/tablaPedidosDetallados.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/ListarTelasfunc.js</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/PedidosDetallados.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Modelo/DBPedidos.java</file>
         </group>
     </open-files>
 </project-private>

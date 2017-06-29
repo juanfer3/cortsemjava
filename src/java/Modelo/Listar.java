@@ -100,13 +100,15 @@ public class Listar {
    DBPedidoDetallado detalle=new DBPedidoDetallado();
     ArrayList<PedidosDetallados>Listar=new ArrayList();
     Listar.clear();
-    
+    DBPedidos p=new DBPedidos();
+            
+            
 
     int id;
     
 
    
-    Listar=detalle.BuscarDetallesDePedidosPorIdPedido(32);
+    Listar=p.ListarPedidosConClientes();
 }
     
 }

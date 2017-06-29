@@ -164,4 +164,63 @@ public class DBPedidos {
         
         return id;
     }
+        
+        public ArrayList ListarPedidosConClientes(){
+        
+        ArrayList<Pedidos> Listar= new ArrayList();
+        Listar.clear();
+        ResultSet rs=null;
+        int u=0;
+        
+        int id;
+        String habilitado="si";
+        
+        
+        
+        
+        
+       
+        String sql="SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='"+habilitado+"'ORDER BY clientes.nombre ASC;";
+        
+    
+        
+        ConexionBD bd=new ConexionBD ();
+        Connection con= bd.conectar();
+        
+        try {
+            Statement st= con.createStatement();
+            rs= st.executeQuery(sql);
+            
+            while(rs.next()){
+              Pedidos pedido=new Pedidos();
+              Clientes user= new Clientes();
+              
+              pedido.setId(rs.getInt("pedidos.id"));
+              pedido.setFEntrega(rs.getDate("f_entrega"));
+              pedido.setFPedido(rs.getDate("f_pedido"));
+              user.setId(rs.getInt("clientes.id"));
+              user.setNombre(rs.getString("nombre"));
+              user.setDocumento(rs.getString("documento"));
+              pedido.setClienteId(user);
+              
+              
+              
+              Listar.add(pedido);
+             
+                
+            
+            }
+            rs.close();
+            con.close();
+            st.close();
+            bd.cierraConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return Listar;
+    }
+        
+        
 }
