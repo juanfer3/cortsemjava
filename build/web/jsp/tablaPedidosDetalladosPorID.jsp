@@ -59,9 +59,9 @@
                             <%for(PedidosDetallados mypedido:Listar){%>
                             <tr>
                                 <td><%=mypedido.getPrenda()%></td>
-                                <td><%=mypedido.getTalla()%></td>
+                                <td><%=mypedido.getTelasId().getRefTela() %></td>
+                                <td><%=mypedido.getTalla() %></td>
                                 <td><%=mypedido.getCantidad()%></td>
-                                <td><%=mypedido.getValorUnitario()%></td>
                                 <td><%=mypedido.getValorTotal()%></td>
                                 <td><p class="id" style="visibility: hidden;"><%=mypedido.getId()%></p></td>
                                 <td><a href='#'class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a></td>

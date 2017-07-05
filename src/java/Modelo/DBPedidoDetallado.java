@@ -63,45 +63,45 @@ public class DBPedidoDetallado {
     return false ;
     }
     
-    public ArrayList BuscarDetallesDePedidosPorIdPedido(int id){
-        ArrayList<PedidosDetallados> Listar=new ArrayList();
-        Listar.clear();
-        ResultSet rs=null;
-        
-        String habilitado = "si";
-        String sql = "SELECT * FROM pedidos_detallados WHERE pedido_id='"+id+"' AND habilitado='"+habilitado+"'ORDER BY id DESC;";
-        ConexionBD bd = new ConexionBD();
-        Connection con = bd.conectar();
-
-        try {
-            Statement st = con.createStatement();
-           
-            rs=st.executeQuery(sql);
-
-            while (rs.next()) {
-                PedidosDetallados pedido=new PedidosDetallados();
-                
-                pedido.setId(rs.getInt("id"));
-                pedido.setCantidad(rs.getInt("cantidad"));
-                pedido.setPrenda(rs.getString("prenda"));
-                pedido.setTalla(rs.getString("talla"));
-                pedido.setValorTotal(rs.getFloat("valor_total"));
-                pedido.setValorUnitario(rs.getFloat("valor_unitario"));
-                
-                Listar.add(pedido);
-                
-                
-               
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return Listar;
-        
-        
-        
-    }
+//    public ArrayList BuscarDetallesDePedidosPorIdPedido(int id){
+//        ArrayList<PedidosDetallados> Listar=new ArrayList();
+//        Listar.clear();
+//        ResultSet rs=null;
+//        
+//        String habilitado = "si";
+//        String sql = "SELECT * FROM pedidos_detallados WHERE pedido_id='"+id+"' AND habilitado='"+habilitado+"'ORDER BY id DESC;";
+//        ConexionBD bd = new ConexionBD();
+//        Connection con = bd.conectar();
+//
+//        try {
+//            Statement st = con.createStatement();
+//           
+//            rs=st.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                PedidosDetallados pedido=new PedidosDetallados();
+//                
+//                pedido.setId(rs.getInt("id"));
+//                pedido.setCantidad(rs.getInt("cantidad"));
+//                pedido.setPrenda(rs.getString("prenda"));
+//                pedido.setTalla(rs.getString("talla"));
+//                pedido.setValorTotal(rs.getFloat("valor_total"));
+//                pedido.setValorUnitario(rs.getFloat("valor_unitario"));
+//                
+//                Listar.add(pedido);
+//                
+//                
+//               
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        return Listar;
+//        
+//        
+//        
+//    }
     
     
     public boolean EliminarPedidoDetallado(int pedido_id){
@@ -203,6 +203,74 @@ public class DBPedidoDetallado {
         
     }
     
-    
+    public ArrayList BuscarDetallesDePedidosPorIdPedido(int id){
+        ArrayList<PedidosDetallados> Listar=new ArrayList();
+        Listar.clear();
+        ResultSet rs=null;
+        
+        String habilitado = "si";
+        String sql = "SELECT pedidos_detallados.id, pedidos_detallados.pedido_id, pedidos_detallados.prenda, pedidos_detallados.telas_id, pedidos_detallados.talla, pedidos_detallados.cantidad, pedidos_detallados.valor_unitario, pedidos_detallados.valor_total,pedidos.id, pedidos.f_pedido, pedidos.f_entrega, pedidos.cliente_id, telas.id, telas.ref_tela, telas.descripcion,clientes.id, clientes.nombre, clientes.documento FROM pedidos_detallados INNER JOIN pedidos ON pedidos_detallados.pedido_id = pedidos.id INNER JOIN telas ON pedidos_detallados.telas_id INNER JOIN clientes ON pedidos.cliente_id=clientes.id WHERE  pedidos.habilitado <= ? AND pedidos.id <= ? ;";
+        
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, habilitado);
+            pst.setInt(2, id);
+            rs=pst.executeQuery();
+
+            while (rs.next()) {
+                PedidosDetallados pedido=new PedidosDetallados();
+                Pedidos ped= new Pedidos();
+                Telas cloth= new Telas();
+                Clientes client= new Clientes();
+                
+                
+                pedido.setId(rs.getInt("id"));
+                pedido.setCantidad(rs.getInt("cantidad"));
+                pedido.setPrenda(rs.getString("prenda"));
+                pedido.setTalla(rs.getString("talla"));
+                pedido.setValorTotal(rs.getFloat("valor_total"));
+                pedido.setValorUnitario(rs.getFloat("valor_unitario"));
+ 
+                client.setId(rs.getInt("clientes.id"));
+                client.setNombre(rs.getString("clientes.nombre"));
+                client.setDocumento(rs.getString("clientes.documento"));
+                
+                ped.setId(rs.getInt("pedidos.id"));
+                ped.setFEntrega(rs.getDate("f_entrega"));
+                ped.setFPedido(rs.getDate("f_pedido"));
+                ped.setId(rs.getInt("pedidos.id"));
+                ped.setClienteId(client);
+                
+                cloth.setId(rs.getInt("telas.id"));
+                cloth.setRefTela(rs.getString("ref_tela"));
+                cloth.setDescripcion(rs.getString("descripcion"));          
+                
+                pedido.setTelasId(cloth);
+                pedido.setPedidoId(ped);
+                
+                
+                Listar.add(pedido);
+                
+                
+               
+            }
+            rs.close();
+            pst.close();
+            con.close();
+            bd.cierraConexion();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return Listar;
+        
+        
+        
+    }
     
 }

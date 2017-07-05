@@ -1,0 +1,17 @@
+SMAP
+tablaPedidosDetallados_jsp.java
+JSP
+*S JSP
+*F
++ 0 tablaPedidosDetallados.jsp
+jsp/tablaPedidosDetallados.jsp
+*L
+5,20:49
+24,35:69
+59:104,3
+60:107
+61,6:108,3
+67,3:126
+70:129,3
+71,16:132
+*E

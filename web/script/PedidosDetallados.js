@@ -171,7 +171,7 @@ $(document).ready(function () {
 
                     if (data != 0) {
                         var id=$('#pedido_id').text();
-                        alertify.success(id);
+                     
                         alertify.success("Insercion Correcta");
                         $.get('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (tabla) {
 //                            alertify.success(id);

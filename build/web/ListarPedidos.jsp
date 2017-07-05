@@ -22,11 +22,11 @@
     </head>
     <body>
         <%@include file="jsp/header.jsp" %>
-        <h1>Lista Pedidos</h1>
         
-        <%@include file="jsp/tablaPedido.jsp" %>
+        <div class="container">
+        <%@include file="jsp/tablaPedidosDetallados.jsp" %>
+        </div>
         
-        <%@include file="jsp/body.jsp" %>
         
         <%@include file="jsp/footer.jsp" %>
     </body>

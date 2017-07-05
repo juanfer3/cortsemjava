@@ -64,7 +64,7 @@
                                 <td><%=mypedido.getFPedido()%></td>
                                 <td><%=mypedido.getFEntrega()  %></td>
                                 <td><p class="id" style="visibility: hidden;"><%=mypedido.getId()%></p></td>
-                                <td><a href='#'class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a></td>
+                                <td><a href='ListarPedidosPorID?id=<%=mypedido.getId()%>' class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a></td>
                             </tr>
                             
                             <%}%>
