@@ -8,8 +8,8 @@
 <%@page import="Modelo.Empleados"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<div class="container" id="ocultarlistarEmpleados">
+<script src="script/EmpleadosFunc.js"></script>
+<div class="container" id="listarEmpleados">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
     <div class="row">
         <div class="col-md-12">
@@ -29,6 +29,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th></th>
                             <th>Nombre</th>
                             <th>Documento</th>
                             <th>Cargo</th>
@@ -48,14 +49,15 @@
                     <input type="text" class="id" value="<%=myemp.getId()%>" style="visibility:hidden">
                     <tbody>
                         <tr>
-                            <td><%=cont%></td>
-                            <td><%=myemp.getNombre()%></td>
-                            <td><%=myemp.getDocumento()%> </td>
-                            <td><%=myemp.getCargo()%></td>
-                            <td><%=myemp.getUsuarioId().getUsuario()%></td>
-                            <td><a id="" href="#" data-toggle="modal" data-target="#miModal"><span><img src="imagenes/ojo.png"></span></a></td>
-                            <td align="center"><a href="#" id="llamartablaeditarEmpleados"><span><img src="imagenes/editar.png"></span></a></td>
-                            <td align="center"><a href="#" data-toggle="modal" data-target="#ModalEliminar<%=myemp.getId()%>"><span><img src="imagenes/borrar.png"></span></a></td>
+                            <td><p ><%=cont%></p></td>
+                            <td><p class="id" style="visibility: hidden"><%=myemp.getId()%></p></td>
+                            <td><p class="nombreEmplado"><%=myemp.getNombre()%></p></td>
+                            <td><p class="documentoEmpleado"><%=myemp.getDocumento()%></p></td>
+                            <td><p class="cargoEmpleado"><%=myemp.getCargo()%></p></td>
+                            <td><p class="userEmpleado"><%=myemp.getUsuarioId().getUsuario()%></td>
+                            <td><a id="" href="#" class="verEmpleado" id="verEmpleado"><span><img src="imagenes/ojo.png"></span></a></td>
+                            <td align="center"><a href="#" class="editarEmpleado" id="editarEmpleado"><span><img src="imagenes/editar.png"></span></a></td>
+                            <td align="center"><a href="#" class="eliminarEmpleado" id="eliminarEmpleado"><span><img src="imagenes/borrar.png"></span></a></td>
 
                         </tr>
 

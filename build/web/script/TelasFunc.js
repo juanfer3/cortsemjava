@@ -3,10 +3,15 @@ $(document).ready(function () {
     $('#aceptartelas').click(function () {
         var ref_tela = $(this).parents("tr").find(".ref_tela").val();
         var descripcion = $(this).parents("tr").find(".descripcion_tela").val();
-
+        
+        $(this).parents("tr").find(".ref_tela").val(" ");
+        $(this).parents("tr").find(".descripcion_tela").val(" ");
+        
         var eliminar = "<a href='#'class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a>";
 
         var fila = "<tr class='fila padre'><td><input type='text' class='form-control hijo' value=" + ref_tela + "></td><td><input type='text' class='form-control newdecrip' value=" + descripcion + "></td><td>" + eliminar + "</td></tr>"
+
+        
 
         var data = {
 
@@ -15,6 +20,8 @@ $(document).ready(function () {
 
 
         };
+        
+        
 
         $.ajax({
 

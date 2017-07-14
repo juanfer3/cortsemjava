@@ -209,16 +209,16 @@ public class DBPedidoDetallado {
         ResultSet rs=null;
         
         String habilitado = "si";
-        String sql = "SELECT pedidos_detallados.id, pedidos_detallados.pedido_id, pedidos_detallados.prenda, pedidos_detallados.telas_id, pedidos_detallados.talla, pedidos_detallados.cantidad, pedidos_detallados.valor_unitario, pedidos_detallados.valor_total,pedidos.id, pedidos.f_pedido, pedidos.f_entrega, pedidos.cliente_id, telas.id, telas.ref_tela, telas.descripcion,clientes.id, clientes.nombre, clientes.documento FROM pedidos_detallados INNER JOIN pedidos ON pedidos_detallados.pedido_id = pedidos.id INNER JOIN telas ON pedidos_detallados.telas_id INNER JOIN clientes ON pedidos.cliente_id=clientes.id WHERE  pedidos.habilitado <= ? AND pedidos.id <= ? ;";
+        String sql = "SELECT pedidos_detallados.id, pedidos_detallados.pedido_id, pedidos_detallados.prenda, pedidos_detallados.telas_id, pedidos_detallados.talla, pedidos_detallados.cantidad, pedidos_detallados.valor_unitario, pedidos_detallados.valor_total,pedidos.id, pedidos.f_pedido, pedidos.f_entrega, pedidos.cliente_id, telas.id, telas.ref_tela, telas.descripcion,clientes.id, clientes.nombre, clientes.documento FROM pedidos_detallados INNER JOIN pedidos ON pedidos_detallados.pedido_id = pedidos.id INNER JOIN telas ON pedidos_detallados.telas_id=telas.id INNER JOIN clientes ON pedidos.cliente_id=clientes.id  WHERE  pedidos.id='"+id+"' ;";
         
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
 
         try {
-            PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, habilitado);
-            pst.setInt(2, id);
-            rs=pst.executeQuery();
+           Statement pst = con.prepareStatement(sql);
+            
+           
+            rs=pst.executeQuery(sql);
 
             while (rs.next()) {
                 PedidosDetallados pedido=new PedidosDetallados();

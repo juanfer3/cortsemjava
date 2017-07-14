@@ -7,8 +7,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="script/cambiotablas.js"></script>
+<!--script>
+$(function () {
+$("#datepicker").datepicker();
+});
+</script-->
+
+<div id="datepicker"></div>
+
         <%HttpSession sesion= request.getSession();
         
         
@@ -18,6 +27,9 @@
            
         
         %>
+        
+        
+        
         
         <header>
             
@@ -71,7 +83,8 @@
                     <li class="botoncompra"><a href="ListarEmpleados">EMPLEADOS</a></li>
                     <li class="botoncompra"><a href="ListarClientes">CLIENTES</a></li>
                     <li class="botoncompra"><a href="#">PRODUCCION</a></li>
-                    <li class="botoncompra"><a href="#">VENTAS</a></li>
+                    <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
+                    <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     

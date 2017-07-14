@@ -25,32 +25,32 @@ $(document).ready(function () {
     });
 
 
-    $('#llamartablaeditarclientes').click(function () {
-        var id = $('.id').val();
-        
-        id = parseInt(id);
-        
-        console.log(id);
-        $.post('jsp/tablaEdicionCliente.jsp', {'id': id}, function (cambio) {
+//    $('#llamartablaeditarclientes').click(function () {
+//        var id = $('.id').val();
+//        
+//        id = parseInt(id);
+//        
+//        console.log(id);
+//        $.post('jsp/tablaEdicionCliente.jsp', {'id': id}, function (cambio) {
+//
+//            $('#EditarCliente').html(cambio).show('slow');
+//            $('#ocultarlistarclientes').hide('slow');
+//
+//        });
+//    });
 
-            $('#EditarCliente').html(cambio).show('slow');
-            $('#ocultarlistarclientes').hide('slow');
 
-        });
-    });
-
-
-    $('#llamartablaeditarEmpleados').click(function () {
-        
-        
-        var id = $('.id').val();
-        id = parseInt(id);
-        alert(id);
-        $.post('jsp/tablaEdicionEmpleados.jsp', {'id': id}, function (tabla) {
-            $('#EditarCliente').html(tabla).show('slow');
-            $('#ocultarlistarEmpleados').hide('slow');
-        });
-    });
+//    $('#llamartablaeditarEmpleados').click(function () {
+//        
+//        
+//        var id = $('.id').val();
+//        id = parseInt(id);
+//        alert(id);
+//        $.post('jsp/tablaEdicionEmpleados.jsp', {'id': id}, function (tabla) {
+//            $('#EditarCliente').html(tabla).show('slow');
+//            $('#ocultarlistarEmpleados').hide('slow');
+//        });
+//    });
 
 //    $('#verEmpleados').click(function(){
 //       $( function() {

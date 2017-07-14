@@ -48,7 +48,7 @@ public class AceptarEdicionEmpleado extends HttpServlet {
             celular=request.getParameter("celular");
             direccion=request.getParameter("direccion");
             rh=request.getParameter("rh");
-            f_nacimiento=request.getParameter("fnacimiento");
+            f_nacimiento=request.getParameter("f_nacimiento");
             contacto_familiar=request.getParameter("contacto_familiar");
             telefono_contacto=request.getParameter("telefono_contacto");
             celular_contacto=request.getParameter("celular_contacto");
@@ -60,7 +60,7 @@ public class AceptarEdicionEmpleado extends HttpServlet {
             if(emp.EditarEmpleado(
                     nombre, documento, cargo, telefono, celular, f_nacimiento, rh, 
                     contacto_familiar, telefono_contacto, celular_contacto, direccion, id)==true){
-                request.getRequestDispatcher("ListarEmpleados").forward(request, response);
+                    request.getRequestDispatcher("ListarEmpleados").forward(request, response);
             
             }else{
             
