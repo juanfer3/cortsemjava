@@ -11,7 +11,7 @@ $(document).ready(function () {
             data: {id: id},
             success: function (data) {
 
-                dialog(data);
+                alert(data);
 
             }
 
@@ -23,7 +23,7 @@ $(document).ready(function () {
         var id = $(this).parents("tr").find('.id').text();
 
 
-        $("#listarEmpleados").load('jsp/tablaEdicionEmpleados.jsp', {id: id}, function () {
+        $("#listarEmpleados").load('jsp/ListarEmpleadosJSP.jsp', {id: id}, function () {
 
         });
 
@@ -44,8 +44,8 @@ $(document).ready(function () {
                     data: {id: id},
                     success: function () {
 
-                        $("#listarEmpleados").load('jsp/tablaEdicionEmpleados.jsp', {id: id}, function () {
-                            alertify.success("Ok");
+                        $("#listarEmpleados").load('jsp/ListarEmpleadosJSP.jsp',  function () {
+                            alertify.success("Registro Eliminado Correctamente");
                         });
                     }
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
             } else {
 
-                alertify.error("Cancel");
+                alertify.error("Peticion Cancelada");
             }
         });
     });

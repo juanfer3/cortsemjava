@@ -144,7 +144,7 @@
         </div>
         <div class="row ">
 
-            <div class="col-xs-12 col-md-12"><a href="PedidosDetallados.jsp" class="btn btn-success btn-block btn-lg">Registrar Cliente</a></div>
+            <div class="col-xs-12 col-md-12"><a href="PedidosDetallados.jsp" class="btn btn-success btn-block btn-lg">Registrar Pedido</a></div>
         </div>
     </form>
             

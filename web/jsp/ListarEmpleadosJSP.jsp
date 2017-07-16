@@ -11,7 +11,7 @@
 <%@page import="Modelo.Empleados"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<script src="script/EmpleadosFunc.js"></script>
+<script src="script/tablaEmpleados.js"></script>
 <div class="container" id="listarEmpleados">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
     <div class="row">

@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class DBPedidos {
     
     public boolean RegistrarPedido(String fecha_pedido, String fecha_entrega,int cliente_id){
-    String habilitado="si";
+    String habilitado="no";
     String sql="INSERT INTO pedidos(f_pedido, f_entrega,  cliente_id, habilitado) VALUES(?,?,?,?);";
     int r=0;
     
@@ -84,14 +84,11 @@ public class DBPedidos {
         int u=0;
         
         int id;
-        String habilitado="si";
-        
-        
-        
         
         
        
-        String sql="SELECT clientes.nombre,clientes.id,pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.id='"+pedido_id+"';";
+       
+        String sql="SELECT clientes.nombre,clientes.id,pedidos.id,clientes.documento,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.id='"+pedido_id+"';";
         
     
         
@@ -111,7 +108,8 @@ public class DBPedidos {
               pedido.setFPedido(rs.getDate("f_pedido"));
               user.setId(rs.getInt("clientes.id"));
               user.setNombre(rs.getString("nombre"));
-              
+              user.setDocumento(rs.getString("documento"));
+             
               pedido.setClienteId(user);
               
               
@@ -174,11 +172,7 @@ public class DBPedidos {
         
         int id;
         String habilitado="si";
-        
-        
-        
-        
-        
+         
        
         String sql="SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='"+habilitado+"'ORDER BY clientes.nombre ASC;";
         
@@ -221,6 +215,44 @@ public class DBPedidos {
         
         return Listar;
     }
+        
+        
+        public boolean ConfirmarPedido(int id){
+        
+            String sql;
+            String habilitado;
+            
+            int r=0;
+            
+            habilitado="si";
+            sql="UPDATE pedidos SET habilitado=? WHERE id=?;";
+            
+            ConexionBD bd=new ConexionBD ();
+            Connection con= bd.conectar();
+            
+        try {
+            PreparedStatement pst=con.prepareStatement(sql);
+            pst.setString(1, habilitado);
+            pst.setInt(2, id);
+            
+            r=pst.executeUpdate();
+            
+            if(r!=0){
+            
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                return true;
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        
+        return false;
+        }
         
         
 }
