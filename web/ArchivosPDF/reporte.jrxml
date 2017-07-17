@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bb57fd47-622d-411e-9803-884e71cff2ad">
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="hab" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     empleados.`id` AS empleados_id,
+     empleados.`nombre` AS empleados_nombre,
+     empleados.`documento` AS empleados_documento,
+     empleados.`cargo` AS empleados_cargo,
+     empleados.`telefono` AS empleados_telefono,
+     empleados.`celular` AS empleados_celular,
+     empleados.`f_nacimiento` AS empleados_f_nacimiento,
+     empleados.`rh` AS empleados_rh,
+     empleados.`contacto_familiar` AS empleados_contacto_familiar,
+     empleados.`telefono_contacto` AS empleados_telefono_contacto,
+     empleados.`celular_contacto` AS empleados_celular_contacto,
+     empleados.`direccion` AS empleados_direccion,
+     empleados.`usuario_id` AS empleados_usuario_id,
+     empleados.`habilitado` AS empleados_habilitado
+FROM
+     `empleados` empleados
+where
+       habilitado=$P{hab};]]>
+	</queryString>
+	<field name="empleados_id" class="java.lang.Integer"/>
+	<field name="empleados_nombre" class="java.lang.String"/>
+	<field name="empleados_documento" class="java.lang.String"/>
+	<field name="empleados_cargo" class="java.lang.String"/>
+	<field name="empleados_telefono" class="java.lang.String"/>
+	<field name="empleados_celular" class="java.lang.String"/>
+	<field name="empleados_f_nacimiento" class="java.sql.Date"/>
+	<field name="empleados_rh" class="java.lang.String"/>
+	<field name="empleados_contacto_familiar" class="java.lang.String"/>
+	<field name="empleados_telefono_contacto" class="java.lang.String"/>
+	<field name="empleados_celular_contacto" class="java.lang.String"/>
+	<field name="empleados_direccion" class="java.lang.String"/>
+	<field name="empleados_usuario_id" class="java.lang.Integer"/>
+	<field name="empleados_habilitado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="4b553704-8dbe-4920-bc49-a3345bcc014d"/>
+				<imageExpression><![CDATA["leaf_banner_red.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="d7358f3f-25d2-45cc-8623-6761e43f3ad8"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Red Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="bcbc81e6-594d-48a9-9a2a-5c353f383cf0"/>
+				<text><![CDATA[Leaf Red SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="891a4306-e0ee-44e6-932e-36ac3e95e03b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="39" height="15" uuid="8c92f951-8d32-482b-a7b5-6a37a8cbccb9"/>
+				<text><![CDATA[empleados_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="39" y="19" width="39" height="15" uuid="5f5178a7-e24d-48f2-b0e0-21e0755e4fe7"/>
+				<text><![CDATA[empleados_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="78" y="19" width="39" height="15" uuid="b82e95e3-9768-44b9-a8bf-96eab22ea4af"/>
+				<text><![CDATA[empleados_documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="117" y="19" width="39" height="15" uuid="b1984f9e-db1c-471b-b836-090ce425b2b4"/>
+				<text><![CDATA[empleados_cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="156" y="19" width="39" height="15" uuid="be200c71-766f-4900-b48c-53ac44f543ec"/>
+				<text><![CDATA[empleados_telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="195" y="19" width="39" height="15" uuid="8a635acf-4fcf-4519-bcf8-adfbcca0f371"/>
+				<text><![CDATA[empleados_celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="234" y="19" width="39" height="15" uuid="12c26516-482c-4403-a8e2-f3e2e96fc065"/>
+				<text><![CDATA[empleados_f_nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="273" y="19" width="39" height="15" uuid="a2318b20-badc-4685-aa20-651d0d96fb2a"/>
+				<text><![CDATA[empleados_rh]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="312" y="19" width="39" height="15" uuid="1e829575-b4cc-4612-ad08-9795c16aa885"/>
+				<text><![CDATA[empleados_contacto_familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="351" y="19" width="39" height="15" uuid="783af7b8-67f2-4bf7-bcc7-c5c3a7d3a9a1"/>
+				<text><![CDATA[empleados_telefono_contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="390" y="19" width="39" height="15" uuid="009ae6fa-0109-4c95-ac57-5ecdc30bd930"/>
+				<text><![CDATA[empleados_celular_contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="429" y="19" width="39" height="15" uuid="b1bb440b-635e-4738-9c9e-dada9d3eee2a"/>
+				<text><![CDATA[empleados_direccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="468" y="19" width="39" height="15" uuid="3df2c2a2-5be0-4130-bc2d-49dbc038cd88"/>
+				<text><![CDATA[empleados_usuario_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="507" y="19" width="39" height="15" uuid="af329e01-1181-494c-9149-4cf0c8cfeb85"/>
+				<text><![CDATA[empleados_habilitado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="07528e8c-6c72-4179-b64c-21026d260915"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="39" height="15" uuid="312fbdbc-8c16-4ef2-af7b-ec4d243d7e11"/>
+				<textFieldExpression><![CDATA[$F{empleados_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="39" y="0" width="39" height="15" uuid="024eea6b-d7b4-4a50-82df-4ed76239dbe5"/>
+				<textFieldExpression><![CDATA[$F{empleados_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="78" y="0" width="39" height="15" uuid="be2317d7-3d79-4f85-8368-60ae5e224dcf"/>
+				<textFieldExpression><![CDATA[$F{empleados_documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="117" y="0" width="39" height="15" uuid="2d898b18-d865-43e3-bf9d-c2693be6e8d1"/>
+				<textFieldExpression><![CDATA[$F{empleados_cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="156" y="0" width="39" height="15" uuid="60e9494e-247b-4cf1-be76-3eca7dda00b0"/>
+				<textFieldExpression><![CDATA[$F{empleados_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="195" y="0" width="39" height="15" uuid="b6e1e0b9-67b4-4625-a8a0-67dd3acc0481"/>
+				<textFieldExpression><![CDATA[$F{empleados_celular}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="234" y="0" width="39" height="15" uuid="33d315ab-21c2-449f-b41f-970f3c504aec"/>
+				<textFieldExpression><![CDATA[$F{empleados_f_nacimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="273" y="0" width="39" height="15" uuid="d2d9cc13-b98f-4c42-8ba8-34d971fc8c1c"/>
+				<textFieldExpression><![CDATA[$F{empleados_rh}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="312" y="0" width="39" height="15" uuid="5febb53c-c813-42ad-a30e-b9dba795a1e6"/>
+				<textFieldExpression><![CDATA[$F{empleados_contacto_familiar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="351" y="0" width="39" height="15" uuid="6ef29676-4f00-46a5-9894-bc1be4c61ec4"/>
+				<textFieldExpression><![CDATA[$F{empleados_telefono_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="390" y="0" width="39" height="15" uuid="269d24de-421e-4197-bafa-40b3557b0e6d"/>
+				<textFieldExpression><![CDATA[$F{empleados_celular_contacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="429" y="0" width="39" height="15" uuid="ebf19fc4-20c6-4d3a-a6d0-0e8ade8b72c8"/>
+				<textFieldExpression><![CDATA[$F{empleados_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="468" y="0" width="39" height="15" uuid="f9f97c2d-36c2-451e-9362-7ea790d8a0a9"/>
+				<textFieldExpression><![CDATA[$F{empleados_usuario_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="507" y="0" width="39" height="15" uuid="05e1acb4-0098-4976-9155-07315787b1fd"/>
+				<textFieldExpression><![CDATA[$F{empleados_habilitado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="65215560-59bb-4d06-a151-6984150596f3"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="b8ff653e-f3e0-4119-9064-a9ec29e4fc5e"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="625a7bcb-f6a9-4dae-9c94-029e5e6217da"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="9c26f9d8-c7c7-4551-a7dd-ca92aca0f1ef"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

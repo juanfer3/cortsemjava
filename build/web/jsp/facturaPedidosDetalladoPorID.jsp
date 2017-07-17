@@ -22,8 +22,8 @@
     int pedido_id=0;
     float total=0;
     
-    ListarPedidos=pedidos.BuscarUltimoPedido(35);
-    ListarDetalle=detalle.BuscarDetallesDePedidosPorIdPedido(35);
+    ListarPedidos=pedidos.BuscarUltimoPedido(38);
+    ListarDetalle=detalle.BuscarDetallesDePedidosPorIdPedido(38);
 %>
 
 
@@ -33,10 +33,10 @@
     <div class="row">
         <%for(Pedidos mispedidos:ListarPedidos){%>
             <div class="col-md-3 ">
-            <h6>Nombre: <%=mispedidos.getClienteId().getNombre()%> </h6>
-            <h6>documento:<%=mispedidos.getClienteId().getDocumento() %></h6>
-            <h6>Fecha de Pedido:<%=mispedidos.getFPedido() %></h6>
-            <h6>Fecha de Entrega:<%=mispedidos.getFPedido() %></h6>
+            <h5>Nombre: <%=mispedidos.getClienteId().getNombre()%> </h5>
+            <h5>documento:<%=mispedidos.getClienteId().getDocumento() %></h5>
+            <h5>Fecha de Pedido:<%=mispedidos.getFPedido() %></h5>
+            <h5>Fecha de Entrega:<%=mispedidos.getFPedido() %></h5>
             </div>
             <%}%>
             <div class="col-md- col-md-offset-9">

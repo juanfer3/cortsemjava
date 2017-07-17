@@ -12,12 +12,17 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Controlador/EditarEmpleados.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/JasperReport.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/buscarReport.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/header.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/facturaPedidosDetalladoPorID.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/ListarEmpleadosJSP.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/tablaEmpleados.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/EmpleadosFunc.js</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/tablaEmpleados.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/ListarEmpleados.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/Facturas.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/script/Facturas.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/jsp/tablaEdicionEmpleados.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/web/PDF/empleados.jrxml</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/ProyectoWebCortsem/src/java/Modelo/DBPedidos.java</file>
         </group>
     </open-files>
 </project-private>

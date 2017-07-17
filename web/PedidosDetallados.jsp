@@ -148,7 +148,8 @@
 
             <div id="tablaPedidosDetallados">
 
-
+                <%@include file="jsp/tabla" %>
+                
             </div>
             
                                             <%for (Pedidos mypedidos : ListarPedido) {%> 
