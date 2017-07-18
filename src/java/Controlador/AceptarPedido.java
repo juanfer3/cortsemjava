@@ -49,7 +49,8 @@ public class AceptarPedido extends HttpServlet {
             
             validar=pedidos.ConfirmarPedido(id);
             if(validar=true){
-                request.getRequestDispatcher("ListarPedidos.jsp").forward(request, response);
+                request.setAttribute("id", id1);
+                request.getRequestDispatcher("Facturas.jsp").forward(request, response);
             
             }else{
             

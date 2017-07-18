@@ -43,6 +43,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Pedidos.findByHabilitado", query = "SELECT p FROM Pedidos p WHERE p.habilitado = :habilitado")})
 public class Pedidos implements Serializable {
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedido")
+    private Collection<Facturas> facturasCollection;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
     private Collection<PedidosDetallados> pedidosDetalladosCollection;
 
@@ -157,6 +160,15 @@ public class Pedidos implements Serializable {
 
     public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
         this.pedidosDetalladosCollection = pedidosDetalladosCollection;
+    }
+
+    @XmlTransient
+    public Collection<Facturas> getFacturasCollection() {
+        return facturasCollection;
+    }
+
+    public void setFacturasCollection(Collection<Facturas> facturasCollection) {
+        this.facturasCollection = facturasCollection;
     }
     
 }

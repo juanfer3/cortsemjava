@@ -22,8 +22,11 @@
     int pedido_id=0;
     float total=0;
     
-    ListarPedidos=pedidos.BuscarUltimoPedido(38);
-    ListarDetalle=detalle.BuscarDetallesDePedidosPorIdPedido(38);
+    id1=(String) request.getAttribute("id");
+    pedido_id=Integer.parseInt(id1);
+    
+    ListarPedidos=pedidos.BuscarUltimoPedido(pedido_id);
+    ListarDetalle=detalle.BuscarDetallesDePedidosPorIdPedido(pedido_id);
 %>
 
 
@@ -37,14 +40,17 @@
             <h5>documento:<%=mispedidos.getClienteId().getDocumento() %></h5>
             <h5>Fecha de Pedido:<%=mispedidos.getFPedido() %></h5>
             <h5>Fecha de Entrega:<%=mispedidos.getFPedido() %></h5>
+            <input style="visibility: hidden" value="<%=mispedidos.getId() %>">
+            </div>
+            
+            <div class="col-md- col-md-offset-9">
+            <h6>Factura N°<%=mispedidos.getId() %></h6>
+            <h6>Cortsem </h6>
+            <h6>Nit: 2345776-5</h6>
+            <h6>Telefono: 3732682</h6>
+            <h6>Dir: Cra 56 # 56 a 13</h6>
             </div>
             <%}%>
-            <div class="col-md- col-md-offset-9">
-            <h6>Nombre: </h6>
-            <h6>documento:</h6>
-            <h6>Fecha de Pedido:</h6>
-            <h6>Fecha de Entrega:</h6>
-            </div>
         <div class="span5">
             
             <table class="table table-striped table-condensed">
@@ -79,10 +85,17 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="5" align="right" style=""><p id="total"><%=total%></p></td>
+                        <td colspan="4" align="right" style=""><p>Total</p></td>
+                        <td colspan="1" align="right" style=""><p id="total"><%=total%></p></td>
                     </tr>
                     <tr>
-                        <td colspan="5" align="right"><p id="iva">Iva: 19%</p></td>
+                        <td colspan="4" align="right"><p id="iva">Iva%</p></td>
+                        <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="19"></td>
+                    </tr>
+                    
+                    <tr>
+                        <td colspan="4" align="right"><p id="iva">Descuento%</p></td>
+                        <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="0"></td>
                     </tr>
                     <tr>
                         <td colspan="5" align="right"><p id="total_final"></p></td>

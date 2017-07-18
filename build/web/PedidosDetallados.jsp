@@ -148,13 +148,13 @@
 
             <div id="tablaPedidosDetallados">
 
-                <%@include file="jsp/tabla" %>
-                
+                <!--%@include file="jsp/tabla" %-->
+
             </div>
-            
-                                            <%for (Pedidos mypedidos : ListarPedido) {%> 
-                                                <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="AceptarPedido?pedido_id=<%=mypedidos.getId()%>" class="btn btn-success btn-block btn-lg aceptarPedido">Registrar Pedido</a></div>                                    
-                                                <%}%>
+
+            <%for (Pedidos mypedidos : ListarPedido) {%> 
+            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="AceptarPedido?pedido_id=<%=mypedidos.getId()%>" class="btn btn-success btn-block btn-lg aceptarPedido">Registrar Pedido</a></div>                                    
+            <%}%>
             <!--form method="POST">
         <div class="row">
             <div class="col-md-12">

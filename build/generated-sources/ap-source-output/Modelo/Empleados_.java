@@ -1,16 +1,19 @@
 package Modelo;
 
+import Modelo.Facturas;
 import Modelo.Usuarios;
 import java.util.Date;
 import javax.annotation.Generated;
+import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-07-16T22:48:26")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-07-17T20:54:07")
 @StaticMetamodel(Empleados.class)
 public class Empleados_ { 
 
     public static volatile SingularAttribute<Empleados, String> contactoFamiliar;
+    public static volatile CollectionAttribute<Empleados, Facturas> facturasCollection;
     public static volatile SingularAttribute<Empleados, String> celularContacto;
     public static volatile SingularAttribute<Empleados, String> direccion;
     public static volatile SingularAttribute<Empleados, String> documento;

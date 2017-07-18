@@ -133,8 +133,8 @@ public class DBPedidos {
     
         public int TomarUltimoId(){
         ResultSet rs=null;
-        String habilitado="si";
-        String sql="SELECT * FROM pedidos WHERE habilitado='"+habilitado+"';";
+       
+        String sql="SELECT * FROM pedidos;";
         int id=0;
     
         
