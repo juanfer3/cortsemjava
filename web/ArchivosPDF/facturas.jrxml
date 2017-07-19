@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b4b23785-aefa-44fa-8dac-49f8e3ccfe05">
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     facturas.`id` AS facturas_id,
+     facturas.`id_pedido` AS facturas_id_pedido,
+     facturas.`id_empleado` AS facturas_id_empleado,
+     facturas.`iva` AS facturas_iva,
+     facturas.`descuento` AS facturas_descuento,
+     facturas.`total` AS facturas_total,
+     facturas.`habilitado` AS facturas_habilitado
+FROM
+     `facturas` facturas]]>
+	</queryString>
+	<field name="facturas_id" class="java.lang.Integer"/>
+	<field name="facturas_id_pedido" class="java.lang.Integer"/>
+	<field name="facturas_id_empleado" class="java.lang.Integer"/>
+	<field name="facturas_iva" class="java.lang.Float"/>
+	<field name="facturas_descuento" class="java.lang.Float"/>
+	<field name="facturas_total" class="java.lang.Float"/>
+	<field name="facturas_habilitado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="9ba3043b-a0d0-47a8-98c7-5106f519d59d"/>
+				<imageExpression><![CDATA["leaf_banner_violet.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="04418731-cb59-4cca-9243-099c7d788988"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Violet Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="46" width="200" height="22" uuid="91c8fd5a-5d5f-4545-a88a-7cdc204b645b"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Leaf Violet SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="95b64404-0ea4-4c5d-94b5-b4a918d7796f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="79" height="15" uuid="cdf102d4-6299-4e90-871c-4acb5992ef29"/>
+				<text><![CDATA[facturas_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="79" y="19" width="79" height="15" uuid="2e54aa86-24c6-48bb-8993-7b04ed1436f4"/>
+				<text><![CDATA[facturas_id_pedido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="158" y="19" width="79" height="15" uuid="2713e8a7-9784-4bca-ba15-ff1c2af973fa"/>
+				<text><![CDATA[facturas_id_empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="237" y="19" width="79" height="15" uuid="36118991-8728-41b1-9c8c-9905c73062b7"/>
+				<text><![CDATA[facturas_iva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="316" y="19" width="79" height="15" uuid="9603061f-8426-4345-b6b8-c4f1cfbcec62"/>
+				<text><![CDATA[facturas_descuento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="395" y="19" width="79" height="15" uuid="e1b50870-cdb3-4648-8db4-21827aa7e4f8"/>
+				<text><![CDATA[facturas_total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="19" width="79" height="15" uuid="bf580dbd-653a-46ee-9b74-b9ab0103d5cd"/>
+				<text><![CDATA[facturas_habilitado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="d7731210-f513-4d38-a672-46334c525526"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="79" height="15" uuid="5dc41b3e-5a94-4f75-9e52-af5235e4bb44"/>
+				<textFieldExpression><![CDATA[$F{facturas_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="79" y="0" width="79" height="15" uuid="9bb061d0-b081-4e94-bfad-3218e71f857e"/>
+				<textFieldExpression><![CDATA[$F{facturas_id_pedido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="158" y="0" width="79" height="15" uuid="48cf1a1f-c6bf-4d11-aac0-9c9a02407501"/>
+				<textFieldExpression><![CDATA[$F{facturas_id_empleado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="237" y="0" width="79" height="15" uuid="a6670e8d-fe0c-4ddf-b883-598ab652f796"/>
+				<textFieldExpression><![CDATA[$F{facturas_iva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="316" y="0" width="79" height="15" uuid="ea2e752c-c3b3-40d2-8713-7d0ea1f3be13"/>
+				<textFieldExpression><![CDATA[$F{facturas_descuento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="395" y="0" width="79" height="15" uuid="5ccc4503-1448-4a7c-9121-f06562d255bf"/>
+				<textFieldExpression><![CDATA[$F{facturas_total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="474" y="0" width="79" height="15" uuid="8174a103-f443-4f52-b0af-1ce0c072d15a"/>
+				<textFieldExpression><![CDATA[$F{facturas_habilitado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="61338cf1-e8d8-4772-8395-a186d45ee617"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="0669b6bb-5d5b-409f-8683-deaa9a50a044"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="85b9bdf2-867a-4bb5-bff3-4701b077841d"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="e589ae9f-1404-4160-a790-fe86a1c11ed3"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

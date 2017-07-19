@@ -100,7 +100,7 @@ public class Listar {
    DBPedidoDetallado detalle=new DBPedidoDetallado();
     ArrayList<PedidosDetallados>Listar=new ArrayList();
     Listar.clear();
-    DBPedidos p=new DBPedidos();
+    DBFacturas fac=new DBFacturas();
             
             
 
@@ -108,7 +108,7 @@ public class Listar {
     
 
    
-    Listar=p.ListarPedidosConClientes();
+    Listar=fac.ListarFacturaPorId(1);
 }
     
 }

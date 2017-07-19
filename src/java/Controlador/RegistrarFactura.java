@@ -40,14 +40,15 @@ public class RegistrarFactura extends HttpServlet {
             float iva,descuento, total; 
             boolean validar=false;
             
-            pedido=request.getParameter("pedido");
+            pedido=request.getParameter("pedido_id");
             id_pedido=Integer.parseInt(pedido);
             
-            pedido_detallado=request.getParameter("pedido_detallado");
-            id_pedido_detallado=Integer.parseInt(pedido_detallado);
             
-            empleado=request.getParameter("empleado");
-            id_empleado=Integer.parseInt(empleado);
+            
+//            empleado=request.getParameter("empleado");
+//            id_empleado=Integer.parseInt(empleado);
+
+            id_empleado=1;
             
             iva1=request.getParameter("iva");
             iva=Float.parseFloat(iva1);
@@ -58,7 +59,7 @@ public class RegistrarFactura extends HttpServlet {
             total1=request.getParameter("total");
             total=Float.parseFloat(total1);
             
-            validar=fac.CrearFactura(id_pedido, id_pedido_detallado, id_empleado, iva, descuento, total);
+            validar=fac.CrearFactura(id_pedido, id_empleado, iva, descuento, total);
             
             if(validar==true){
                 

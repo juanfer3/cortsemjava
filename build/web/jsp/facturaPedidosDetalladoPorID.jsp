@@ -31,7 +31,7 @@
 
 
 
-<script src="script/Facturas.js"></script>
+<script src="script/FacturasFunc.js"></script>
 <div class="container">
     <div class="row">
         <%for(Pedidos mispedidos:ListarPedidos){%>
@@ -44,7 +44,7 @@
             </div>
             
             <div class="col-md- col-md-offset-9">
-            <h6>Factura N°<%=mispedidos.getId() %></h6>
+                <h6>Factura N°<p id="pedido_id"><%=mispedidos.getId() %></p></h6>
             <h6>Cortsem </h6>
             <h6>Nit: 2345776-5</h6>
             <h6>Telefono: 3732682</h6>
@@ -89,13 +89,13 @@
                         <td colspan="1" align="right" style=""><p id="total"><%=total%></p></td>
                     </tr>
                     <tr>
-                        <td colspan="4" align="right"><p id="iva">Iva%</p></td>
+                        <td colspan="4" align="right"><p >Iva%</p></td>
                         <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="19"></td>
                     </tr>
                     
                     <tr>
-                        <td colspan="4" align="right"><p id="iva">Descuento%</p></td>
-                        <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="0"></td>
+                        <td colspan="4" align="right"><p >Descuento%</p></td>
+                        <td colspan="1" align="right"><input name="descuento" id="descuento" class="form" value="0"></td>
                     </tr>
                     <tr>
                         <td colspan="5" align="right"><p id="total_final"></p></td>
@@ -105,4 +105,7 @@
             </table>
         </div>
     </div>
+                    
+            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="#" class="btn btn-success btn-block btn-lg aceptarFactura">Crear Factura</a></div>                                    
+            
 </div>
