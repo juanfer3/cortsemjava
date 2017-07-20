@@ -25,12 +25,13 @@
         
         Connection conectar=con.conectar();
         
-        File reportfile= new File(application.getRealPath("ArchivosPDF/reporte.jasper"));
+        File reportfile= new File(application.getRealPath("ArchivosPDF/te.jasper"));
         
         Map<String, Object> parameter= new HashMap<String, Object>();
         
-        String hb = request.getParameter("hb");
-        parameter.put("hab", new String(hb)); 
+       // String hb = request.getParameter("hb");
+        
+        //parameter.put("hb", new String(hb)); 
         
         byte[] bytes= JasperRunManager.runReportToPdf(reportfile.getPath(),parameter,conectar);
         

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="715b907e-c47f-4b3b-96c3-2a0372b81250">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="id" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     facturas.`id` AS facturas_id,
+     facturas.`id_empleado` AS facturas_id_empleado,
+     facturas.`iva` AS facturas_iva,
+     facturas.`descuento` AS facturas_descuento,
+     facturas.`total` AS facturas_total,
+     pedidos.`id` AS pedidos_id,
+     facturas.`id_pedido` AS facturas_id_pedido,
+     facturas.`valor_total` AS facturas_valor_total
+FROM
+     `pedidos` pedidos INNER JOIN `facturas` facturas ON pedidos.`id` = facturas.`id_pedido`
+WHERE
+     facturas.id_pedido = $P{id}]]>
+	</queryString>
+	<field name="facturas_id" class="java.lang.Integer"/>
+	<field name="facturas_id_empleado" class="java.lang.Integer"/>
+	<field name="facturas_iva" class="java.lang.Float"/>
+	<field name="facturas_descuento" class="java.lang.Float"/>
+	<field name="facturas_total" class="java.lang.Float"/>
+	<field name="pedidos_id" class="java.lang.Integer"/>
+	<field name="facturas_id_pedido" class="java.lang.Integer"/>
+	<field name="facturas_valor_total" class="java.lang.Float"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="253" y="55" width="132" height="20" forecolor="#000000" uuid="2756eb97-685c-4d9a-a0c7-1e1467664c42"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[iva:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="385" y="57" width="168" height="18" uuid="ebf7a1fa-3451-41b4-a91d-d87f535ec557"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturas_iva}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="255" y="75" width="132" height="20" forecolor="#000000" uuid="bc93d9e8-d745-43c7-be41-2f99d74f99a4"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dectuento:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="385" y="75" width="168" height="20" uuid="708b5751-7b73-44a7-9a81-0050dbab86a6"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturas_descuento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="255" y="96" width="132" height="20" forecolor="#000000" uuid="88df99b2-45e8-4dd0-b7c3-1c0558b7b4db"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="387" y="34" width="168" height="21" uuid="588d18cd-61c4-4ef4-a012-d97eb269e06f"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturas_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="253" y="35" width="132" height="20" forecolor="#000000" uuid="61b9188d-6ea7-4ff8-a914-00079047ef05"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="387" y="96" width="168" height="20" uuid="3d03814d-2c5d-4c04-aae1-c674a2c36346"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{facturas_valor_total}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="50" y="95" width="453" height="1" forecolor="#666666" uuid="6a7d08fd-f041-4291-9871-4d227b536109"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="2cdf380f-e470-4f2a-93ba-91772af7cf74"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

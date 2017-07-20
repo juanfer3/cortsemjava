@@ -6,7 +6,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-07-18T22:20:09")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2017-07-20T18:16:51")
 @StaticMetamodel(Telas.class)
 public class Telas_ { 
 

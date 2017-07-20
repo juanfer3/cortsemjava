@@ -21,11 +21,11 @@ import java.util.logging.Logger;
 public class DBFacturas {
 
     public boolean CrearFactura(int id_pedido, 
-            int id_empleado, float iva, float descuento, float total) {
+            int id_empleado,float total,float iva, float descuento, float valor_total) {
         String habilitado = "si";
         String sql = "INSERT INTO facturas(id_pedido, "
-                + "id_empleado,iva,descuento,total,habilitado ) "
-                + "VALUES(?,?,?,?,?,?);";
+                + "id_empleado,total,iva,descuento,valor_total,habilitado ) "
+                + "VALUES(?,?,?,?,?,?,?);";
         int r = 0;
 
         ConexionBD bd = new ConexionBD();
@@ -36,10 +36,11 @@ public class DBFacturas {
 
             pst.setInt(1, id_pedido);
             pst.setInt(2, id_empleado);
-            pst.setFloat(3, iva);
-            pst.setFloat(4, descuento);
-            pst.setFloat(5, total);
-            pst.setString(6, habilitado);
+            pst.setFloat(3, total);
+            pst.setFloat(4, iva);
+            pst.setFloat(5, descuento);
+            pst.setFloat(6, valor_total);
+            pst.setString(7, habilitado);
             r = pst.executeUpdate();
             if (r != 0) {
 

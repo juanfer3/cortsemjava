@@ -31,7 +31,7 @@
 
 
 
-<script src="script/FacturasFunc.js"></script>
+<script src="script/Facturas.js"></script>
 <div class="container">
     <div class="row">
         <%for(Pedidos mispedidos:ListarPedidos){%>

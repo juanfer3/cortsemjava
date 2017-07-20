@@ -52,12 +52,12 @@ $(document).ready(function () {
         var descuento = $('#descuento').val();
         var total = $("#total_final").text();
         var pedido_id=$("#pedido_id").text();
-        
+        var valor_total=$("#total_final").text();
         var data={
             total:total,
             iva:iva,
             descuento:descuento,
-            total:total,
+            valor_total:total_final,
             pedido_id:pedido_id
             
         }
@@ -68,6 +68,12 @@ $(document).ready(function () {
             type: 'POST',
             data: data,
                     success: function (data) {
+               alertify.alert(data);
+               var id=$("#pedido_id").text();
+                alertify.success(id); 
+               $.get('JasperReport',{id:id},function () {
+                   alertify.success("hola"); 
+                });
                
             }
         });

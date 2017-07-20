@@ -35,9 +35,10 @@ public class RegistrarFactura extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             DBFacturas fac=new DBFacturas();
-            String pedido,pedido_detallado,empleado,iva1,descuento1,total1;
+            String pedido,pedido_detallado,empleado,
+                    iva1,descuento1,total1,valor_total1;
             int id_pedido, id_pedido_detallado,id_empleado;
-            float iva,descuento, total; 
+            float iva,descuento, total,valor_total; 
             boolean validar=false;
             
             pedido=request.getParameter("pedido_id");
@@ -59,7 +60,10 @@ public class RegistrarFactura extends HttpServlet {
             total1=request.getParameter("total");
             total=Float.parseFloat(total1);
             
-            validar=fac.CrearFactura(id_pedido, id_empleado, iva, descuento, total);
+            valor_total1=request.getParameter("valor_total");
+            valor_total=Float.parseFloat(valor_total1);
+            
+            validar=fac.CrearFactura(id_pedido, id_empleado,total ,iva, descuento, valor_total);
             
             if(validar==true){
                 

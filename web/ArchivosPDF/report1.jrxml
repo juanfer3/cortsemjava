@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b14160b-f0aa-42a5-8464-167cb54ec08b">
-	<queryString language="SQL">
+	
+    <queryString language="SQL">
 		<![CDATA[SELECT
      facturas.`id` AS facturas_id,
      facturas.`id_pedido` AS facturas_id_pedido,
