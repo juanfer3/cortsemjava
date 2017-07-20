@@ -285,4 +285,54 @@ public class DBClientes {
     
     }
     
+    public ArrayList  ListarClienteUser(String usuario, String contrasena){
+    
+         ArrayList<Clientes> Listar=new ArrayList();
+        Listar.clear();
+    
+        ResultSet rs;
+        String habilitado = "si";
+        String sql="SELECT  clientes.nombre, clientes.documento, clientes.telefono, clientes.celular, clientes.direccion, clientes.correo, clientes.cargo,clientes.id,usuarios.usuario,usuarios.id from usuarios inner join clientes on clientes.usuario_id=usuarios.id  where usuarios.usuario='"+usuario+"' AND contrasena='"+contrasena+"';";
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+
+            while(rs.next()) {
+                
+                 Clientes myclient=new Clientes();
+                Usuarios myuser=new Usuarios();
+                
+                myclient.setNombre(rs.getString("nombre"));
+                myclient.setDocumento(rs.getString("documento"));
+                myclient.setCargo(rs.getString("cargo"));
+                myclient.setTelefono(rs.getString("telefono"));
+                myclient.setCelular(rs.getString("celular"));
+                myclient.setDireccion(rs.getString("direccion"));
+                myclient.setCorreo(rs.getString("correo"));
+                myclient.setId(rs.getInt("id"));
+                myuser.setUsuario(rs.getString("usuario"));
+                
+                
+                myclient.setUsuarioId(myuser);
+                
+                Listar.add(myclient);
+                
+               
+               
+            }
+            
+            bd.cierraConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Listar;
+    
+    
+    
+    
+    }
+    
 }
