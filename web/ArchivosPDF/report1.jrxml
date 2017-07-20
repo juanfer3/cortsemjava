@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b14160b-f0aa-42a5-8464-167cb54ec08b">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     facturas.`id` AS facturas_id,
+     facturas.`id_pedido` AS facturas_id_pedido,
+     facturas.`id_empleado` AS facturas_id_empleado,
+     facturas.`iva` AS facturas_iva,
+     facturas.`descuento` AS facturas_descuento,
+     facturas.`total` AS facturas_total,
+     facturas.`habilitado` AS facturas_habilitado
+FROM
+     `facturas` facturas]]>
+	</queryString>
+	<field name="facturas_id" class="java.lang.Integer"/>
+	<field name="facturas_id_pedido" class="java.lang.Integer"/>
+	<field name="facturas_id_empleado" class="java.lang.Integer"/>
+	<field name="facturas_iva" class="java.lang.Float"/>
+	<field name="facturas_descuento" class="java.lang.Float"/>
+	<field name="facturas_total" class="java.lang.Float"/>
+	<field name="facturas_habilitado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
