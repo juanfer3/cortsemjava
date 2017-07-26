@@ -1,3 +1,9 @@
+<%
+    response.setHeader("Pragma", "no-cache");
+    response.setHeader("Cache-Control", "no-cache");
+    response.setDateHeader("Expires", 0);
+%> 
+
  <%@page import="java.util.ArrayList"%>
 <%@page import="Modelo.Empleados"%>
 <%-- 
@@ -32,7 +38,7 @@ $("#datepicker").datepicker();
         
         
         <header>
-            
+            <div>
             <hr class="rayainicial">
         </div>
         
@@ -66,7 +72,7 @@ $("#datepicker").datepicker();
 
 
         <header>
-            
+           <div> 
             <hr class="rayainicial">
         </div>
         
@@ -85,7 +91,7 @@ $("#datepicker").datepicker();
                     <li class="botoncompra"><a href="#">PRODUCCION</a></li>
                     <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
                     <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
-                    <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
+                    <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     
@@ -135,8 +141,10 @@ $("#datepicker").datepicker();
                 <ul class="nav navbar-nav">
                     
                     <li class="botoncompra"><a href="ListarClientes">CLIENTES</a></li>
-                    
+                    <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
+                    <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
                 </ul>
+                
                 <ul class="nav navbar-nav navbar-right">
                     
                     <li><a href="CerrarSession"><span class="glyphicon glyphicon-log-in loguito">
@@ -162,4 +170,45 @@ $("#datepicker").datepicker();
             </li>
         </header>
         
+        <%}else if (sesion.getAttribute("rolcliente").equals("Cliente")){%>
+        
+          <header>
+            <div>
+            <hr class="rayainicial">
+        </div>
+        
+                                                                
+        <nav class="navbar navbar-inverse barra">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    
+                    
+                    <a class="navbar-brand" href="#" id="boton">CORTSEM</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    
+                    
+                    <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
+                </ul>
+                
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="CerrarSession"><span class="glyphicon glyphicon-log-in loguito">
+                                         
+                            </span>Cerrar Sesion</a></li>
+                           
+                </ul>
+            </div>
+        </nav>
+        </header>
+       
+        <header class="menu" id="menu">
+            <h5>Bienvenido</h5>
+            <hr>
+            <li class="menu-item">
+                <a href="#">Pedidos</a>
+            </li>
+            
+        </header>
         <%}%>

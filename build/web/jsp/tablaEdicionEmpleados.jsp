@@ -8,7 +8,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="Modelo.Empleados"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<script src="script/tablaEdicionEmpleados.js"></script>
+<script src="script/tablaEdicionEmpleadosFunc.js"></script>
 <%          DBEmpleado emp= new DBEmpleado();
           
             ArrayList<Empleados> Listar=new ArrayList();
@@ -52,28 +52,28 @@
                     <tbody>
                         <tr>
                             <th>Nombre</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getNombre()%>" class="entradasdeedicion" name="nombre" id="nombre"> </td>
+                            <td><input type="text" style="" value="<%=myemp.getNombre()%>" class="form-control nombbre" name="nombre" id="nombre"> </td>
                         </tr>
                         
                         <tr>
                             <th>Documento</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getDocumento()%>" class="entradasdeedicion" name="documento" id="documento"> </td>
+                            <td><p style=""  class="form-control" name="documento" id="documento"> <%=myemp.getDocumento()%></p></td>
                         </tr>
                         <tr>
                             <th>Cargo</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getCargo()%>" class="entradasdeedicion" name="cargo" id="cargo"></td>
+                            <td><input type="text" style="" value="<%=myemp.getCargo()%>" class="form-control" name="cargo" id="cargo"></td>
                         </tr>
                         <tr>
                             <th>Telefono</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getTelefono()%>" class="entradasdeedicion" name="telefono" id="telefono"></td>
+                            <td><input type="text" style="" value="<%=myemp.getTelefono()%>" class="form-control" name="telefono" id="telefono"></td>
                         </tr>
                         <tr>
                             <th>Celular</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getCelular()%>" class="entradasdeedicion" name="celular" id="celular"></td>
+                            <td><input type="text" style="" value="<%=myemp.getCelular()%>" class="form-control" name="celular" id="celular"></td>
                         </tr>
                         <tr>
                             <th>Direccion</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getDireccion()%>" class="entradasdeedicion" name="direccion" id="direccion"></td>
+                            <td><input type="text" style="" value="<%=myemp.getDireccion()%>" class="form-control" name="direccion" id="direccion"></td>
                         </tr>
                         <tr>
                             <th>Rh</th>
@@ -90,23 +90,23 @@
                         </tr>
                         <tr>
                             <th>Fecha de nacimiento</th>
-                            <td><input type="date" style="border:none" value="<%=myemp.getFNacimiento()%>" class="entradasdeedicion form-control input-lg" name="f_nacimiento" id="f_nacimiento"></td>
+                            <td><input type="date" style="" value="<%=myemp.getFNacimiento()%>" class="form-control input-lg" name="f_nacimiento" id="f_nacimiento"></td>
                         </tr>
                         <tr>
                             <th>Contacto Familiar</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getContactoFamiliar()%>" class="entradasdeedicion" name="contacto_familiar" id="contacto_familiar"></td>
+                            <td><input type="text" style="" value="<%=myemp.getContactoFamiliar()%>" class="form-control" name="contacto_familiar" id="contacto_familiar"></td>
                         </tr>
                         <tr>
                             <th> Telefono Contacto Familiar</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getTelefonoContacto()%>" class="entradasdeedicion" name="telefono_contacto" id="telefono_contacto"></td>
+                            <td><input type="text" style="" value="<%=myemp.getTelefonoContacto()%>" class="form-control" name="telefono_contacto" id="telefono_contacto"></td>
                         </tr>
                         <tr>
                             <th>Celular Contacto Familiar</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getCelularContacto()%>" class="entradasdeedicion" name="celular_contacto" id="celular_contacto"></td>
+                            <td><input type="text" style="" value="<%=myemp.getCelularContacto()%>" class="form-control" name="celular_contacto" id="celular_contacto"></td>
                         </tr>
                         <tr>
                             <th>Usuario</th>
-                            <td><input type="text" style="border:none" value="<%=myemp.getUsuarioId().getUsuario()%>" class="entradasdeedicion" name="usuario" id="usuario"></td>
+                            <td><input type="text" style="border:none" value="<%=myemp.getUsuarioId().getUsuario()%>" class="form-control" name="usuario" id="usuario"></td>
                         </tr>
                                 
                     <input value="<%=myemp.getId()%>" style="visibility:hidden" name="id" id="id">

@@ -49,12 +49,15 @@ public class Empleadomodal extends HttpServlet {
     
     for(Empleados myemp:Listar){
             
-        out.println(myemp.getNombre());
-        out.println(myemp.getNombre());
-        out.println(myemp.getDocumento());
-        out.println(myemp.getFNacimiento());
-        out.println(myemp.getTelefono());
-        out.println(myemp.getContactoFamiliar());
+        out.println("Nombre: "+myemp.getNombre());
+        out.println("Documento: "+myemp.getDocumento());
+        out.println("FNacimiento: "+myemp.getFNacimiento());
+        out.println("Telefono: "+myemp.getTelefono());
+        out.println("Celular: "+myemp.getCelular());
+        out.println("Direccion: "+myemp.getDireccion());
+        out.println("Cargo: "+myemp.getCargo());
+        out.println("Rh: "+myemp.getRh());
+        out.println("ContactoFamiliar: "+myemp.getContactoFamiliar());
         
     }
             

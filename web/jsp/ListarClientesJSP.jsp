@@ -4,6 +4,7 @@
     Author     : Juan
 --%>
 
+<%@page import="Modelo.DBClientes"%>
 <%@page import="Modelo.Clientes"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -39,10 +40,12 @@
                                 <th>Eliminar</th>
                             </tr>
                         </thead>
-                        <%ArrayList<Clientes> Listar = (ArrayList<Clientes>) request.getAttribute("Listar_Clientes");
+                        <%ArrayList<Clientes> Listar = new ArrayList();
+                        DBClientes clientes=new DBClientes();
+                        Listar.clear();
                             int cont;
                             cont = 1;
-
+                            Listar=clientes.ListarClientes();
                             for (Clientes cli : Listar) {
 
                         %>

@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package Modelo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
-@WebServlet(name = "CerrarSession", urlPatterns = {"/CerrarSession"})
-public class CerrarSession extends HttpServlet {
+@WebServlet(name = "CrearFactura", urlPatterns = {"/CrearFactura"})
+public class CrearFactura extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +33,7 @@ public class CerrarSession extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-          Cookie cookie = new Cookie("key","value");
-            HttpSession sc= request.getSession(true);
-                sc.invalidate();
-//            sc.setAttribute("usuario", "");
-//            sc.setAttribute("contrasena", "");
-//            sc.setAttribute("rol","");
-            response.sendRedirect("index.jsp");
-        
-        }catch(Exception ex){
-        
-            ex.printStackTrace();
+           
         }
     }
 

@@ -4,7 +4,6 @@
     Author     : Juan
 --%>
 
-
 <%@page import="Modelo.Pedidos"%>
 <%@page import="Modelo.DBPedidos"%>
 
@@ -13,26 +12,19 @@
 <%@page import="Modelo.DBPedidoDetallado"%>
 <!--script src="script/PedidosDetalladosFunc.js"></script-->
 <%
-    DBPedidoDetallado detalle = new DBPedidoDetallado();
-    DBPedidos ped = new DBPedidos();
-    ArrayList<Pedidos> Listar = new ArrayList();
+    DBPedidoDetallado detalle=new DBPedidoDetallado();
+    DBPedidos ped=new DBPedidos();
+    ArrayList<Pedidos>Listar=new ArrayList();
     Listar.clear();
     
-    String rc = ((String) session.getAttribute("rolcliente"));
-
-    if (!(rc.equals("Cliente"))) {
-
-        Listar = ped.ListarPedidosConClientes();
-
-    }else{
     
-        String cliente =(String) session.getAttribute("nombre_cliente");
-        Listar = ped.ListarPedidosDeClientes(cliente);
-    
-    } %>
+    String cliente=(String) session.getAttribute("nombre_cliente");
+    Listar=ped.ListarPedidosDeClientes(cliente);
+
+%>
 <script src="script/pedidos.js"></script>
 <div id="listarPedidos">
-    <form method="POST">
+<form method="POST">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
@@ -50,42 +42,42 @@
                     <table class="table table-hover" id="dev-table">
                         <thead>
                             <tr>
-
+                                
                                 <th>Nombre</th>
                                 <th>Documento</th>
                                 <th>N° pedido</th>
                                 <th>Fecha del pedido</th>
-
+                                
                                 <th>Fecha de entrega</th>
-
+                                
                                 <th></th>
                                 <th>Detalles</th>
                             </tr>
                         </thead>
-
+      
                         <tbody class="ListedePedidos">
-
-                            <%for (Pedidos mypedido : Listar) {%>
+                            
+                            <%for(Pedidos mypedido:Listar){%>
                             <tr>
-                                <td><%=mypedido.getClienteId().getNombre()%></td>
+                                <td><%=mypedido.getClienteId().getNombre() %></td>
                                 <td><%=mypedido.getClienteId().getDocumento()%></td>
-                                <td><%=mypedido.getId()%></td>
+                                <td><%=mypedido.getId() %></td>
                                 <td><%=mypedido.getFPedido()%></td>
-                                <td><%=mypedido.getFEntrega()%></td>
+                                <td><%=mypedido.getFEntrega()  %></td>
                                 <td><p class="id" style="visibility: hidden;"><%=mypedido.getId()%></p></td>
                                 <td><a href='#' id="ver" class='ver'><span class='glyphicon glyphicon-eye-open borrar'></a></td>
                             </tr>
-
+                            
                             <%}%>
-
+                            
                         </tbody>
-
-
-
+                        
+                        
+                        
                     </table>
                 </div>
             </div>
-
+            
         </div>
         <div class="row ">
 

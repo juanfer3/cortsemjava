@@ -50,14 +50,21 @@ public class Loguin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             DBUsuarios user = new DBUsuarios();
-
-            String usuario, contrasena,rol;
+            DBClientes client=new DBClientes();
+            String usuario, contrasena,rol,rolcliente;
             rol="";
+            rolcliente="";
+            String nombreCliente="";
+            int empleado, cliente_id;
+            empleado=0;
+            cliente_id=0;
             usuario = request.getParameter("usuario");
             contrasena = request.getParameter("contrasena");
-
-            ArrayList<Empleados> Listar = new ArrayList();
-            Listar.clear();
+            user.ValidarUsuario(usuario, contrasena);
+            ArrayList<Empleados> ListarEmpleados = new ArrayList();
+            ArrayList<Clientes> ListarClientes= new ArrayList();
+            ListarEmpleados.clear();
+            ListarClientes.clear();
             ResultSet rs = null;
             String sql = "SELECT empleados.nombre, empleados.documento, empleados.cargo, empleados.telefono, empleados.celular, empleados.f_nacimiento, empleados.rh, empleados.contacto_familiar,empleados.telefono_contacto,empleados.celular_contacto,empleados.direccion,empleados.id,usuarios.usuario from  usuarios inner join empleados on usuarios.id = empleados.usuario_id where usuarios.usuario='" + usuario + "' AND contrasena='" + contrasena + "';";
             ConexionBD bd = new ConexionBD();
@@ -68,35 +75,57 @@ public class Loguin extends HttpServlet {
                 rs = st.executeQuery(sql);
 
                 if (rs.next()) {
-                    Usuarios myuser = new Usuarios();
+                    
                     Empleados myemp = new Empleados();
-                    Clientes myclient = new Clientes();
+                    
 
                     
                     myemp.setCargo(rs.getString("cargo"));
                     
-
-                    Listar.add(myemp);
-
+                   
+                    ListarEmpleados.add(myemp);
+                    
+                    
+                    
+                }else{
+                
+                    
+                
                 }
+                
                 bd.cierraConexion();
             } catch (SQLException ex) {
                 Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            for(Empleados ele: Listar){
+            for(Empleados ele: ListarEmpleados){
             
                 rol=ele.getCargo();
-            
+                
             }
-            System.out.println(rol+"==========================================");
             
+            ListarClientes=client.ListarClienteUser(usuario, contrasena);
+            
+            for(Clientes ele: ListarClientes){
+            
+                rolcliente=ele.getCargo();
+                nombreCliente=ele.getNombre();
+                cliente_id=ele.getId();
+            }
+            
+            
+            System.out.println(rol+"==========================================");
+            System.out.println(rolcliente+"==========================================");
+            System.out.println(nombreCliente+"==========================================");
             if (user.ValidarUsuario(usuario, contrasena) == true) {
                 
                 HttpSession sc = request.getSession();
                 sc.setAttribute("usuario", usuario);
                 sc.setAttribute("contrasena", contrasena);
                 sc.setAttribute("rol", rol);
+                sc.setAttribute("rolcliente", rolcliente);
+                sc.setAttribute("nombre_cliente", nombreCliente);
+                sc.setAttribute("id_cliente", cliente_id);
                 
                 RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
                 rd.forward(request, response);

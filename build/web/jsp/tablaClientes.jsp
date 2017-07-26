@@ -7,8 +7,8 @@
 <%@page import="Modelo.Clientes"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<div class="container" id="ocultarlistarclientes">
+<script src="script/ListarClientes.js"></script>
+<div class="container" id="tablaClientes">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
     <form method="POST">
         <div class="row">
@@ -31,8 +31,9 @@
                                 <th>#</th>
                                 <th>Nombre</th>
                                 <th>Documento</th>
-
+                               
                                 <th>Usuario</th>
+                                 <th></th>
                                 <th>Ver Detalle</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
@@ -45,18 +46,19 @@
                             for (Clientes cli : Listar) {
 
                         %>
-                        <input type="text" class="id" value="<%=cli.getId()%>" style="visibility:hidden">
+                        
                         <tbody>
                             <tr>
                                 <td><%=cont%></td>
                                 <td><%=cli.getNombre()%></td>
                                 <td><%=cli.getDocumento()%> </td>
+                                
                                 <td><%=cli.getUsuarioId().getUsuario()%></td>
+                                <td><input type="text" class="cliente_id" value="<%=cli.getId()%>" style="visibility:hidden" id="id"></td>
+                                <td><a id="ver" href="#" class="ver"><span><img src="imagenes/ojo.png"></span></a></td>
+                                <td><a href="#" id="editar" class="editar"><span><img src="imagenes/editar.png"></span></a></td>
 
-                                <td><a id="" href="#" data-toggle="modal" data-target="#miModal"><span><img src="imagenes/ojo.png"></span></a></td>
-                                <td><a href="#" id="llamartablaeditarclientes"><span><img src="imagenes/editar.png"></span></a></td>
-
-                                <td><a href="#" data-toggle="modal" data-target="#ModalEliminar<%=cli.getId()%>"><span><img src="imagenes/borrar.png"></span></a></td>
+                                <td><a href="#" class="eliminar" id="eliminar"><span><img src="imagenes/borrar.png"></span></a></td>
 
 
 

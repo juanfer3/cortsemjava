@@ -22,7 +22,7 @@
         <link href="https://file.myfontastic.com/wBMVThpWoWLWzeaWjCkHtV/icons.css" rel="stylesheet">     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
-        <title>JSP Page</title>
+        <title>Seleccionar Cliente</title>
         <script src="script/Alertas/alertify.js"></script>
         <script type="text/javascript">
 //override defaults
@@ -32,7 +32,7 @@
             alertify.defaults.theme.input = "form-control";
         </script>
         <script src="script/cambiotablas.js"></script>
-        <script src="script/seleccionClientes.js"></script>
+        <script src="script/SelectCliente.js"></script>
         <script ></script>
     </head>
     <% DBTelas telas = new DBTelas();
@@ -129,7 +129,7 @@
                 </div>
                 <div class="row ">
 
-                    <div class="col-xs-12 col-md-12"><input class="btn btn-success btn-block btn-lg" id="aceptarClientePedido" value="Aceptar" type="submit"></div>
+                    <div class="col-xs-12 col-md-12"><input class="btn btn-success btn-block btn-lg" id="aceptar" value="Aceptar" type="submit"></div>
                 </div>
             </form>
         </div>

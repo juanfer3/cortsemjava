@@ -23,7 +23,7 @@
 
 %>
 <script src="script/llamadoDetallesTabla.js"></script>
-<form method="POST">
+<form method="POST" id="">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
@@ -78,8 +78,5 @@
             </div>
             
         </div>
-        <div class="row ">
-
-            <div class="col-xs-12 col-md-12"><a href="#" class="btn btn-success btn-block btn-lg">Terminar Operacion</a></div>
-        </div>
+        
     </form>

@@ -1,5 +1,12 @@
 $(document).ready(function () {
-
+    var pedido_id = $("#pedido_id").text();
+    var prenda = $(this).parents("tr").find(".prenda").val();
+    var tela = $(this).parents("tr").find("#tela").val();
+    var nombreTela = $(this).parents("tr").find("#nombretela").text();
+    var talla = $(this).parents("tr").find("#talla").val();
+    var cantidad = $(this).parents("tr").find("#cantidad").val();
+    var valor_unitario = $(this).parents("tr").find("#valor_unitario").val();
+    var valor_total = $(this).parents("tr").find("#valor_total").text();
     $('#valor_unitario').focusout(function () {
 
 
@@ -72,36 +79,35 @@ $(document).ready(function () {
 
         if (prenda == "") {
 
-            alertify.error("El campo Prenda no puede esta vacio");
+            $('.prenda').css("border", "1px solid #a94442");
+
             validarPedido = false;
-
-
         } else {
-
+            $('#f_entrega').css("border", "1px solid #3c763d");
             validarPedido = true;
 
         }
 
         if (talla == "") {
-
+            $('.talla').css("border", "1px solid #a94442");
             alertify.error("El campo talla no puede esta vacio");
             validarPedido = false;
 
         } else {
-
+            $('#f_entrega').css("border", "1px solid #3c763d");
             validarPedido = true;
 
         }
 
 
         if (cantidad == "") {
-
+            $('.cantidad').css("border", "1px solid #a94442");
             alertify.error("El campo Cantidad no puede esta vacio");
             validarPedido = false;
 
 
         } else {
-
+            $('#f_entrega').css("border", "1px solid #3c763d");
             validarPedido = true;
 
         }
@@ -109,11 +115,11 @@ $(document).ready(function () {
 
         if (valor_unitario == "") {
 
-
+            $('.valor_unitario').css("border", "1px solid #a94442");
             alertify.error("El Valor unitario no puede estar vacio");
             validarPedido = false;
         } else {
-
+            $('#f_entrega').css("border", "1px solid #3c763d");
             validarPedido = true;
 
         }
@@ -123,7 +129,7 @@ $(document).ready(function () {
 
             validarPedido = false;
         } else {
-
+            $('#f_entrega').css("border", "1px solid #3c763d");
             validarPedido = true;
 
         }
@@ -139,7 +145,6 @@ $(document).ready(function () {
 
 
             var data = {
-
                 pedido_id: pedido_id,
                 prenda: prenda,
                 tela_id: tela,
@@ -163,24 +168,30 @@ $(document).ready(function () {
 
 
             $.ajax({
-
                 url: 'InsertarPedidoDatallado',
                 type: "POST",
                 data: data,
                 success: function (data) {
 
                     if (data != 0) {
-                        var id=$('#pedido_id').text();
-                        alertify.success(id);
+                        var id = $('#pedido_id').text();
+
                         alertify.success("Insercion Correcta");
-                        $.get('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (tabla) {
+                        $.get('jsp/tablaPedidosDetalladosPorID.jsp', {id: id}, function (tabla) {
+//                            alertify.success(id);
+                            $("#tablaPedidosDetallados").html(tabla).show('slow');
 //                             $("#tablaPedidosDetallados").load('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (){
 //                               alert("refresco"); 
-//                            });
-//                            $("#tablaPedidosDetallados").html(tabla).show('slow');
-                           
-                                    
+//                            });con esto tambien muestro la tabla pero recarga cada vez. notal q la tabla que llamo tiene el script es muy importante que lo tenga
+//                            
+
+
                         });
+
+
+                        //Carrito de compra Ejemplo//
+
+
 //                       $('.ListedePedidos').append(fila);
 //                       $('.eliminar').off('click');
 //                       $('.eliminar').on('click',function(){
@@ -229,6 +240,8 @@ $(document).ready(function () {
 //            alertify.success(cantidad);
 //            alertify.success(valor_unitario);
 //            alertify.success(valor_total);
+
+            // carrito de compra ejemplo//
         }
 
 

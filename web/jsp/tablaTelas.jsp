@@ -34,7 +34,7 @@
                             <th>Referencia Tela</th>
                             <th>Descripcion</th>
                             <th></th>
-                            <th>Ver</th>
+                            
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -55,7 +55,7 @@
                             <td><%=cloth.getRefTela()%></td>
                             <td><%=cloth.getDescripcion() %> </td>
                             <td><input class="id hijo" value="<%=cloth.getId() %>" style="visibility:hidden"> </td>
-                            <td><a id="" href="#" class="ver"><span><img src="imagenes/ojo.png"></span></a></td>
+                     
                             <td align="center"><a href="#" id="llamartablaeditarEmpleados" class="editar"><span><img src="imagenes/editar.png"></span></a></td>
                             <td align="center"><a href="#" class="eliminar"><span><img src="imagenes/borrar.png"></span></a></td>
 

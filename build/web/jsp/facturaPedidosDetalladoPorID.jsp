@@ -23,6 +23,8 @@
     float total=0;
     
     id1=(String) request.getAttribute("id");
+ 
+    
     pedido_id=Integer.parseInt(id1);
     
     ListarPedidos=pedidos.BuscarUltimoPedido(pedido_id);
@@ -106,6 +108,6 @@
         </div>
     </div>
                     
-            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="#" class="btn btn-success btn-block btn-lg aceptarFactura">Crear Factura</a></div>                                    
+            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="ListarPedidos.jsp" class="btn btn-success btn-block btn-lg aceptarFactura">Crear Factura</a></div>                                    
             
 </div>

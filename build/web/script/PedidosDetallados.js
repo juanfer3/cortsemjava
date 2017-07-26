@@ -71,13 +71,13 @@ $(document).ready(function () {
         var validarPedido = true;
 
         if (prenda == "") {
-
+            $('#aceptar').attr("disabled", true);
+            $('.prenda').css("border", "1px solid #a94442");
             alertify.error("El campo Prenda no puede esta vacio");
             validarPedido = false;
-
-
         } else {
-
+            $('#fecha_nacimiento').css("border", "1px solid #3c763d");
+            $('#aceptar').attr("disabled", false);
             validarPedido = true;
 
         }
@@ -139,7 +139,6 @@ $(document).ready(function () {
 
 
             var data = {
-
                 pedido_id: pedido_id,
                 prenda: prenda,
                 tela_id: tela,
@@ -163,31 +162,30 @@ $(document).ready(function () {
 
 
             $.ajax({
-
                 url: 'InsertarPedidoDatallado',
                 type: "POST",
                 data: data,
                 success: function (data) {
 
                     if (data != 0) {
-                        var id=$('#pedido_id').text();
-                     
+                        var id = $('#pedido_id').text();
+
                         alertify.success("Insercion Correcta");
-                        $.get('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (tabla) {
+                        $.get('jsp/tablaPedidosDetalladosPorID.jsp', {id: id}, function (tabla) {
 //                            alertify.success(id);
                             $("#tablaPedidosDetallados").html(tabla).show('slow');
 //                             $("#tablaPedidosDetallados").load('jsp/tablaPedidosDetalladosPorID.jsp',{id:id},function (){
 //                               alert("refresco"); 
 //                            });con esto tambien muestro la tabla pero recarga cada vez. notal q la tabla que llamo tiene el script es muy importante que lo tenga
 //                            
-                           
-                                    
+
+
                         });
-                        
-                        
+
+
                         //Carrito de compra Ejemplo//
-                        
-                        
+
+
 //                       $('.ListedePedidos').append(fila);
 //                       $('.eliminar').off('click');
 //                       $('.eliminar').on('click',function(){
@@ -237,7 +235,7 @@ $(document).ready(function () {
 //            alertify.success(valor_unitario);
 //            alertify.success(valor_total);
 
-    // carrito de compra ejemplo//
+            // carrito de compra ejemplo//
         }
 
 

@@ -4,7 +4,7 @@ $(document).ready(function(){
     $('#aceptarEdicion').click(function(){
        alertify.success("acepto");
        var nombre=$('#nombre').val();
-       var documento=$('#documento').val();
+       var documento=$('#documento').text();
        var cargo=$('#cargo').val();
        var telefono=$('#telefono').val();
        var celular=$('#celular').val();

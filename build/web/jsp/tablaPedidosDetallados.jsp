@@ -4,6 +4,7 @@
     Author     : Juan
 --%>
 
+
 <%@page import="Modelo.Pedidos"%>
 <%@page import="Modelo.DBPedidos"%>
 
@@ -12,18 +13,26 @@
 <%@page import="Modelo.DBPedidoDetallado"%>
 <!--script src="script/PedidosDetalladosFunc.js"></script-->
 <%
-    DBPedidoDetallado detalle=new DBPedidoDetallado();
-    DBPedidos ped=new DBPedidos();
-    ArrayList<Pedidos>Listar=new ArrayList();
+    DBPedidoDetallado detalle = new DBPedidoDetallado();
+    DBPedidos ped = new DBPedidos();
+    ArrayList<Pedidos> Listar = new ArrayList();
     Listar.clear();
     
-    
-    
-    Listar=ped.ListarPedidosConClientes();
+    String rc = ((String) session.getAttribute("rolcliente"));
 
-%>
-<script src="script/tablaDetallesTabla.js"></script>
-<form method="POST">
+    if (!(rc.equals("Cliente"))) {
+
+        Listar = ped.ListarPedidosConClientes();
+
+    }else{
+    
+        String cliente =(String) session.getAttribute("nombre_cliente");
+        Listar = ped.ListarPedidosDeClientes(cliente);
+    
+    } %>
+<script src="script/pedidos.js"></script>
+<div id="listarPedidos">
+    <form method="POST">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
@@ -41,45 +50,46 @@
                     <table class="table table-hover" id="dev-table">
                         <thead>
                             <tr>
-                                
+
                                 <th>Nombre</th>
                                 <th>Documento</th>
                                 <th>N° pedido</th>
                                 <th>Fecha del pedido</th>
-                                
+
                                 <th>Fecha de entrega</th>
-                                
+
                                 <th></th>
                                 <th>Detalles</th>
                             </tr>
                         </thead>
-      
+
                         <tbody class="ListedePedidos">
-                            
-                            <%for(Pedidos mypedido:Listar){%>
+
+                            <%for (Pedidos mypedido : Listar) {%>
                             <tr>
-                                <td><%=mypedido.getClienteId().getNombre() %></td>
+                                <td><%=mypedido.getClienteId().getNombre()%></td>
                                 <td><%=mypedido.getClienteId().getDocumento()%></td>
-                                <td><%=mypedido.getId() %></td>
+                                <td><%=mypedido.getId()%></td>
                                 <td><%=mypedido.getFPedido()%></td>
-                                <td><%=mypedido.getFEntrega()  %></td>
+                                <td><%=mypedido.getFEntrega()%></td>
                                 <td><p class="id" style="visibility: hidden;"><%=mypedido.getId()%></p></td>
-                                <td><a href='ListarPedidosPorID?id=<%=mypedido.getId()%>' class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a></td>
+                                <td><a href='#' id="ver" class='ver'><span class='glyphicon glyphicon-eye-open borrar'></a></td>
                             </tr>
-                            
+
                             <%}%>
-                            
+
                         </tbody>
-                        
-                        
-                        
+
+
+
                     </table>
                 </div>
             </div>
-            
+
         </div>
         <div class="row ">
 
-            <div class="col-xs-12 col-md-12"><a href="#" class="btn btn-success btn-block btn-lg">Terminar Operacion</a></div>
+            <div class="col-xs-12 col-md-12"><a href="SeleccionCliente.jsp" class="btn btn-success btn-block btn-lg">Generar Pedido Nuevo</a></div>
         </div>
     </form>
+</div>

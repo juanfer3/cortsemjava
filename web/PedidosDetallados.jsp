@@ -8,7 +8,7 @@
 <%@page import="Modelo.Telas"%>
 <%@page import="Modelo.DBTelas"%>
 <%@page import="Modelo.Pedidos"%>
-<%@page import="javafx.scene.input.KeyCode"%>
+<!--%@page import="javafx.scene.input.KeyCode"%-->
 <%@page import="Modelo.DBPedidos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
 
         <script src="script/cambiotablas.js"></script>
-        <script src="script/PedidosDetallados.js"></script>
+        <script src="script/PedidosDetalladosFunc.js"></script>
         <script ></script>
         <title>Pedidos Detallados</title>
     </head>
@@ -148,12 +148,12 @@
 
             <div id="tablaPedidosDetallados">
 
-                <!--%@include file="jsp/tabla" %-->
+                
 
             </div>
 
             <%for (Pedidos mypedidos : ListarPedido) {%> 
-            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="AceptarPedido?pedido_id=<%=mypedidos.getId()%>" class="btn btn-success btn-block btn-lg aceptarPedido">Registrar Pedido</a></div>                                    
+            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="AceptarPedido?pedido_id=<%=mypedidos.getId()%>" class="btn btn-success btn-block btn-lg aceptarPedido" id="aceptar">Registrar Pedido</a></div>                                    
             <%}%>
             <!--form method="POST">
         <div class="row">

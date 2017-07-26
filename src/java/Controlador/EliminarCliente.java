@@ -40,7 +40,7 @@ public class EliminarCliente extends HttpServlet {
             id1=request.getParameter("id");
             id=Integer.parseInt(id1);
             cli.EliminarClientes(id);
-            request.getRequestDispatcher("ListarClientes").forward(request, response);
+//            request.getRequestDispatcher("ListarClientes").forward(request, response);
         }
     }
 

@@ -81,7 +81,7 @@
                                 <th>Valor Total</th>
                                 
                                 <th></th>
-                                <th>Eliminar</th>
+                              
                             </tr>
                         </thead>
       
@@ -95,7 +95,7 @@
                                 <td><%=mypedido.getCantidad()%></td>
                                 <td><%=mypedido.getValorTotal()%></td>
                                 <td><p class="id" style="visibility: hidden;"><%=mypedido.getId()%></p></td>
-                                <td><a href='#'class='eliminar'><span class='glyphicon glyphicon-remove borrar'></a></td>
+                                
                             </tr>
                             
                             <%}%>
@@ -109,9 +109,6 @@
             </div>
             
         </div>
-        <div class="row ">
-
-            <div class="col-xs-12 col-md-12"><a class="btn btn-success btn-block btn-lg" type="" >Terminar Operacion</a></div>
-        </div>
+        
     </form>
 

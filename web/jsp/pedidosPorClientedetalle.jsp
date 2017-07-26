@@ -22,7 +22,7 @@
     int pedido_id=0;
     float total=0;
     
-    id1=(String) request.getAttribute("id");
+    id1=(String) request.getParameter("id");
  
     
     pedido_id=Integer.parseInt(id1);
@@ -32,9 +32,8 @@
 %>
 
 
-
-<script src="script/FacturasFunc.js"></script>
-<div class="container">
+<script src="script/pedidos.js"></script>
+<div class="container" id="pedidoDetalleCliente">
     <div class="row">
         <%for(Pedidos mispedidos:ListarPedidos){%>
             <div class="col-md-3 ">
@@ -108,6 +107,6 @@
         </div>
     </div>
                     
-            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="ListarPedidos.jsp" class="btn btn-success btn-block btn-lg aceptarFactura">Crear Factura</a></div>                                    
+                    <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="#" class="btn btn-success btn-block btn-lg volverPedidos"  id="volverPedidos">Ver otros pedidos</a></div>                                    
             
 </div>

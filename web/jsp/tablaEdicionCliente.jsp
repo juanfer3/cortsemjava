@@ -11,25 +11,23 @@
 <!DOCTYPE html>
 
 <%
-            DBClientes cli= new DBClientes();
-            ArrayList<Clientes> Listar=new ArrayList();
-            Listar.clear();            
-            String id1;
-            int id;
-            id1=request.getParameter("id");
-            id=Integer.parseInt(id1);
-            Listar=cli.ListarClientesPorID(id);
-            
-            
+    DBClientes cli = new DBClientes();
+    ArrayList<Clientes> Listar = new ArrayList();
+    Listar.clear();
+    String id1;
+    int id;
+    id1 = request.getParameter("id");
+    id = Integer.parseInt(id1);
+    Listar = cli.ListarClientesPorID(id);
+
+
 %>
 
 
- 
-<%
 
-    for(Clientes myclient:Listar){
+<%    for (Clientes myclient : Listar) {
 %>
-<div class="container" id="VerEdicionClientes">
+<div class="container" id="tablaEdicionClientes">
 
     <div class="row">
         <div class="col-md-12">
@@ -59,30 +57,30 @@
                         <tbody>
                             <tr>
                                 <th>Nombre</th>
-                                <td><input type="text" style="border:none" value="<%=myclient.getNombre()%>" class="entradasdeedicion" name="nombre"> asd</td>
+                                <td><input type="text" style="border:none" value="<%=myclient.getNombre()%>" class="entradasdeedicion" name="nombre"> </td>
                             </tr>
 
                             <tr>
                                 <th>Documento</th>
-                                <td><input type="text" style="border:none" value="<%=myclient.getDocumento()%>" class="entradasdeedicion" name="documento">asd </td>
+                                <td><input type="text" style="border:none" value="<%=myclient.getDocumento()%>" class="entradasdeedicion" name="documento"> </td>
                             </tr>
 
                             <tr>
                                 <th>Telefono</th>
-                                <td><input type="text" style="border:none" value="<%=myclient.getTelefono()%>" class="entradasdeedicion" name="telefono">asd</td>
+                                <td><input type="text" style="border:none" value="<%=myclient.getTelefono()%>" class="entradasdeedicion" name="telefono"></td>
                             </tr>
                             <tr>
                                 <th>Celular</th>
-                                <td><input type="text" style="border:none" value="<%=myclient.getCelular()%>" class="entradasdeedicion" name="celular">asd</td>
+                                <td><input type="text" style="border:none" value="<%=myclient.getCelular()%>" class="entradasdeedicion" name="celular"></td>
                             </tr>
                             <tr>
                                 <th>Direccion</th>
-                                <td><input type="text" style="border:none" value="<%=myclient.getDireccion()%>" class="entradasdeedicion" name="direccion">asd</td>
+                                <td><input type="text" style="border:none" value="<%=myclient.getDireccion()%>" class="entradasdeedicion" name="direccion"></td>
                             </tr>
 
                             <tr>
                                 <th>Correo</th>
-                                <td><input type="text" style="border:none" value="<%=myclient.getCorreo()%>" class="entradasdeedicion" name="correo">asd</td>
+                                <td><input type="text" style="border:none" value="<%=myclient.getCorreo()%>" class="entradasdeedicion" name="correo"></td>
                             </tr>
 
                         <input value="<%=myclient.getId()%>" style="visibility:hidden" name="id">
@@ -96,7 +94,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6 col-md-6"><input type="submit" value="aceptar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-                    <div class="col-xs-6 col-md-6"><a href="#" id="" class="btn btn-danger btn-block btn-lg cancelarEdicionCliente">cancelar</a></div>
+                    <div class="col-xs-6 col-md-6"><a href="ListarClientes" id="" class="btn btn-danger btn-block btn-lg cancelarEdicionCliente">cancelar</a></div>
                 </div>
             </form>
         </div>

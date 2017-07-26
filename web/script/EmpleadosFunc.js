@@ -45,7 +45,7 @@ $(document).ready(function () {
                     success: function () {
 
                         $("#listarEmpleados").load('jsp/ListarEmpleadosJSP.jsp',  function () {
-                            alertify.success("Ok");
+                            alertify.success("Registro Eliminado");
                         });
                     }
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
 
             } else {
 
-                alertify.error("Cancel");
+                alertify.error("Peticion Cancelada");
             }
         });
     });
