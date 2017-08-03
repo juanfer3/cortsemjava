@@ -6,8 +6,10 @@
 package Controlador;
 
 import Modelo.DBInsumos;
+import Modelo.Insumos;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author USUARIO
  */
-@WebServlet(name = "InsercionInsumos", urlPatterns = {"/InsercionInsumos"})
-public class InsercionInsumos extends HttpServlet {
+@WebServlet(name = "ModalInsumos", urlPatterns = {"/ModalInsumos"})
+public class ModalInsumos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,33 +36,22 @@ public class InsercionInsumos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
             DBInsumos insumos=new DBInsumos();
-            String nombre, cantidad1,tipo_de_unidad,valor_unitario1,valor_total1;
-            float cantidad,valor_unitario,valor_total;
-            int id_empleado=1;
-            boolean validar=false;
-                    
-            nombre=request.getParameter("nombre");
-            tipo_de_unidad=request.getParameter("t_unidad");
+            ArrayList<Insumos> Listar=new ArrayList();
+            String id1;
+            int id;
+            id1=request.getParameter("id");
+            id=Integer.parseInt(id1);
             
-            cantidad1=request.getParameter("cantidad");
-            cantidad=Float.parseFloat(cantidad1);
+            Listar=insumos.ListarinsumosPorId(id);
             
-            valor_unitario1=request.getParameter("valor_unitario");
-            valor_unitario=Float.parseFloat(valor_unitario1);
-            
-            valor_total1=request.getParameter("valor_total");
-            valor_total=Float.parseFloat(valor_total1);
-            
-            validar=insumos.RegistrarInsumos(nombre, tipo_de_unidad, cantidad, valor_unitario, valor_total, id_empleado);
-            if(validar==true){
-            
-                out.println("Siiii hay insercion");
-                
-            }else{
-            
-                out.println("Fallo en la insercion");
-            
+            for(Insumos ins: Listar){
+            out.println("<h4>Nombre: "+ins.getNombre()+"</h4>");
+            out.println("<h4>Tipo de Undidad: "+ins.getTipoDeUnidad()+"</h4>");
+            out.println("<h4>Cantidad: "+ins.getCantidad()+"</h4>");
+            out.println("<h4>Valor Unitario: "+ins.getValorUnitario() +"</h4>");
+            out.println("<h4>Valor Total: "+ins.getValorTotal()+"</h4>");
             }
             
         }

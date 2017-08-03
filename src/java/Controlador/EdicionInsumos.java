@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author USUARIO
  */
-@WebServlet(name = "InsercionInsumos", urlPatterns = {"/InsercionInsumos"})
-public class InsercionInsumos extends HttpServlet {
+@WebServlet(name = "EdicionInsumos", urlPatterns = {"/EdicionInsumos"})
+public class EdicionInsumos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,34 +34,45 @@ public class InsercionInsumos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            DBInsumos insumos=new DBInsumos();
-            String nombre, cantidad1,tipo_de_unidad,valor_unitario1,valor_total1;
-            float cantidad,valor_unitario,valor_total;
-            int id_empleado=1;
+            DBInsumos ins=new DBInsumos();
+            String nombre,t_unidad,cantidad1,v_unitario1,v_total1,id1;
+            int id;
+            float cantidad,v_unitario,v_total;
             boolean validar=false;
-                    
+            
             nombre=request.getParameter("nombre");
-            tipo_de_unidad=request.getParameter("t_unidad");
+            
+            t_unidad=request.getParameter("t_unidad");
             
             cantidad1=request.getParameter("cantidad");
             cantidad=Float.parseFloat(cantidad1);
             
-            valor_unitario1=request.getParameter("valor_unitario");
-            valor_unitario=Float.parseFloat(valor_unitario1);
+            v_unitario1=request.getParameter("v_unitario");
+            v_unitario=Float.parseFloat(v_unitario1);
             
-            valor_total1=request.getParameter("valor_total");
-            valor_total=Float.parseFloat(valor_total1);
+            v_total1=request.getParameter("v_total");
+            v_total=Float.parseFloat(v_total1);
             
-            validar=insumos.RegistrarInsumos(nombre, tipo_de_unidad, cantidad, valor_unitario, valor_total, id_empleado);
+            id1=request.getParameter("id");
+            id=Integer.parseInt(id1);
+            
+            validar=ins.EditarInsumos(nombre, t_unidad, cantidad, v_unitario, v_total,id);
+            
             if(validar==true){
+                
+                out.println("Cambios Guardados");
             
-                out.println("Siiii hay insercion");
+            }else  if(validar==false){
+            
+                out.println("Cambio no permitido");
                 
             }else{
             
-                out.println("Fallo en la insercion");
+                out.println("Error");
             
             }
+            
+            
             
         }
     }

@@ -92,6 +92,7 @@ $("#datepicker").datepicker();
                     <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
                     <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
                     <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
+                    <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     
