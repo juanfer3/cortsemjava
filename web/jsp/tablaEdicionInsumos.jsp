@@ -8,7 +8,7 @@
 <%@page import="Modelo.DBInsumos"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<script src="script/insumosEdicion.js"></script>
+<script src="script/edicionInsumos.js"></script>
 <%          DBInsumos insumos=new DBInsumos();
           
             ArrayList<Insumos> Listar=new ArrayList();
@@ -22,7 +22,7 @@
     
     for (Insumos myemp : Listar) {
 %>
-<div class="container" id="tablaEdicionEmpleados">
+<div class="container" id="tablaEdicionInsumos">
 
     <div class="row">
         <div class="col-md-12">
@@ -86,7 +86,7 @@
             </div>
                     <div class="row">
                         <div class="col-xs-6 col-md-6"><input type="button" value="aceptar" class="btn btn-primary btn-block btn-lg aceptar" tabindex="7" id="aceptar"></div>
-                                    <div class="col-xs-6 col-md-6"><a href="ListarInsumos.jsp" class="btn btn-danger btn-block btn-lg cancelar" id="cancelar">cancelar</a></div>
+                                    <div class="col-xs-6 col-md-6"><a href="#" class="btn btn-danger btn-block btn-lg cancelar" id="cancelar">cancelar</a></div>
                                 </div>
                     </form>
         </div>

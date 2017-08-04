@@ -8,6 +8,7 @@
 <%@page import="Modelo.Empleados"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="script/tablaEmpleados.js"></script>
 <div class="container" id="listarEmpleados">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
@@ -55,7 +56,8 @@
                             <td><p class="documentoEmpleado"><%=myemp.getDocumento()%></p></td>
                             <td><p class="cargoEmpleado"><%=myemp.getCargo()%></p></td>
                             <td><p class="userEmpleado"><%=myemp.getUsuarioId().getUsuario()%></td>
-                            <td><a id="" href="#" class="verEmpleado" id="verEmpleado"><span><img src="imagenes/ojo.png"></span></a></td>
+                            <td><a id="" href="#" class="verEmpleado" id="verEmpleado" data-toggle="modal" data-target="#myModal"><span><img src="imagenes/ojo.png"></span></a></td>
+                            <td><a id="" href="#" class="ver" id="ver" data-toggle="modal" data-target="#myModal"><span><img src="imagenes/ojo.png"></span></a></td>
                             <td align="center"><a href="#" class="editarEmpleado" id="editarEmpleado"><span><img src="imagenes/editar.png"></span></a></td>
                             <td align="center"><a href="#" class="eliminarEmpleado" id="eliminarEmpleado"><span><img src="imagenes/borrar.png"></span></a></td>
 
@@ -67,28 +69,7 @@
 
 
 
-                    <div id="ModalEliminar<%= myemp.getId()%>" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-sm">
-
-
-                            <div class="modal-content cuadromodal">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title text-center">Está Seguro?</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="col-lg-offset-3">
-                                        <a class="btn btn-primary" href="EliminarEmpleado?id=<%= myemp.getId()%>" >Si</a>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                        </div>
-                    </div>
+                    
                     <%;%>
                     <%cont += 1;
                         }%>
@@ -100,5 +81,31 @@
     <div class="row ">
 
         <div class="col-xs-12 col-md-12"><a href="RegistroEmpleado.jsp" class="btn btn-success btn-block btn-lg">Registrar Empleado</a></div>
+    </div>
+                <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
+
+    <div class="container">
+
+        <!-- Modal -->
+        <div class="modal fade in" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="tituloModal">Insumos</h4>
+                    </div>
+                    <div class="modal-body" id="VerModal">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </div>

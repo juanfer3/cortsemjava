@@ -7,9 +7,9 @@ $(document).ready(function () {
 
         $.get('login.jsp', function (tabla) {
 
-            $("#tabla").html(tabla).show('slow');
+        $("#tabla").html(tabla).show('slow');
 
-            $('#contenido').hide('slow');
+        $('#contenido').hide('slow');
 
         });
 

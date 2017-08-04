@@ -45,7 +45,7 @@ $(document).ready(function () {
     });
     
     $('#cancelar').click(function () {
-        alertify.success('cancelo');
+       
         $('#tablaInsumos').show('slow');
 
         $("#EditarPedido").hide('slow');

@@ -18,6 +18,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
+        <script src="script/validarCliente.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -84,7 +85,7 @@
                                     <div class="row">
 
                                         <div class="col-xs-6 col-md-6 botonclientes"><a href="ListarClientes" class="btn btn-danger btn-block btn-lg">Listar Clientes</a></div>
-                                        <div class="col-xs-6 col-md-6 botonclientes"><input type="submit" value="aceptar" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                                        <div class="col-xs-6 col-md-6 botonclientes"><input type="submit" value="aceptar" class="btn btn-primary btn-block btn-lg" tabindex="7" id="grabar"></div>
                                     </div>
 
                                 </div>

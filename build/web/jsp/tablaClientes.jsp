@@ -7,10 +7,12 @@
 <%@page import="Modelo.Clientes"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<script src="script/ListarClientes.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="script/ListarCliente.js"></script>
+
 <div class="container" id="tablaClientes">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
-    <form method="POST">
+    
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
@@ -55,7 +57,7 @@
                                 
                                 <td><%=cli.getUsuarioId().getUsuario()%></td>
                                 <td><input type="text" class="cliente_id" value="<%=cli.getId()%>" style="visibility:hidden" id="id"></td>
-                                <td><a id="ver" href="#" class="ver"><span><img src="imagenes/ojo.png"></span></a></td>
+                                <td><a id="" href="#" class="ver" id="ver" data-toggle="modal" data-target="#myModal"><span><img src="imagenes/ojo.png"></span></a></td>
                                 <td><a href="#" id="editar" class="editar"><span><img src="imagenes/editar.png"></span></a></td>
 
                                 <td><a href="#" class="eliminar" id="eliminar"><span><img src="imagenes/borrar.png"></span></a></td>
@@ -65,59 +67,8 @@
                             </tr>
 
                         </tbody>
-                        <%--este es el modal de Ver--%>
-                        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h4 class="modal-title myModalLabel" id="myModalLabel">Nombre Cliente: <%=cli.getNombre()%></h4>
-                                    
-                                    </div>
-                                    <div class="modal-body">
-                                        
-                                        <h5>Documento: <%=cli.getDocumento() %></h5>
-                                        <h5>Correo :<%=cli.getCorreo()%></h5>
-                                        <h5>Telefono :<%=cli.getTelefono()%></h5>
-                                        <h5>Celular :<%=cli.getCelular()%></h5>
-                                        <h5>Direccion :<%=cli.getDireccion()%></h5>
-                                        
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <%--este es el modal de Ver--%>
-
-
-
-
-
-                        <div id="ModalEliminar<%= cli.getId()%>" class="modal fade" role="dialog">
-                            <div class="modal-dialog modal-sm">
-
-
-                                <div class="modal-content cuadromodal">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 class="modal-title text-center">Está Seguro?</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="col-lg-offset-3">
-                                            <a class="btn btn-primary" href="EliminarCliente?id=<%= cli.getId()%>" >Si</a>
-                                            <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-
-                            </div>
-                        </div>
+                        
+                        
                         <%;%>
                         <%cont += 1;
                             };%>
@@ -130,5 +81,33 @@
 
             <div class="col-xs-12 col-md-12"><a href="RegistroClientes.jsp" class="btn btn-success btn-block btn-lg">Registrar Cliente</a></div>
         </div>
-    </form>
+    
+    
+                                    
+   <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
+
+    <div class="container">
+
+        <!-- Modal -->
+        <div class="modal fade in" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="tituloModal">Insumos</h4>
+                    </div>
+                    <div class="modal-body" id="VerModal">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
 </div>
