@@ -3,34 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/src/java/Modelo/CrearFactura.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/tablaPedidosDetallados.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/tablaPedidoDetalladoPorId.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/Insumos.js</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/ListarEmpleadosJSP.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/PedidosDetallados.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/PedidosDetalladosFunc.js</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/EmpleadosFunc.js</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/tablaPedido.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/src/java/Controlador/ModalTelas.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/ListarClientes.js</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/seleccionClientes.js</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/tablaPedidosDetalladosPorID.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/Facturas.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/ListarPedidoPorID.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/llamadoDetallesTabla.js</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/ListarClientesJSP.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/PedidosDetallados.js</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/header.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/src/java/Modelo/DBFacturas.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/src/java/Controlador/EliminarCliente.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/src/java/Controlador/Empleadomodal.java</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/RegistroEmpleado.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/ListarPedidos.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/ListarEmpleados.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/script/ListarInsumos.js</file>
             <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/tablaClientes.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/Telas.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/ListarInsumos.jsp</file>
-            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/facturaPedidosDetalladoPorID.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/tablaInsumos.jsp</file>
+            <file>file:/C:/Users/USUARIO/Documents/NetBeansProjects/Cortsem/web/jsp/tablaEmpleados.jsp</file>
         </group>
     </open-files>
 </project-private>
