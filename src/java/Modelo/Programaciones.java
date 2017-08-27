@@ -7,6 +7,7 @@ package Modelo;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,12 +15,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -28,15 +32,15 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author USUARIO
  */
 @Entity
-@Table(name = "telas")
+@Table(name = "programaciones")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Telas.findAll", query = "SELECT t FROM Telas t"),
-    @NamedQuery(name = "Telas.findById", query = "SELECT t FROM Telas t WHERE t.id = :id"),
-    @NamedQuery(name = "Telas.findByRefTela", query = "SELECT t FROM Telas t WHERE t.refTela = :refTela"),
-    @NamedQuery(name = "Telas.findByDescripcion", query = "SELECT t FROM Telas t WHERE t.descripcion = :descripcion"),
-    @NamedQuery(name = "Telas.findByHabilitado", query = "SELECT t FROM Telas t WHERE t.habilitado = :habilitado")})
-public class Telas implements Serializable {
+    @NamedQuery(name = "Programaciones.findAll", query = "SELECT p FROM Programaciones p"),
+    @NamedQuery(name = "Programaciones.findById", query = "SELECT p FROM Programaciones p WHERE p.id = :id"),
+    @NamedQuery(name = "Programaciones.findByFecha", query = "SELECT p FROM Programaciones p WHERE p.fecha = :fecha"),
+    @NamedQuery(name = "Programaciones.findByFechaEntrega", query = "SELECT p FROM Programaciones p WHERE p.fechaEntrega = :fechaEntrega"),
+    @NamedQuery(name = "Programaciones.findByHabilitado", query = "SELECT p FROM Programaciones p WHERE p.habilitado = :habilitado")})
+public class Programaciones implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,35 +50,35 @@ public class Telas implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "ref_tela")
-    private String refTela;
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
+    @Column(name = "fecha_entrega")
+    @Temporal(TemporalType.DATE)
+    private Date fechaEntrega;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 40)
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 3)
     @Column(name = "habilitado")
-    private String habilitado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "telasId")
-    private Collection<PedidosDetallados> pedidosDetalladosCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTela")
+    private int habilitado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProgramacion")
     private Collection<ProgramacionDetallada> programacionDetalladaCollection;
+    @JoinColumn(name = "id_pedido", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Pedidos idPedido;
+    @JoinColumn(name = "id_empledo", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Empleados idEmpledo;
 
-    public Telas() {
+    public Programaciones() {
     }
 
-    public Telas(Integer id) {
+    public Programaciones(Integer id) {
         this.id = id;
     }
 
-    public Telas(Integer id, String refTela, String descripcion, String habilitado) {
+    public Programaciones(Integer id, Date fecha, int habilitado) {
         this.id = id;
-        this.refTela = refTela;
-        this.descripcion = descripcion;
+        this.fecha = fecha;
         this.habilitado = habilitado;
     }
 
@@ -86,37 +90,28 @@ public class Telas implements Serializable {
         this.id = id;
     }
 
-    public String getRefTela() {
-        return refTela;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setRefTela(String refTela) {
-        this.refTela = refTela;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public Date getFechaEntrega() {
+        return fechaEntrega;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setFechaEntrega(Date fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
     }
 
-    public String getHabilitado() {
+    public int getHabilitado() {
         return habilitado;
     }
 
-    public void setHabilitado(String habilitado) {
+    public void setHabilitado(int habilitado) {
         this.habilitado = habilitado;
-    }
-
-    @XmlTransient
-    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
-        return pedidosDetalladosCollection;
-    }
-
-    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
-        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
     }
 
     @XmlTransient
@@ -126,6 +121,22 @@ public class Telas implements Serializable {
 
     public void setProgramacionDetalladaCollection(Collection<ProgramacionDetallada> programacionDetalladaCollection) {
         this.programacionDetalladaCollection = programacionDetalladaCollection;
+    }
+
+    public Pedidos getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(Pedidos idPedido) {
+        this.idPedido = idPedido;
+    }
+
+    public Empleados getIdEmpledo() {
+        return idEmpledo;
+    }
+
+    public void setIdEmpledo(Empleados idEmpledo) {
+        this.idEmpledo = idEmpledo;
     }
 
     @Override
@@ -138,10 +149,10 @@ public class Telas implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Telas)) {
+        if (!(object instanceof Programaciones)) {
             return false;
         }
-        Telas other = (Telas) object;
+        Programaciones other = (Programaciones) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -150,7 +161,7 @@ public class Telas implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.Telas[ id=" + id + " ]";
+        return "Modelo.Programaciones[ id=" + id + " ]";
     }
     
 }

@@ -6,6 +6,7 @@ $(document).ready(function(){
        var nombre=$('#nombre').val();
        var documento=$('#documento').text();
        var cargo=$('#cargo').val();
+       var correo_personal= $('#correo_personal').val();
        var telefono=$('#telefono').val();
        var celular=$('#celular').val();
        var direccion=$('#direccion').val();
@@ -21,6 +22,7 @@ $(document).ready(function(){
            nombre:nombre,
            documento:documento,
            cargo:cargo,
+           correo_personal:correo_personal,
            telefono:telefono,
            celular:celular,           
            direccion:direccion,

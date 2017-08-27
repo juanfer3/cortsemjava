@@ -27,26 +27,23 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
 @Entity
 @Table(name = "clientes")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Clientes.findAll", query = "SELECT c FROM Clientes c")
-    , @NamedQuery(name = "Clientes.findById", query = "SELECT c FROM Clientes c WHERE c.id = :id")
-    , @NamedQuery(name = "Clientes.findByNombre", query = "SELECT c FROM Clientes c WHERE c.nombre = :nombre")
-    , @NamedQuery(name = "Clientes.findByDocumento", query = "SELECT c FROM Clientes c WHERE c.documento = :documento")
-    , @NamedQuery(name = "Clientes.findByTelefono", query = "SELECT c FROM Clientes c WHERE c.telefono = :telefono")
-    , @NamedQuery(name = "Clientes.findByCelular", query = "SELECT c FROM Clientes c WHERE c.celular = :celular")
-    , @NamedQuery(name = "Clientes.findByDireccion", query = "SELECT c FROM Clientes c WHERE c.direccion = :direccion")
-    , @NamedQuery(name = "Clientes.findByCorreo", query = "SELECT c FROM Clientes c WHERE c.correo = :correo")
-    , @NamedQuery(name = "Clientes.findByCargo", query = "SELECT c FROM Clientes c WHERE c.cargo = :cargo")
-    , @NamedQuery(name = "Clientes.findByHabilitado", query = "SELECT c FROM Clientes c WHERE c.habilitado = :habilitado")})
+    @NamedQuery(name = "Clientes.findAll", query = "SELECT c FROM Clientes c"),
+    @NamedQuery(name = "Clientes.findById", query = "SELECT c FROM Clientes c WHERE c.id = :id"),
+    @NamedQuery(name = "Clientes.findByNombre", query = "SELECT c FROM Clientes c WHERE c.nombre = :nombre"),
+    @NamedQuery(name = "Clientes.findByDocumento", query = "SELECT c FROM Clientes c WHERE c.documento = :documento"),
+    @NamedQuery(name = "Clientes.findByTelefono", query = "SELECT c FROM Clientes c WHERE c.telefono = :telefono"),
+    @NamedQuery(name = "Clientes.findByCelular", query = "SELECT c FROM Clientes c WHERE c.celular = :celular"),
+    @NamedQuery(name = "Clientes.findByDireccion", query = "SELECT c FROM Clientes c WHERE c.direccion = :direccion"),
+    @NamedQuery(name = "Clientes.findByCorreo", query = "SELECT c FROM Clientes c WHERE c.correo = :correo"),
+    @NamedQuery(name = "Clientes.findByCargo", query = "SELECT c FROM Clientes c WHERE c.cargo = :cargo"),
+    @NamedQuery(name = "Clientes.findByHabilitado", query = "SELECT c FROM Clientes c WHERE c.habilitado = :habilitado")})
 public class Clientes implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteId")
-    private Collection<Pedidos> pedidosCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,10 +61,14 @@ public class Clientes implements Serializable {
     @Size(min = 1, max = 20)
     @Column(name = "documento")
     private String documento;
-    @Size(max = 20)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "telefono")
     private String telefono;
-    @Size(max = 20)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 20)
     @Column(name = "celular")
     private String celular;
     @Size(max = 50)
@@ -78,9 +79,7 @@ public class Clientes implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "correo")
     private String correo;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
+    @Size(max = 50)
     @Column(name = "cargo")
     private String cargo;
     @Basic(optional = false)
@@ -91,6 +90,8 @@ public class Clientes implements Serializable {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios usuarioId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "clienteId")
+    private Collection<Pedidos> pedidosCollection;
 
     public Clientes() {
     }
@@ -99,12 +100,13 @@ public class Clientes implements Serializable {
         this.id = id;
     }
 
-    public Clientes(Integer id, String nombre, String documento, String correo, String cargo, String habilitado) {
+    public Clientes(Integer id, String nombre, String documento, String telefono, String celular, String correo, String habilitado) {
         this.id = id;
         this.nombre = nombre;
         this.documento = documento;
+        this.telefono = telefono;
+        this.celular = celular;
         this.correo = correo;
-        this.cargo = cargo;
         this.habilitado = habilitado;
     }
 
@@ -188,6 +190,15 @@ public class Clientes implements Serializable {
         this.usuarioId = usuarioId;
     }
 
+    @XmlTransient
+    public Collection<Pedidos> getPedidosCollection() {
+        return pedidosCollection;
+    }
+
+    public void setPedidosCollection(Collection<Pedidos> pedidosCollection) {
+        this.pedidosCollection = pedidosCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -211,15 +222,6 @@ public class Clientes implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Clientes[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Pedidos> getPedidosCollection() {
-        return pedidosCollection;
-    }
-
-    public void setPedidosCollection(Collection<Pedidos> pedidosCollection) {
-        this.pedidosCollection = pedidosCollection;
     }
     
 }

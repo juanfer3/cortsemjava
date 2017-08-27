@@ -144,7 +144,8 @@ public class DBUsuarios {
         ArrayList<Empleados> Listar = new ArrayList();
         Listar.clear();
         ResultSet rs = null;
-        String sql = "SELECT empleados.nombre, empleados.documento, empleados.cargo, empleados.telefono, empleados.celular, empleados.f_nacimiento, empleados.rh, empleados.contacto_familiar,empleados.telefono_contacto,empleados.celular_contacto,empleados.direccion,empleados.id,usuarios.usuario from  usuarios inner join empleados on usuarios.id = empleados.usuario_id where usuarios.usuario='"+usuario+"' AND contrasena='"+contrasena+"';";
+        String sql = "SELECT empleados.nombre, empleados.documento, empleados.cargn u76h7u   o, empleados.telefono, empleados.celular, empleados.f_nacimiento, empleados.rh, empleados.contacto_familiar,empleados.telefono_contacto,empleados.celular_contacto,empleados.direccion,empleados.id,usuarios.usuario from  usuarios inner join empleados on usuarios.id = empleados.usuario_id where usuarios.usuario='"+usuario+"' AND contrasena='"+contrasena+"';";
+       
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
 
@@ -183,6 +184,69 @@ public class DBUsuarios {
 
         return Listar;
     }
+
+    
+    
+    
+    public boolean ValidarCorreo_Personal(String correo_personal) {
+        ResultSet rs = null;
+        String sql = "SELECT * FROM empleados WHERE correo_personal='"+correo_personal+"';";
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
+    
+    
+    
+    public boolean EditarContrasena(String usuario, String contrasena){
+        
+         int r=0;
+            String sql, habilitado;
+            
+           
+            sql="UPDATE usuarios set contrasena = ? where usuario = ? ;";
+                    
+            ConexionBD bd=new ConexionBD ();
+            Connection con= bd.conectar();
+            
+         try {
+             PreparedStatement pst= con.prepareStatement(sql);
+             pst.setString(1, contrasena);
+             pst.setString(2, usuario);
+             r=pst.executeUpdate();
+            
+             pst.close();
+             con.close();
+             bd.cierraConexion();
+             if(r!=0){
+             
+             return true;
+             
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(DBEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        return false;
+        }
+    
+    
+    
+    
+
 
 }
 

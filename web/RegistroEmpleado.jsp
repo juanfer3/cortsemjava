@@ -52,28 +52,37 @@
                                         <th><h4>Datos</h4></th>
 
                                     </tr>
-                                </thead>    <tr> </tr>
+                                </thead>    
 
                                 <tbody>
                                     <tr>
                                         <th>Nombre</th>
                                         <td><input type="text" style="" value="" class="form-control nombre" name="nombre" id="nombre"> </td>
                                     </tr>
-
                                     <tr>
                                         <th>Documento</th>
+                                        <td><input type="text" style="" value="" class="form-control" name="documento" id="cargo"></td>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Cargo</th>
                                         <td>
-                                            <select  value="" class="form-control seleccion" style="height:45px !important" name="documento" id="documento"> 
+                                            <select  value="" class="form-control seleccion" style="height:45px !important" name="cargo" id="cargo"> 
                                             
                                                 <option value="Gerente" >Gerente</option>
+                                                <option value="Secretaria general" >Secretaria general</option>
+                                                <option value="Jefe de Ventas" >Jefe de Ventas</option>
+                                                <option value="Jefe de Insumos">Jefe de Insumos</option>
+                                                <option value="Jefe de Trazo">Jefe de Trazo</option>
+                                                <option value="Jefe de Corte" >Jefe de Corte</option>
                                                 <option value="Vendedor">Vendedor</option>
-                          
+                                                
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Cargo</th>
-                                        <td><input type="text" style="" value="" class="form-control" name="cargo" id="cargo"></td>
+                                        <th>Correo Personal</th>
+                                        <td><input type="text" style="" value="" class="form-control" name="correo_personal" id="correo_personal"></td>
                                     </tr>
                                     <tr>
                                         <th>Telefono</th>

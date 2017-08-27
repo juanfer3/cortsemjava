@@ -2,6 +2,7 @@ $(document).ready(function(){
     var nombre = $('#nombre').val();
      var documento = $('#documento').val();
      var cargo = $('#cargo').val();
+     var correo_personal=$('correo_personal').val();
      var telefono = $('#telefono').val();
      var celular = $('#celular').val();
      var direccion = $('#direccion').val();
@@ -51,6 +52,20 @@ $(document).ready(function(){
            $('#aceptar').attr("disabled", false);
         }
     });
+    
+    $('#correo_personal').focusout(function (event) {
+        $('#correo_personal').attr("disabled", true);
+        var correo_personal = $('#correo_personal').val();
+        if(correo_personal==""){
+        $('#correo_personal').css("border", "1px solid #a94442");
+        alertify.error("El campo Correo Personal no puede estar vacio");
+        }else{
+            
+           $('#correo_personal').css("border", "1px solid #3c763d");
+           $('#aceptar').attr("disabled", false);
+        }
+    });
+    
     
     $('#telefono').focusout(function () {
         $('#aceptar').attr("disabled", true);

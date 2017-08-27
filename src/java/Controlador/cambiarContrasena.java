@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Controlador;
 
+import Modelo.DBUsuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author USUARIO
  */
-@WebServlet(name = "CrearFactura", urlPatterns = {"/CrearFactura"})
-public class CrearFactura extends HttpServlet {
+@WebServlet(name = "cambiarContrasena", urlPatterns = {"/cambiarContrasena"})
+public class cambiarContrasena extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +34,33 @@ public class CrearFactura extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           
+            DBUsuarios user= new DBUsuarios();
+            String usuario, contrasena;
+            boolean validar= false;
+            
+            usuario=request.getParameter("usuario");
+            contrasena=request.getParameter("contrasena");
+            
+            if(usuario.isEmpty()&& contrasena.isEmpty()){
+            
+                out.println("Los campos no pueden estar vacios");
+            }else if(usuario!=null && contrasena!=null){
+                
+                validar=user.EditarContrasena(usuario, contrasena);
+                if(validar==true){
+                
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }else{
+                    
+                    out.println("error en la recuperacion de la contraseña");
+                    
+                }
+            
+            
+            }
+            
+            
+            out.println("hi");
         }
     }
 

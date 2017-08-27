@@ -25,21 +25,18 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
 @Entity
 @Table(name = "usuarios")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u")
-    , @NamedQuery(name = "Usuarios.findById", query = "SELECT u FROM Usuarios u WHERE u.id = :id")
-    , @NamedQuery(name = "Usuarios.findByUsuario", query = "SELECT u FROM Usuarios u WHERE u.usuario = :usuario")
-    , @NamedQuery(name = "Usuarios.findByContrasena", query = "SELECT u FROM Usuarios u WHERE u.contrasena = :contrasena")
-    , @NamedQuery(name = "Usuarios.findByHabilitado", query = "SELECT u FROM Usuarios u WHERE u.habilitado = :habilitado")})
+    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u"),
+    @NamedQuery(name = "Usuarios.findById", query = "SELECT u FROM Usuarios u WHERE u.id = :id"),
+    @NamedQuery(name = "Usuarios.findByUsuario", query = "SELECT u FROM Usuarios u WHERE u.usuario = :usuario"),
+    @NamedQuery(name = "Usuarios.findByContrasena", query = "SELECT u FROM Usuarios u WHERE u.contrasena = :contrasena"),
+    @NamedQuery(name = "Usuarios.findByHabilitado", query = "SELECT u FROM Usuarios u WHERE u.habilitado = :habilitado")})
 public class Usuarios implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
-    private Collection<Clientes> clientesCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -62,6 +59,8 @@ public class Usuarios implements Serializable {
     @Size(min = 1, max = 3)
     @Column(name = "habilitado")
     private String habilitado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
+    private Collection<Clientes> clientesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
     private Collection<Empleados> empleadosCollection;
 
@@ -112,6 +111,15 @@ public class Usuarios implements Serializable {
     }
 
     @XmlTransient
+    public Collection<Clientes> getClientesCollection() {
+        return clientesCollection;
+    }
+
+    public void setClientesCollection(Collection<Clientes> clientesCollection) {
+        this.clientesCollection = clientesCollection;
+    }
+
+    @XmlTransient
     public Collection<Empleados> getEmpleadosCollection() {
         return empleadosCollection;
     }
@@ -143,15 +151,6 @@ public class Usuarios implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Usuarios[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Clientes> getClientesCollection() {
-        return clientesCollection;
-    }
-
-    public void setClientesCollection(Collection<Clientes> clientesCollection) {
-        this.clientesCollection = clientesCollection;
     }
     
 }

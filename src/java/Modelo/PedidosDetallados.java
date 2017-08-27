@@ -6,9 +6,7 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,33 +16,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
 @Entity
 @Table(name = "pedidos_detallados")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "PedidosDetallados.findAll", query = "SELECT p FROM PedidosDetallados p")
-    , @NamedQuery(name = "PedidosDetallados.findById", query = "SELECT p FROM PedidosDetallados p WHERE p.id = :id")
-    , @NamedQuery(name = "PedidosDetallados.findByPrenda", query = "SELECT p FROM PedidosDetallados p WHERE p.prenda = :prenda")
-    , @NamedQuery(name = "PedidosDetallados.findByTalla", query = "SELECT p FROM PedidosDetallados p WHERE p.talla = :talla")
-    , @NamedQuery(name = "PedidosDetallados.findByCantidad", query = "SELECT p FROM PedidosDetallados p WHERE p.cantidad = :cantidad")
-    , @NamedQuery(name = "PedidosDetallados.findByValorUnitario", query = "SELECT p FROM PedidosDetallados p WHERE p.valorUnitario = :valorUnitario")
-    , @NamedQuery(name = "PedidosDetallados.findByValorTotal", query = "SELECT p FROM PedidosDetallados p WHERE p.valorTotal = :valorTotal")
-    , @NamedQuery(name = "PedidosDetallados.findByHabilitado", query = "SELECT p FROM PedidosDetallados p WHERE p.habilitado = :habilitado")})
+    @NamedQuery(name = "PedidosDetallados.findAll", query = "SELECT p FROM PedidosDetallados p"),
+    @NamedQuery(name = "PedidosDetallados.findById", query = "SELECT p FROM PedidosDetallados p WHERE p.id = :id"),
+    @NamedQuery(name = "PedidosDetallados.findByPrenda", query = "SELECT p FROM PedidosDetallados p WHERE p.prenda = :prenda"),
+    @NamedQuery(name = "PedidosDetallados.findByTalla", query = "SELECT p FROM PedidosDetallados p WHERE p.talla = :talla"),
+    @NamedQuery(name = "PedidosDetallados.findByCantidad", query = "SELECT p FROM PedidosDetallados p WHERE p.cantidad = :cantidad"),
+    @NamedQuery(name = "PedidosDetallados.findByValorUnitario", query = "SELECT p FROM PedidosDetallados p WHERE p.valorUnitario = :valorUnitario"),
+    @NamedQuery(name = "PedidosDetallados.findByValorTotal", query = "SELECT p FROM PedidosDetallados p WHERE p.valorTotal = :valorTotal"),
+    @NamedQuery(name = "PedidosDetallados.findByHabilitado", query = "SELECT p FROM PedidosDetallados p WHERE p.habilitado = :habilitado")})
 public class PedidosDetallados implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedidoDetallado")
-    private Collection<Facturas> facturasCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -79,12 +72,12 @@ public class PedidosDetallados implements Serializable {
     @Size(min = 1, max = 3)
     @Column(name = "habilitado")
     private String habilitado;
-    @JoinColumn(name = "pedido_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Pedidos pedidoId;
     @JoinColumn(name = "telas_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Telas telasId;
+    @JoinColumn(name = "pedido_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Pedidos pedidoId;
 
     public PedidosDetallados() {
     }
@@ -159,20 +152,20 @@ public class PedidosDetallados implements Serializable {
         this.habilitado = habilitado;
     }
 
-    public Pedidos getPedidoId() {
-        return pedidoId;
-    }
-
-    public void setPedidoId(Pedidos pedidoId) {
-        this.pedidoId = pedidoId;
-    }
-
     public Telas getTelasId() {
         return telasId;
     }
 
     public void setTelasId(Telas telasId) {
         this.telasId = telasId;
+    }
+
+    public Pedidos getPedidoId() {
+        return pedidoId;
+    }
+
+    public void setPedidoId(Pedidos pedidoId) {
+        this.pedidoId = pedidoId;
     }
 
     @Override
@@ -198,15 +191,6 @@ public class PedidosDetallados implements Serializable {
     @Override
     public String toString() {
         return "Modelo.PedidosDetallados[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Facturas> getFacturasCollection() {
-        return facturasCollection;
-    }
-
-    public void setFacturasCollection(Collection<Facturas> facturasCollection) {
-        this.facturasCollection = facturasCollection;
     }
     
 }

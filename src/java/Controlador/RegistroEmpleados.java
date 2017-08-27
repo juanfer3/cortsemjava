@@ -54,6 +54,7 @@ public class RegistroEmpleados extends HttpServlet {
             DBEmpleado emp = new DBEmpleado();
 
             String nombre_completo, fecha_nacimiento, usuario, apellido, contrasena, cargo, documento, nombre, rh, contacto, telefono_contacto, celular_contacto, telefono, celular;
+            String correo_personal;
             String c1, c2, direccion;
             int id;
             int u = 0;
@@ -65,6 +66,7 @@ public class RegistroEmpleados extends HttpServlet {
             
             documento = request.getParameter("documento");
             cargo = request.getParameter("cargo");
+            correo_personal=request.getParameter("correo_personal");
             telefono = request.getParameter("telefono");
             celular = request.getParameter("celular");
             fecha_nacimiento = request.getParameter("fecha_nacimiento");
@@ -75,13 +77,13 @@ public class RegistroEmpleados extends HttpServlet {
             usuario = request.getParameter("usuario");
             direccion = request.getParameter("direccion");
 
-            
+            System.out.println("=========================================================="+correo_personal);
 
             contrasena = request.getParameter("contrasena");
 
             if( user.RegistrarUsuario(usuario, contrasena)){
             id = user.BuscarIDUsuario(usuario, contrasena);
-            if(emp.RegistrarEmpleado(nombre, documento, cargo, telefono, celular, fecha_nacimiento, rh, contacto, telefono_contacto, celular_contacto, direccion, id)==true){
+            if(emp.RegistrarEmpleado(nombre, documento, cargo, correo_personal,telefono, celular, fecha_nacimiento, rh, contacto, telefono_contacto, celular_contacto, direccion, id)==true){
             
             }else{
                  out.println("<h1> Fallo en la insercion</h1>");

@@ -5,10 +5,10 @@
  */
 package Controlador;
 
-import Modelo.DBEmpleado;
+import Modelo.Correo;
+import Modelo.DBUsuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
-@WebServlet(name = "AceptarEdicionEmpleado", urlPatterns = {"/AceptarEdicionEmpleado"})
-public class AceptarEdicionEmpleado extends HttpServlet {
+@WebServlet(name = "Envio", urlPatterns = {"/Envio"})
+public class Envio extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,40 +35,32 @@ public class AceptarEdicionEmpleado extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            DBEmpleado emp = new DBEmpleado();
-            String nombre, documento, cargo, correo_personal,f_nacimiento, telefono, celular,
-                    rh, contacto_familiar, telefono_contacto, celular_contacto,
-                    direccion, usuario, id1;
-
-            int id;
-            nombre=request.getParameter("nombre");
-            documento=request.getParameter("documento");
-            cargo=request.getParameter("cargo");
+            DBUsuarios user= new DBUsuarios();
+            Correo envio= new Correo();
+            
+            String correo_personal;
+            boolean validar=false;
+           
+            
             correo_personal=request.getParameter("correo_personal");
-            telefono=request.getParameter("telefono");
-            celular=request.getParameter("celular");
-            direccion=request.getParameter("direccion");
-            rh=request.getParameter("rh");
-            f_nacimiento=request.getParameter("f_nacimiento");
-            contacto_familiar=request.getParameter("contacto_familiar");
-            telefono_contacto=request.getParameter("telefono_contacto");
-            celular_contacto=request.getParameter("celular_contacto");
-            usuario=request.getParameter("usuario");
             
-            
-            
-            id1=request.getParameter("id");
-            id=Integer.parseInt(id1);
-            System.out.println(correo_personal);
-            if(emp.EditarEmpleado(
-                    nombre, documento, cargo, correo_personal,telefono, celular, f_nacimiento, rh, 
-                    contacto_familiar, telefono_contacto, celular_contacto, direccion, id)==true){
-                    request.getRequestDispatcher("ListarEmpleados").forward(request, response);
-            
+            validar=user.ValidarCorreo_Personal(correo_personal);
+            if(validar==true){
+                request.setAttribute("usuario_del_correo_personal", correo_personal);
+               envio.EnviarEmail(correo_personal);
+                out.println("revise su correo porfavor");
             }else{
             
-                 out.println("<h1> Fallo en la insercion</h1>");
+                out.println("Su usuario no existe en la base de datos");
+            
+                
             }
+            
+            
+            
+            
+            
+            
             
         }
     }

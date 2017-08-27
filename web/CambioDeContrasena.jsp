@@ -17,7 +17,7 @@
         <link href="https://file.myfontastic.com/wBMVThpWoWLWzeaWjCkHtV/icons.css" rel="stylesheet">
 
 
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
@@ -30,13 +30,20 @@
     <body>
 
         <%@include file="jsp/header.jsp" %>
-          
-        <%@include file="ContenidoIndex.jsp"%>
 
-        <div id="tabla" ></div>
-        
+        <div class="wrapper">
+            <form class="form-signin" action="cambiarContrasena" method="POST">       
+                <h2 class="form-signin-heading textologuin">Cambio de contrasena</h2>
+                <input type="text" class="form-control spaceinput" name="usuario" placeholder="Correo" required="" autofocus="" />
+                <input type="password" class="form-control spaceinput" name="contrasena" placeholder="Nueva Contrasena" required=""/>      
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Aceptar</button>   
+                
+            </form>
+        </div>
+
         <%@include file="jsp/footer.jsp" %>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+
     </body>
 </html>

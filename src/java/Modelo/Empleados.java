@@ -30,33 +30,28 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
 @Entity
 @Table(name = "empleados")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Empleados.findAll", query = "SELECT e FROM Empleados e")
-    , @NamedQuery(name = "Empleados.findById", query = "SELECT e FROM Empleados e WHERE e.id = :id")
-    , @NamedQuery(name = "Empleados.findByNombre", query = "SELECT e FROM Empleados e WHERE e.nombre = :nombre")
-    , @NamedQuery(name = "Empleados.findByDocumento", query = "SELECT e FROM Empleados e WHERE e.documento = :documento")
-    , @NamedQuery(name = "Empleados.findByCargo", query = "SELECT e FROM Empleados e WHERE e.cargo = :cargo")
-    , @NamedQuery(name = "Empleados.findByTelefono", query = "SELECT e FROM Empleados e WHERE e.telefono = :telefono")
-    , @NamedQuery(name = "Empleados.findByCelular", query = "SELECT e FROM Empleados e WHERE e.celular = :celular")
-    , @NamedQuery(name = "Empleados.findByFNacimiento", query = "SELECT e FROM Empleados e WHERE e.fNacimiento = :fNacimiento")
-    , @NamedQuery(name = "Empleados.findByRh", query = "SELECT e FROM Empleados e WHERE e.rh = :rh")
-    , @NamedQuery(name = "Empleados.findByContactoFamiliar", query = "SELECT e FROM Empleados e WHERE e.contactoFamiliar = :contactoFamiliar")
-    , @NamedQuery(name = "Empleados.findByTelefonoContacto", query = "SELECT e FROM Empleados e WHERE e.telefonoContacto = :telefonoContacto")
-    , @NamedQuery(name = "Empleados.findByCelularContacto", query = "SELECT e FROM Empleados e WHERE e.celularContacto = :celularContacto")
-    , @NamedQuery(name = "Empleados.findByDireccion", query = "SELECT e FROM Empleados e WHERE e.direccion = :direccion")
-    , @NamedQuery(name = "Empleados.findByHabilitado", query = "SELECT e FROM Empleados e WHERE e.habilitado = :habilitado")})
+    @NamedQuery(name = "Empleados.findAll", query = "SELECT e FROM Empleados e"),
+    @NamedQuery(name = "Empleados.findById", query = "SELECT e FROM Empleados e WHERE e.id = :id"),
+    @NamedQuery(name = "Empleados.findByNombre", query = "SELECT e FROM Empleados e WHERE e.nombre = :nombre"),
+    @NamedQuery(name = "Empleados.findByDocumento", query = "SELECT e FROM Empleados e WHERE e.documento = :documento"),
+    @NamedQuery(name = "Empleados.findByCargo", query = "SELECT e FROM Empleados e WHERE e.cargo = :cargo"),
+    @NamedQuery(name = "Empleados.findByCorreoPersonal", query = "SELECT e FROM Empleados e WHERE e.correoPersonal = :correoPersonal"),
+    @NamedQuery(name = "Empleados.findByTelefono", query = "SELECT e FROM Empleados e WHERE e.telefono = :telefono"),
+    @NamedQuery(name = "Empleados.findByCelular", query = "SELECT e FROM Empleados e WHERE e.celular = :celular"),
+    @NamedQuery(name = "Empleados.findByFNacimiento", query = "SELECT e FROM Empleados e WHERE e.fNacimiento = :fNacimiento"),
+    @NamedQuery(name = "Empleados.findByRh", query = "SELECT e FROM Empleados e WHERE e.rh = :rh"),
+    @NamedQuery(name = "Empleados.findByContactoFamiliar", query = "SELECT e FROM Empleados e WHERE e.contactoFamiliar = :contactoFamiliar"),
+    @NamedQuery(name = "Empleados.findByTelefonoContacto", query = "SELECT e FROM Empleados e WHERE e.telefonoContacto = :telefonoContacto"),
+    @NamedQuery(name = "Empleados.findByCelularContacto", query = "SELECT e FROM Empleados e WHERE e.celularContacto = :celularContacto"),
+    @NamedQuery(name = "Empleados.findByDireccion", query = "SELECT e FROM Empleados e WHERE e.direccion = :direccion"),
+    @NamedQuery(name = "Empleados.findByHabilitado", query = "SELECT e FROM Empleados e WHERE e.habilitado = :habilitado")})
 public class Empleados implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpleado")
-    private Collection<Insumos> insumosCollection;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpleado")
-    private Collection<Facturas> facturasCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -79,6 +74,9 @@ public class Empleados implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "cargo")
     private String cargo;
+    @Size(max = 50)
+    @Column(name = "correo_personal")
+    private String correoPersonal;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -102,10 +100,10 @@ public class Empleados implements Serializable {
     @Size(max = 50)
     @Column(name = "contacto_familiar")
     private String contactoFamiliar;
-    @Size(max = 20)
+    @Size(max = 50)
     @Column(name = "telefono_contacto")
     private String telefonoContacto;
-    @Size(max = 20)
+    @Size(max = 50)
     @Column(name = "celular_contacto")
     private String celularContacto;
     @Size(max = 40)
@@ -116,9 +114,15 @@ public class Empleados implements Serializable {
     @Size(min = 1, max = 3)
     @Column(name = "habilitado")
     private String habilitado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpleado")
+    private Collection<Insumos> insumosCollection;
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Usuarios usuarioId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpleado")
+    private Collection<Facturas> facturasCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEmpledo")
+    private Collection<Programaciones> programacionesCollection;
 
     public Empleados() {
     }
@@ -169,6 +173,14 @@ public class Empleados implements Serializable {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public String getCorreoPersonal() {
+        return correoPersonal;
+    }
+
+    public void setCorreoPersonal(String correoPersonal) {
+        this.correoPersonal = correoPersonal;
     }
 
     public String getTelefono() {
@@ -243,12 +255,39 @@ public class Empleados implements Serializable {
         this.habilitado = habilitado;
     }
 
+    @XmlTransient
+    public Collection<Insumos> getInsumosCollection() {
+        return insumosCollection;
+    }
+
+    public void setInsumosCollection(Collection<Insumos> insumosCollection) {
+        this.insumosCollection = insumosCollection;
+    }
+
     public Usuarios getUsuarioId() {
         return usuarioId;
     }
 
     public void setUsuarioId(Usuarios usuarioId) {
         this.usuarioId = usuarioId;
+    }
+
+    @XmlTransient
+    public Collection<Facturas> getFacturasCollection() {
+        return facturasCollection;
+    }
+
+    public void setFacturasCollection(Collection<Facturas> facturasCollection) {
+        this.facturasCollection = facturasCollection;
+    }
+
+    @XmlTransient
+    public Collection<Programaciones> getProgramacionesCollection() {
+        return programacionesCollection;
+    }
+
+    public void setProgramacionesCollection(Collection<Programaciones> programacionesCollection) {
+        this.programacionesCollection = programacionesCollection;
     }
 
     @Override
@@ -274,24 +313,6 @@ public class Empleados implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Empleados[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<Facturas> getFacturasCollection() {
-        return facturasCollection;
-    }
-
-    public void setFacturasCollection(Collection<Facturas> facturasCollection) {
-        this.facturasCollection = facturasCollection;
-    }
-
-    @XmlTransient
-    public Collection<Insumos> getInsumosCollection() {
-        return insumosCollection;
-    }
-
-    public void setInsumosCollection(Collection<Insumos> insumosCollection) {
-        this.insumosCollection = insumosCollection;
     }
     
 }

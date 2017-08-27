@@ -64,6 +64,10 @@
                             <td><input type="text" style="" value="<%=myemp.getCargo()%>" class="form-control" name="cargo" id="cargo"></td>
                         </tr>
                         <tr>
+                            <th>Correo Personal</th>
+                            <td><input type="text" style="" value="<%=myemp.getCorreoPersonal()%>" class="form-control" name="correo_personal" id="correo_personal"></td>
+                        </tr>
+                        <tr>
                             <th>Telefono</th>
                             <td><input type="text" style="" value="<%=myemp.getTelefono()%>" class="form-control" name="telefono" id="telefono"></td>
                         </tr>

@@ -30,24 +30,18 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
 @Entity
 @Table(name = "pedidos")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Pedidos.findAll", query = "SELECT p FROM Pedidos p")
-    , @NamedQuery(name = "Pedidos.findById", query = "SELECT p FROM Pedidos p WHERE p.id = :id")
-    , @NamedQuery(name = "Pedidos.findByFPedido", query = "SELECT p FROM Pedidos p WHERE p.fPedido = :fPedido")
-    , @NamedQuery(name = "Pedidos.findByFEntrega", query = "SELECT p FROM Pedidos p WHERE p.fEntrega = :fEntrega")
-    , @NamedQuery(name = "Pedidos.findByHabilitado", query = "SELECT p FROM Pedidos p WHERE p.habilitado = :habilitado")})
+    @NamedQuery(name = "Pedidos.findAll", query = "SELECT p FROM Pedidos p"),
+    @NamedQuery(name = "Pedidos.findById", query = "SELECT p FROM Pedidos p WHERE p.id = :id"),
+    @NamedQuery(name = "Pedidos.findByFPedido", query = "SELECT p FROM Pedidos p WHERE p.fPedido = :fPedido"),
+    @NamedQuery(name = "Pedidos.findByFEntrega", query = "SELECT p FROM Pedidos p WHERE p.fEntrega = :fEntrega"),
+    @NamedQuery(name = "Pedidos.findByHabilitado", query = "SELECT p FROM Pedidos p WHERE p.habilitado = :habilitado")})
 public class Pedidos implements Serializable {
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedido")
-    private Collection<Facturas> facturasCollection;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
-    private Collection<PedidosDetallados> pedidosDetalladosCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -60,8 +54,6 @@ public class Pedidos implements Serializable {
     @Column(name = "f_pedido")
     @Temporal(TemporalType.DATE)
     private Date fPedido;
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "f_entrega")
     @Temporal(TemporalType.DATE)
     private Date fEntrega;
@@ -73,6 +65,12 @@ public class Pedidos implements Serializable {
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Clientes clienteId;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
+    private Collection<PedidosDetallados> pedidosDetalladosCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedido")
+    private Collection<Facturas> facturasCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedido")
+    private Collection<Programaciones> programacionesCollection;
 
     public Pedidos() {
     }
@@ -81,10 +79,9 @@ public class Pedidos implements Serializable {
         this.id = id;
     }
 
-    public Pedidos(Integer id, Date fPedido, Date fEntrega, String habilitado) {
+    public Pedidos(Integer id, Date fPedido, String habilitado) {
         this.id = id;
         this.fPedido = fPedido;
-        this.fEntrega = fEntrega;
         this.habilitado = habilitado;
     }
 
@@ -128,6 +125,33 @@ public class Pedidos implements Serializable {
         this.clienteId = clienteId;
     }
 
+    @XmlTransient
+    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
+        return pedidosDetalladosCollection;
+    }
+
+    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
+        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
+    }
+
+    @XmlTransient
+    public Collection<Facturas> getFacturasCollection() {
+        return facturasCollection;
+    }
+
+    public void setFacturasCollection(Collection<Facturas> facturasCollection) {
+        this.facturasCollection = facturasCollection;
+    }
+
+    @XmlTransient
+    public Collection<Programaciones> getProgramacionesCollection() {
+        return programacionesCollection;
+    }
+
+    public void setProgramacionesCollection(Collection<Programaciones> programacionesCollection) {
+        this.programacionesCollection = programacionesCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -151,24 +175,6 @@ public class Pedidos implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Pedidos[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
-        return pedidosDetalladosCollection;
-    }
-
-    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
-        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Facturas> getFacturasCollection() {
-        return facturasCollection;
-    }
-
-    public void setFacturasCollection(Collection<Facturas> facturasCollection) {
-        this.facturasCollection = facturasCollection;
     }
     
 }

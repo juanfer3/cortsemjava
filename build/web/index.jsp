@@ -1,4 +1,3 @@
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%-- 
     Document   : index
     Created on : 25/02/2017, 08:22:48 PM
@@ -24,7 +23,7 @@
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
 
         <title>Index Cortsem</title>
-
+        
         <script src="script/cambiotablas.js"></script>
         <script ></script>
     </head>
@@ -37,6 +36,7 @@
         <div id="tabla" ></div>
         
         <%@include file="jsp/footer.jsp" %>
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
     </body>
 </html>

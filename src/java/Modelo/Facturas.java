@@ -23,18 +23,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Juan
+ * @author USUARIO
  */
 @Entity
 @Table(name = "facturas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Facturas.findAll", query = "SELECT f FROM Facturas f")
-    , @NamedQuery(name = "Facturas.findById", query = "SELECT f FROM Facturas f WHERE f.id = :id")
-    , @NamedQuery(name = "Facturas.findByIva", query = "SELECT f FROM Facturas f WHERE f.iva = :iva")
-    , @NamedQuery(name = "Facturas.findByDescuento", query = "SELECT f FROM Facturas f WHERE f.descuento = :descuento")
-    , @NamedQuery(name = "Facturas.findByTotal", query = "SELECT f FROM Facturas f WHERE f.total = :total")
-    , @NamedQuery(name = "Facturas.findByHabiiliado", query = "SELECT f FROM Facturas f WHERE f.habiiliado = :habiiliado")})
+    @NamedQuery(name = "Facturas.findAll", query = "SELECT f FROM Facturas f"),
+    @NamedQuery(name = "Facturas.findById", query = "SELECT f FROM Facturas f WHERE f.id = :id"),
+    @NamedQuery(name = "Facturas.findByIva", query = "SELECT f FROM Facturas f WHERE f.iva = :iva"),
+    @NamedQuery(name = "Facturas.findByDescuento", query = "SELECT f FROM Facturas f WHERE f.descuento = :descuento"),
+    @NamedQuery(name = "Facturas.findByTotal", query = "SELECT f FROM Facturas f WHERE f.total = :total"),
+    @NamedQuery(name = "Facturas.findByHabiiliado", query = "SELECT f FROM Facturas f WHERE f.habiiliado = :habiiliado")})
 public class Facturas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -43,27 +43,29 @@ public class Facturas implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "iva")
-    private Float iva;
+    private float iva;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "descuento")
-    private Float descuento;
+    private float descuento;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "total")
-    private Float total;
+    private float total;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 3)
     @Column(name = "habiiliado")
     private String habiiliado;
-    @JoinColumn(name = "id_pedido", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Pedidos idPedido;
-    @JoinColumn(name = "id_pedido_detallado", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private PedidosDetallados idPedidoDetallado;
     @JoinColumn(name = "id_empleado", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Empleados idEmpleado;
+    @JoinColumn(name = "id_pedido", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Pedidos idPedido;
 
     public Facturas() {
     }
@@ -72,8 +74,11 @@ public class Facturas implements Serializable {
         this.id = id;
     }
 
-    public Facturas(Integer id, String habiiliado) {
+    public Facturas(Integer id, float iva, float descuento, float total, String habiiliado) {
         this.id = id;
+        this.iva = iva;
+        this.descuento = descuento;
+        this.total = total;
         this.habiiliado = habiiliado;
     }
 
@@ -85,27 +90,27 @@ public class Facturas implements Serializable {
         this.id = id;
     }
 
-    public Float getIva() {
+    public float getIva() {
         return iva;
     }
 
-    public void setIva(Float iva) {
+    public void setIva(float iva) {
         this.iva = iva;
     }
 
-    public Float getDescuento() {
+    public float getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(Float descuento) {
+    public void setDescuento(float descuento) {
         this.descuento = descuento;
     }
 
-    public Float getTotal() {
+    public float getTotal() {
         return total;
     }
 
-    public void setTotal(Float total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 
@@ -117,28 +122,20 @@ public class Facturas implements Serializable {
         this.habiiliado = habiiliado;
     }
 
-    public Pedidos getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(Pedidos idPedido) {
-        this.idPedido = idPedido;
-    }
-
-    public PedidosDetallados getIdPedidoDetallado() {
-        return idPedidoDetallado;
-    }
-
-    public void setIdPedidoDetallado(PedidosDetallados idPedidoDetallado) {
-        this.idPedidoDetallado = idPedidoDetallado;
-    }
-
     public Empleados getIdEmpleado() {
         return idEmpleado;
     }
 
     public void setIdEmpleado(Empleados idEmpleado) {
         this.idEmpleado = idEmpleado;
+    }
+
+    public Pedidos getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(Pedidos idPedido) {
+        this.idPedido = idPedido;
     }
 
     @Override

@@ -23,9 +23,9 @@ import java.util.logging.Logger;
 public class DBEmpleado {
     
     
-     public boolean RegistrarEmpleado(String nombre, String documento, String cargo,String telefono, String celular, String f_nacimineto, String rh, String contacto_familiar, String telefono_contacto, String celular_contacto,String direccion, int usuario_id) {
+     public boolean RegistrarEmpleado(String nombre, String documento, String cargo,String correo_personal,String telefono, String celular, String f_nacimineto, String rh, String contacto_familiar, String telefono_contacto, String celular_contacto,String direccion, int usuario_id) {
             String habilitado = "si";
-            String sql = "INSERT INTO empleados(nombre, documento, cargo, telefono, celular, f_nacimiento, rh, contacto_familiar, telefono_contacto, celular_contacto, direccion, usuario_id, habilitado) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            String sql = "INSERT INTO empleados(nombre, documento, cargo, correo_personal,telefono, celular, f_nacimiento, rh, contacto_familiar, telefono_contacto, celular_contacto, direccion, usuario_id, habilitado) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
             int r = 0;
 
             ConexionBD bd = new ConexionBD();
@@ -37,16 +37,17 @@ public class DBEmpleado {
                 pst.setString(1, nombre);
                 pst.setString(2, documento);
                 pst.setString(3, cargo);
-                pst.setString(4, telefono);
-                pst.setString(5, celular);
-                pst.setString(6, f_nacimineto);
-                pst.setString(7, rh);
-                pst.setString(8, contacto_familiar);
-                pst.setString(9, telefono_contacto);
-                pst.setString(10,celular_contacto);
-                pst.setString(11,direccion);
-                pst.setInt(12, usuario_id);
-                pst.setString(13, habilitado);
+                pst.setString(4,correo_personal);
+                pst.setString(5, telefono);
+                pst.setString(6, celular);
+                pst.setString(7, f_nacimineto);
+                pst.setString(8, rh);
+                pst.setString(9, contacto_familiar);
+                pst.setString(10, telefono_contacto);
+                pst.setString(11,celular_contacto);
+                pst.setString(12,direccion);
+                pst.setInt(13, usuario_id);
+                pst.setString(14, habilitado);
                 
 
                 r = pst.executeUpdate();
@@ -92,7 +93,7 @@ public class DBEmpleado {
         Date fecha_n;              
         String habilitado="si";
         
-        String sql="SELECT empleados.nombre, empleados.documento, empleados.cargo, empleados.telefono, empleados.celular, empleados.f_nacimiento, empleados.rh, empleados.contacto_familiar,empleados.telefono_contacto,empleados.celular_contacto,empleados.direccion,empleados.id,usuarios.usuario from  usuarios inner join empleados on usuarios.id = empleados.usuario_id where empleados.habilitado='si';";
+        String sql="SELECT empleados.nombre, empleados.documento, empleados.cargo, empleados.correo_personal,empleados.telefono, empleados.celular, empleados.f_nacimiento, empleados.rh, empleados.contacto_familiar,empleados.telefono_contacto,empleados.celular_contacto,empleados.direccion,empleados.id,usuarios.usuario from  usuarios inner join empleados on usuarios.id = empleados.usuario_id where empleados.habilitado='si';";
     
         
         ConexionBD bd=new ConexionBD ();
@@ -109,6 +110,7 @@ public class DBEmpleado {
                     myemp.setNombre(rs.getString("nombre"));
                     myemp.setDocumento(rs.getString("documento"));
                     myemp.setCargo(rs.getString("cargo"));
+                    myemp.setCorreoPersonal(rs.getString("correo_personal"));
                     myemp.setTelefono(rs.getString("telefono"));
                     myemp.setCelular(rs.getString("celular"));
                     myemp.setFNacimiento(rs.getDate("f_nacimiento"));
@@ -170,9 +172,12 @@ public class DBEmpleado {
         
         
         
-        public boolean EditarEmpleado(String nombre, 
+        public boolean EditarEmpleado(
+                String nombre, 
                 String documento, 
-                String cargo,String telefono, 
+                String cargo,
+                String correo_personal,
+                String telefono, 
                 String celular, String f_nacimineto, 
                 String rh, String contacto_familiar, 
                 String telefono_contacto, String celular_contacto,
@@ -182,7 +187,7 @@ public class DBEmpleado {
             String sql, habilitado;
             habilitado="no";
            
-            sql="UPDATE empleados set nombre='"+nombre+"', documento='"+documento+"', cargo='"+cargo+"', celular='"+celular+"',telefono='"+telefono+"',contacto_familiar='"+contacto_familiar+"',telefono_contacto='"+telefono_contacto+"',celular_contacto='"+celular_contacto+"',direccion='"+direccion+"' WHERE id='"+id+"';";
+            sql="UPDATE empleados set nombre='"+nombre+"', documento='"+documento+"', cargo='"+cargo+"', correo_personal='"+correo_personal+"',celular='"+celular+"',telefono='"+telefono+"',contacto_familiar='"+contacto_familiar+"',telefono_contacto='"+telefono_contacto+"',celular_contacto='"+celular_contacto+"',direccion='"+direccion+"' WHERE id='"+id+"';";
                     
             ConexionBD bd=new ConexionBD ();
             Connection con= bd.conectar();
@@ -211,7 +216,7 @@ public class DBEmpleado {
         Date fecha_n;              
         String habilitado="si";
         
-        String sql="SELECT empleados.nombre, empleados.documento, empleados.cargo, empleados.telefono, empleados.celular, empleados.f_nacimiento, empleados.rh, empleados.contacto_familiar,empleados.telefono_contacto,empleados.celular_contacto,empleados.direccion,empleados.id,usuarios.usuario from  usuarios inner join empleados on usuarios.id = empleados.usuario_id where empleados.habilitado='si' AND empleados.id='"+id+"';";
+        String sql="SELECT empleados.nombre, empleados.documento, empleados.cargo, empleados.correo_personal,empleados.telefono, empleados.celular, empleados.f_nacimiento, empleados.rh, empleados.contacto_familiar,empleados.telefono_contacto,empleados.celular_contacto,empleados.direccion,empleados.id,usuarios.usuario from  usuarios inner join empleados on usuarios.id = empleados.usuario_id where empleados.habilitado='si' AND empleados.id='"+id+"';";
     
         
         ConexionBD bd=new ConexionBD ();
@@ -228,6 +233,7 @@ public class DBEmpleado {
                     myemp.setNombre(rs.getString("nombre"));
                     myemp.setDocumento(rs.getString("documento"));
                     myemp.setCargo(rs.getString("cargo"));
+                    myemp.setCorreoPersonal(rs.getString("correo_personal"));
                     myemp.setTelefono(rs.getString("telefono"));
                     myemp.setCelular(rs.getString("celular"));
                     myemp.setFNacimiento(rs.getDate("f_nacimiento"));
