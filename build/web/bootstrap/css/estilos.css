@@ -1,6 +1,6 @@
 html
 {
-    position: relative; 
+    position: relative;
     min-height: 100%;
 }
 body
@@ -28,7 +28,7 @@ body
 }
 .botonloguin{
 
-    position: absolute; 
+    position: absolute;
     margin-top: 10%;
     z-index: 1;
     float:left;
@@ -40,7 +40,7 @@ body
 .fondonindex{
 
     background-color: #1891AC;
-    opacity: 0.5; 
+    opacity: 0.5;
     position: absolute;
     width: 95.7%;
     height: 100%;
@@ -109,21 +109,21 @@ Es simple, le damos una posición absoluta y lo posicionamos a pie de página co
 /*---------------------------------------formulario--------------------------*/
 
 .titulopedido{
-    
-    
-    
+
+
+
 }
 
 
 .formulariologin{
-    
+
     z-index: 5;
     position:absolute;
     top:200px;
     left: 30%;
     width: 40%;
-    
-    
+
+
 }
 .formulario{
 
@@ -155,15 +155,15 @@ Es simple, le damos una posición absoluta y lo posicionamos a pie de página co
 
 }
 .entradas input{
-    
-    
+
+
     border-radius: 5px;
 /*    background : inherit; con esto se puede hacer un input
     border-left: 0;transparente y sin bordes
     border-left:none ;
     border-right:none ;
     border-top:none ;*/
-    
+
 }
 /*-----------------------footer---------------------------*/
 footer
@@ -190,7 +190,7 @@ footer
 .iconosFooter{
 
 
-    color:#1891AC; 
+    color:#1891AC;
     text-align: center;
     font-size: 30px;
     padding-left: 10px;
@@ -200,15 +200,15 @@ footer
     position: absolute;
     left: 1%;
     top :10px;
-    color:#1891AC; 
+    color:#1891AC;
     text-align: justify;
 }
 /*-----------------------Btn Empleados---------------------------*/
 .botonrempleados{
-    
+
     position: relative;
     margin-top: 0px;
-    
+
 }
 /*-----------------------formulario pedidos---------------------------*/
 
@@ -216,7 +216,7 @@ footer
     width: 100%;
     position: absolute;
     z-index: 7;
-    
+
 }
 .heading {
     border-bottom: 1px solid #fcab0e;
@@ -278,10 +278,10 @@ footer
     transition: all 0.5s ease 0s;
 }
 .selector{
-    
+
     position: relative;
 
-    
+
 }
 /*-----------------------tabla lista pedidos---------------------------*/
 .r{
@@ -305,8 +305,8 @@ display: none;
 }
 
 .entradasdeedicion{
-    
-    
+
+
     background-color: transparent;
     border: none !important;
 }
@@ -323,16 +323,16 @@ display: none;
 	height:45px;
 }
 .form-empleados{
-    
-    
-    
+
+
+
 }
 .mover-form-empleado-registro{
-   
+
     position: absolute ;
     z-index: 5;
-    
-    
+
+
 }
 
 /*-----------------------Formulario Loguin---------------------------*/
@@ -340,10 +340,10 @@ display: none;
 
 
 body {
-	background: #eee !important;	
+	background: #eee !important;
 }
 
-.wrapper {	
+.wrapper {
 	margin-top: 80px;
   margin-bottom: 80px;
 }
@@ -353,7 +353,7 @@ body {
   padding: 15px 35px 45px;
   margin: 0 auto;
   background-color: #fff;
-  border: 1px solid rgba(0,0,0,0.1);  
+  border: 1px solid rgba(0,0,0,0.1);
 
   .form-signin-heading,
 	.checkbox {
@@ -393,7 +393,7 @@ body {
 
 
 .menu{
-    
+
     position: absolute !important;
     background: green !important;
     height: 80% !important;
@@ -402,17 +402,17 @@ body {
     top:10.6%;
     color: white;
     left: -100%;
-    
+
 }
 .menu .menu-item{
-    
+
    text-decoration: none !important;
-    
+
 }
 .cambio{
-    
+
     left: 0 !important;
-    
+
 }
 
 /*-----------------------Form clientes---------------------------*/
@@ -429,18 +429,25 @@ body {
     position: absolute;
     z-index: 10;
     margin-bottom: 1500px;
-    
-    
+
+
 }
 /*-----------------------inputs pedidos---------------------------*/
 .inputpedido{
-    
+
     position: absolute;
     height: 12% !important;
     margin-top: 2px;
    background-color: white;
-   
-    
-}
-/*-----------------------ventana modal---------------------------*/
 
+
+}
+/*-----------------------validaciones---------------------------*/
+
+.invalido{
+  border:2px solid #a94442;
+}
+.valido{
+
+  border:2px solid #3c763d;
+}
