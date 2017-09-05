@@ -66,7 +66,7 @@ public class RegistroEmpleados extends HttpServlet {
             
             documento = request.getParameter("documento");
             cargo = request.getParameter("cargo");
-            correo_personal=request.getParameter("correo_personal");
+            correo_personal=request.getParameter("correo");
             telefono = request.getParameter("telefono");
             celular = request.getParameter("celular");
             fecha_nacimiento = request.getParameter("fecha_nacimiento");
@@ -78,7 +78,7 @@ public class RegistroEmpleados extends HttpServlet {
             direccion = request.getParameter("direccion");
 
             System.out.println("=========================================================="+correo_personal);
-
+out.println(correo_personal);
             contrasena = request.getParameter("contrasena");
 
             if( user.RegistrarUsuario(usuario, contrasena)){
@@ -92,7 +92,7 @@ public class RegistroEmpleados extends HttpServlet {
                  out.println("<h1> Fallo en la insercion</h1>");
             }
 
-            request.getRequestDispatcher("ListarEmpleados").forward(request, response);
+            request.getRequestDispatcher("ListarEmpleados.jsp").forward(request, response);
            
 
         }

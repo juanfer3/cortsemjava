@@ -5,24 +5,11 @@
  */
 package Controlador;
 
-import Modelo.ConexionBD;
 import Modelo.DBEmpleado;
-import Modelo.DBPedidos;
-import Modelo.DBUsuarios;
 import Modelo.Empleados;
-import Modelo.Usuarios;
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "ListarEmpleados", urlPatterns = {"/ListarEmpleados"})
-public class ListarEmpleados extends HttpServlet {
+@WebServlet(name = "ModalEmpleados", urlPatterns = {"/ModalEmpleados"})
+public class ModalEmpleados extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,24 +36,30 @@ public class ListarEmpleados extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-          
-            DBEmpleado emp = new DBEmpleado();
-            ResultSet rs = null;
-  
-
-            ArrayList<Empleados> Listar = new ArrayList();
+            DBEmpleado emp=new DBEmpleado();
+            
+            ArrayList<Empleados> Listar= new ArrayList();
             Listar.clear();
-            Listar=emp.Listarempleados();
+            
+            
+            
+            String id1;
+            int id;
+            id1 = request.getParameter("id");
+            id = Integer.parseInt(id1);
+            Listar=emp.listarEmpleadoPorId(id);
 
+            for (Empleados myemp : Listar) {
 
-            request.setAttribute("listar_empleados", Listar);
+                out.println("Nombre: " + myemp.getNombre()+"<br>");
+                out.println("Documento: " + myemp.getDocumento()+"<br>");
+                out.println("Telefono: " + myemp.getTelefono()+"<br>");
+                out.println("Celular: " + myemp.getCelular()+"<br>");
+                out.println("Direccion: " + myemp.getDireccion()+"<br>");
+                out.println("Correo: " + myemp.getCorreoPersonal()); 
 
-
-            RequestDispatcher rd = request.getRequestDispatcher("ListarEmpleados.jsp");
-            rd.forward(request, response);
-
+            }
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

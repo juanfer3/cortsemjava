@@ -63,7 +63,10 @@
                                         <th>Documento</th>
                                         <td><input type="text" style="" value="" class="form-control" name="documento" id="cargo"></td>
                                     </tr>
-
+                                    <tr>
+                                        <th>Correo Personal</th>
+                                        <td><input type="text" style="" value="" class="form-control nombre" name="correo" id="nombre"> </td>
+                                    </tr>
                                     <tr>
                                         <th>Cargo</th>
                                         <td>
@@ -80,10 +83,7 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th>Correo Personal</th>
-                                        <td><input type="text" style="" value="" class="form-control" name="correo_personal" id="correo_personal"></td>
-                                    </tr>
+                                    
                                     <tr>
                                         <th>Telefono</th>
                                         <td><input type="text" style="" value="" class="form-control" name="telefono" id="telefono"></td>

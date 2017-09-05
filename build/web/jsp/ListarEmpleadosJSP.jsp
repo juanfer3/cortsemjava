@@ -11,7 +11,7 @@
 <%@page import="Modelo.Empleados"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<script src="script/EmpleadosFunc.js"></script>
+<script src="script/Empleados.js"></script>
 <div class="container" id="listarEmpleados">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
     <div class="row">
@@ -54,16 +54,19 @@
                         for (Empleados myemp : Listar) {
 
                     %>
-                    <input type="text" class="id" value="<%=myemp.getId()%>" style="visibility:hidden">
+                    
+                    
                     <tbody>
                         <tr>
                             <td><p ><%=cont%></p></td>
-                            <td><p class="id" style="visibility: hidden"><%=myemp.getId()%></p></td>
+                            <td><p class="empleado_id" style="visibility: hidden"><%=myemp.getId()%></p></td>
                             <td><p class="nombreEmplado"><%=myemp.getNombre()%></p></td>
                             <td><p class="documentoEmpleado"><%=myemp.getDocumento()%></p></td>
                             <td><p class="cargoEmpleado"><%=myemp.getCargo()%></p></td>
                             <td><p class="userEmpleado"><%=myemp.getUsuarioId().getUsuario()%></td>
-                            <td><a id="" href="#" class="verEmpleado" id="verEmpleado"><span><img src="imagenes/ojo.png"></span></a></td>
+                            
+                            
+                            <td><a id="ver" href="#" class="ver" data-toggle="modal" data-target="#myModal"><span><img src="imagenes/ojo.png"></span></a></td>
                             <td align="center"><a href="#" class="editarEmpleado" id="editarEmpleado"><span><img src="imagenes/editar.png"></span></a></td>
                             <td align="center"><a href="#" class="eliminarEmpleado" id="eliminarEmpleado"><span><img src="imagenes/borrar.png"></span></a></td>
 
@@ -72,31 +75,34 @@
                     </tbody>
 
                   
-
-
-
-                    <div id="ModalEliminar<%= myemp.getId()%>" class="modal fade" role="dialog">
-                        <div class="modal-dialog modal-sm">
-
-
-                            <div class="modal-content cuadromodal">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title text-center">Está Seguro?</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="col-lg-offset-3">
-                                        <a class="btn btn-primary" href="EliminarEmpleado?id=<%= myemp.getId()%>" >Si</a>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+                     <%--este es el modal de Ver--%>
+                        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title myModalLabel" id="myModalLabel">Nombre Cliente: <%=myemp.getNombre()%></h4>
+                                    
                                     </div>
-
+                                    <div class="modal-body">
+                                        
+                                        <h5>Documento: <%=myemp.getDocumento() %></h5>
+                                        <h5>Correo :<%=myemp.getCorreoPersonal()%></h5>
+                                        <h5>Telefono :<%=myemp.getTelefono()%></h5>
+                                        <h5>Celular :<%=myemp.getCelular()%></h5>
+                                        <h5>Direccion :<%=myemp.getDireccion()%></h5>
+                                        
+                                        
+                                    </div>
                                 </div>
-
                             </div>
-
-
                         </div>
-                    </div>
+          
+
+
+                    
                     <%;%>
                     <%cont += 1;
                         }%>
@@ -111,3 +117,27 @@
     </div>
 </div>
 
+             <div class="container">
+
+        <!-- Modal -->
+        <div class="modal fade in" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="tituloModal">Empleados</h4>
+                    </div>
+                    <div class="modal-body" id="VerModal">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>

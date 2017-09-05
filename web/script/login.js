@@ -1,9 +1,9 @@
 $(document).ready(function(){
-    alert(':)');
+   
     
     
-    $('#enviar').click(function(){
-        alert();
+    $('#enviarCorreo').click(function(){
+       
         var correo_personal= $('#correo_personal').val();
         $.ajax({
             url:'Envio',

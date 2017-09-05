@@ -12,6 +12,8 @@ angular.module('myApp', [])
   $scope.mytalla;
   $scope.mycantidad ;
 
+  $scope.ver;
+
   $scope.programar=[];
   this.users =[];
   this.pro=[];
@@ -143,26 +145,29 @@ if($scope.tela==null||$scope.tela==""){
 
 
         this.pro= {
-          prenda: $scope.prenda,
-          tela: $scope.tela,
-          talla: $scope.talla,
-          cantidad: $scope.cantidad
+          title: "titulo",
+          url: "url",
+          numero: 1
         };
 
     this.article = new Object();
     this.article.title = "titulo";
     this.article.url = "url";
-    this.article.categories = "categorias";
-    this.article.tags ="tags";
+    this.article.numero=1;
+
 
 
         $http({
           method: 'POST',
-          data: this.article,
+          data: this.pro,
           url:'Articles'
         }).then(function(respuesta){
-          console.log("this.respuesta");
-          alert("this.respuesta");
+          $scope.ver=respuesta.data;
+          alertify.success($scope.ver);
+
+
+          console.log($scope.ver.url);
+          //alert(respuesta.data.url);
         }, function(error){
           alert("tenemos problemas :(")
         });

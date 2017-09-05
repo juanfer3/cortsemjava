@@ -3,12 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/RegistrarProgramacion.java</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/Telas.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/RegistrarProgramacion.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/Programacionfunc.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/EditarPedidos.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/Telas.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/ListarClientesJSP.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/Articles.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/nbproject/build-impl.xml</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/programacion.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/login.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/tablaClientes.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/ConexionBD.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/ListarClientes.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/tablaEmpleados.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/RegistroEmpleados.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/RegistrarProgramacion.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/RegistrarProgramacion.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/ListarEmpleadosJSP.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/RegistroEmpleado.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/DBEmpleado.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/DBUsuarios.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/index.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/Article.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/EliminarPedidosDetallados.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/DBInsumos.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/login.jsp</file>
         </group>
     </open-files>
 </project-private>

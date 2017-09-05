@@ -5,36 +5,27 @@
  */
 package Controlador;
 
-import Modelo.ConexionBD;
-import Modelo.DBEmpleado;
-import Modelo.DBPedidos;
-import Modelo.DBUsuarios;
-import Modelo.Empleados;
-import Modelo.Usuarios;
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
+import Modelo.Article;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
+import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.json.simple.JSONObject;
 
 /**
  *
  * @author Juan
  */
-@WebServlet(name = "ListarEmpleados", urlPatterns = {"/ListarEmpleados"})
-public class ListarEmpleados extends HttpServlet {
+@WebServlet(name = "Articles", urlPatterns = {"/Articles"})
+public class Articles extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,24 +40,46 @@ public class ListarEmpleados extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-          
-            DBEmpleado emp = new DBEmpleado();
-            ResultSet rs = null;
-  
-
-            ArrayList<Empleados> Listar = new ArrayList();
-            Listar.clear();
-            Listar=emp.Listarempleados();
-
-
-            request.setAttribute("listar_empleados", Listar);
-
-
-            RequestDispatcher rd = request.getRequestDispatcher("ListarEmpleados.jsp");
-            rd.forward(request, response);
-
+   
+ try{
+    // This will store all received articles
+    List<Article> articles = new LinkedList<Article>();
+             // 1. get received JSON data from request
+        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+        String json = "";
+        if(br != null){
+            json = br.readLine();
         }
-
+       
+        // 2. initiate jackson mapper
+        ObjectMapper mapper = new ObjectMapper();
+        
+        // 3. Convert received JSON to Article
+        Article article = mapper.readValue(json, Article.class);
+        
+        // 4. Set response type to JSON
+                    
+ 
+        // 5. Add article to List<Article>
+       articles.add(article);
+       
+//       for(Article m: articles){
+//           out.println(m.getTitle());
+//           out.println(m.getUrl());
+//           out.println(m.getNumero());
+//       
+//       }
+        //response.setContentType("application/json");
+        // 6. Send List<Article> as JSON to client
+    String pro= mapper.writeValueAsString(article);
+       // mapper.writeValue(response.getOutputStream(), articles);
+       out.println(pro);
+ }catch(Exception e){
+     e.printStackTrace();
+ }
+        
+    }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

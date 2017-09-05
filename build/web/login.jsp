@@ -1,7 +1,7 @@
 
 
 
-<script src="script/contrasena.js"></script>
+<script src="script/login.js"></script>
 <div class="wrapper">
     <form class="form-signin" action="Loguin" method="POST">       
         <h2 class="form-signin-heading textologuin">Iniciar Sesion</h2>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="enviar">Enviar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="enviarCorreo">Enviar</button>
                 </div>
             </div>
         </div>

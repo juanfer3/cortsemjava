@@ -1,17 +1,17 @@
 $(document).ready(function () {
 
-    $('.verEmpleado').off('click');
-    $('.verEmpleado').on('click', function () {
+    $('.ver').click(function () {
 
-        var id = $(this).parents("tr").find('.id').text();
+        var id = $(this).parents("tr").find('.empleado_id').text();
+      
         $.ajax({
 
-            url: "Empleadomodal",
+            url: "ModalEmpleados",
             type: "POST",
             data: {id: id},
             success: function (data) {
 
-                alert(data);
+                $("#VerModal").html(data);
 
             }
 

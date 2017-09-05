@@ -49,11 +49,11 @@ public class ModalCliente extends HttpServlet {
 
             for (Clientes myemp : Listar) {
 
-                out.println("Nombre: " + myemp.getNombre());
-                out.println("Documento: " + myemp.getDocumento());
-                out.println("Telefono: " + myemp.getTelefono());
-                out.println("Celular: " + myemp.getCelular());
-                out.println("Direccion: " + myemp.getDireccion());
+                out.println("Nombre: " + myemp.getNombre()+"<br>");
+                out.println("Documento: " + myemp.getDocumento()+"<br>");
+                out.println("Telefono: " + myemp.getTelefono()+"<br>");
+                out.println("Celular: " + myemp.getCelular()+"<br>");
+                out.println("Direccion: " + myemp.getDireccion()+"<br>");
                 out.println("Correo: " + myemp.getCorreo());
 
             }
