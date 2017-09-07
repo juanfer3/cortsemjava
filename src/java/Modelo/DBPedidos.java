@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import static java.lang.System.console;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -21,9 +22,10 @@ import java.util.logging.Logger;
  */
 public class DBPedidos {
 
-    public boolean RegistrarPedido(String fecha_pedido, String fecha_entrega, int cliente_id) {
+    public boolean RegistrarPedido( int cliente_id) {
         String habilitado = "no";
-        String sql = "INSERT INTO pedidos(f_pedido, f_entrega,  cliente_id, habilitado) VALUES(?,?,?,?);";
+        String estado="pedido";
+        String sql = "INSERT INTO pedidos(cliente_id, estado,habilitado) VALUES(?,?,?);";
         int r = 0;
 
         ConexionBD bd = new ConexionBD();
@@ -32,10 +34,11 @@ public class DBPedidos {
         try {
             PreparedStatement pst = con.prepareStatement(sql);
 
-            pst.setString(1, fecha_pedido);
-            pst.setString(2, fecha_entrega);
-            pst.setInt(3, cliente_id);
-            pst.setString(4, habilitado);
+            
+            
+            pst.setInt(1, cliente_id);
+            pst.setString(2, estado);
+            pst.setString(3, habilitado);
             r = pst.executeUpdate();
             if (r != 0) {
 
@@ -273,6 +276,40 @@ public class DBPedidos {
         return Listar;
     }
 
-    
+    public boolean ConfirmarFechaPedido(int id,String f_entrega) {
+
+        String sql;
+        String habilitado;
+
+        int r = 0;
+
+        habilitado = "si";
+        sql = "UPDATE pedidos SET f_entrega=? WHERE id=?;";
+
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, f_entrega);
+            pst.setInt(2, id);
+
+            r = pst.executeUpdate();
+
+            if (r != 0) {
+
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        
+        }
+
+        return false;
+    }
     
 }

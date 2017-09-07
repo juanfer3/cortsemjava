@@ -47,7 +47,7 @@ public class Pedido extends HttpServlet {
             cliente= request.getParameter("cliente");
             cliente_id= Integer.parseInt(cliente);
             
-            validarPedido=pedidos.RegistrarPedido(f_pedido, f_entrega, cliente_id);
+            validarPedido=pedidos.RegistrarPedido(cliente_id);
             
             if(validarPedido==true){
             

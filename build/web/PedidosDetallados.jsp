@@ -62,7 +62,7 @@
                 <h6>N°Pedido:&nbsp;<p id="pedido_id"><%=mypedidos.getId()%></p> </h6>
                 <h6>Cliente: <%=mypedidos.getClienteId().getNombre()%></h6>
                 <h6>Fecha de Pedido: <%=mypedidos.getFPedido()%></h6>
-                <h6>Fecha de Entrega: <%=mypedidos.getFEntrega()%></h6>
+               
                 <%}%>   
             </div>
             <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
@@ -153,7 +153,7 @@
             </div>
 
             <%for (Pedidos mypedidos : ListarPedido) {%> 
-            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="AceptarPedido?pedido_id=<%=mypedidos.getId()%>" class="btn btn-success btn-block btn-lg aceptarPedido" id="aceptar">Registrar Pedido</a></div>                                    
+            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="#" class="btn btn-success btn-block btn-lg aceptarPedido" id="aceptar" data-toggle="modal" data-target="#myModal">Registrar Pedido</a></div>                                    
             <%}%>
             <!--form method="POST">
         <div class="row">
@@ -204,7 +204,40 @@
 
 
         </div>
+            <!-- Modal -->
+            <div class="container">
+
+                <form action="F_entrega" method="GET"        
+                
+        <div class="modal fade in" id="myModal" role="dialog">
+            <div class="modal-dialog" >
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" id="tituloModal">Fecha de Entrega</h4>
+                    </div>
+                    <div class="modal-body" id="VerModal">
+                        <%for (Pedidos mypedidos : ListarPedido) {%>   
+                        <input type="hidden"  class="form-control" value="<%=mypedidos.getId() %>" id="id" name="id" visibilite="hidden" >
+
+               
+                <%}%>   
+                        <input type="date"  class="form-control" value="" id="f_entrega" name="f_entrega" >
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" >Confirmar Fecha</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+                </form>
+    </div>
 
         <%@include file="jsp/footer.jsp" %>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </body>
 </html>

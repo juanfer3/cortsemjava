@@ -70,8 +70,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
-                                        <th>Fecha de pedido</th>
-                                        <th>Fecha de entrega</th>
+                                        
 
 
                                     </tr>
@@ -105,8 +104,8 @@
 
                                         </td>
 
-                                        <td><input type="date"  class="form-control" value="" id="f_pedido" name="f_pedido"></td>
-                                        <td><input type="date"  class="form-control" value="" id="f_entrega" name="f_entrega" ></td>
+                                        <!--td><input type="date"  class="form-control" value="" id="f_pedido" name="f_pedido"></td>
+                                        <td><input type="date"  class="form-control" value="" id="f_entrega" name="f_entrega" ></td-->
 
 
 

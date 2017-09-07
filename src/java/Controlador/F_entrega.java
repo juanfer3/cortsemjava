@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "AceptarPedido", urlPatterns = {"/AceptarPedido"})
-public class AceptarPedido extends HttpServlet {
+@WebServlet(name = "F_entrega", urlPatterns = {"/F_entrega"})
+public class F_entrega extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,31 +35,27 @@ public class AceptarPedido extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
             DBPedidos pedidos=new DBPedidos();
-            
-            String id1;
+            boolean validar=false;
+            String id1, f_entrega;
             int id;
             
-            boolean validar=false;
-            
-            id1=(String)request.getAttribute("myId");
-            //id1=request.getParameter("pedido_id");
+            id1=request.getParameter("id");
             id=Integer.parseInt(id1);
             
-            validar=pedidos.ConfirmarPedido(id);
-            if(validar=true){
-                request.setAttribute("id", id1);
-                request.getRequestDispatcher("Facturas.jsp").forward(request, response);
+            f_entrega=request.getParameter("f_entrega");
             
+            validar=pedidos.ConfirmarFechaPedido(id, f_entrega);
+                    
+            if(validar){
+                request.setAttribute("myId", id1);
+                RequestDispatcher rd = request.getRequestDispatcher("AceptarPedido");
+            rd.forward(request, response);
+                
             }else{
             
-                 request.getRequestDispatcher("PedidosDetallados.jsp").forward(request, response);
-            
+           
             }
-            
-            
-            
             
             
             
