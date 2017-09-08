@@ -15,8 +15,10 @@ angular.module('myApp', [])
   $scope.ver;
 
   $scope.programar=[];
+  
   this.users =[];
   this.pro=[];
+  
   this.submit = function addNote() {
     var data ={
       prenda: $scope.prenda,
@@ -28,10 +30,26 @@ angular.module('myApp', [])
     this.users.push(data);
 
     $scope.programar.push(data);
-    /*$scope.prenda = " ";
-    $scope.tela = " ";
-    $scope.talla = " ";
-    $scope.cantidad = " ";*/
+//    $scope.prenda = " ";
+//    $scope.tela = " ";
+//    $scope.talla = " ";
+//    $scope.cantidad = " ";
+      
+    $http({
+          method: 'POST',
+          data: this.programar,
+          url:'RegistrarProgramacion'
+        }).then(function(respuesta){
+            console.log(respuesta.data);
+          $scope.ver=respuesta.data;
+          alertify.success($scope.ver);
+
+
+          console.log($scope.ver);
+          //alert(respuesta.data.url);
+        }, function(error){
+          alert("tenemos problemas :(")
+        });  
 
   };
   this.count=function(){ return this.users.length;}
@@ -62,7 +80,7 @@ angular.module('myApp', [])
           $scope.habilitado=true;
       } else {
 
-        console.log($scope.prenda);
+       
         $scope.myprenda={
           valido:true,
           invalido:false
@@ -144,34 +162,34 @@ if($scope.tela==null||$scope.tela==""){
       $scope.registrarPedido = function(){
 
 
-        this.pro= {
-          title: "titulo",
-          url: "url",
-          numero: 1
-        };
-
-    this.article = new Object();
-    this.article.title = "titulo";
-    this.article.url = "url";
-    this.article.numero=1;
-
-
-
-        $http({
-          method: 'POST',
-          data: this.pro,
-          url:'Articles'
-        }).then(function(respuesta){
-          $scope.ver=respuesta.data;
-          alertify.success($scope.ver);
-
-
-          console.log($scope.ver.url);
-          //alert(respuesta.data.url);
-        }, function(error){
-          alert("tenemos problemas :(")
-        });
-
-      }
+//        this.pro= {
+//          title: "titulo",
+//          url: "url",
+//          numero: 1
+//        };
+//
+//    this.article = new Object();
+//    this.article.title = "titulo";
+//    this.article.url = "url";
+//    this.article.numero=1;
+//
+//
+//
+//        $http({
+//          method: 'POST',
+//          data: this.pro,
+//          url:'Articles'
+//        }).then(function(respuesta){
+//          $scope.ver=respuesta.data;
+//          alertify.success($scope.ver);
+//
+//
+//          console.log($scope.ver.url);
+//          //alert(respuesta.data.url);
+//        }, function(error){
+//          alert("tenemos problemas :(")
+//        });
+//
+     }
 
 });

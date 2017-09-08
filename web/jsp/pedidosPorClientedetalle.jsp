@@ -40,7 +40,7 @@
             <h5>Nombre: <%=mispedidos.getClienteId().getNombre()%> </h5>
             <h5>documento:<%=mispedidos.getClienteId().getDocumento() %></h5>
             <h5>Fecha de Pedido:<%=mispedidos.getFPedido() %></h5>
-            <h5>Fecha de Entrega:<%=mispedidos.getFPedido() %></h5>
+            <h5>Fecha de Entrega:<%=mispedidos.getFEntrega()%></h5>
             <input style="visibility: hidden" value="<%=mispedidos.getId() %>">
             </div>
             

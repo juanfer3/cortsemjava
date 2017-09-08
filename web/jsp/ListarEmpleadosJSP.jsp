@@ -12,6 +12,17 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="script/Empleados.js"></script>
+<%  
+    String rol;
+    rol = ((String) session.getAttribute("rol"));
+
+
+
+%>
+    
+    
+
+ 
 <div class="container" id="listarEmpleados">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
     <div class="row">
@@ -31,6 +42,7 @@
                 <table class="table table-hover" id="dev-table">
                     <thead>
                         <tr>
+                            <%if(rol.equals("Gerente")){%>
                             <th>#</th>
                             <th></th>
                             <th>Nombre</th>
@@ -40,6 +52,15 @@
                             <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
+                            <%}else if(rol.equals("Secretaria General")){%>
+                            <th>#</th>
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Cargo</th>
+                            <th>Usuario</th>
+                            <th>Ver</th>
+                            <%}%>
                         </tr>
                     </thead>
                     <%
@@ -65,11 +86,15 @@
                             <td><p class="cargoEmpleado"><%=myemp.getCargo()%></p></td>
                             <td><p class="userEmpleado"><%=myemp.getUsuarioId().getUsuario()%></td>
                             
-                            
+                            <%if(rol.equals("Gerente")){%>
                             <td><a id="ver" href="#" class="ver" data-toggle="modal" data-target="#myModal"><span><img src="imagenes/ojo.png"></span></a></td>
                             <td align="center"><a href="#" class="editarEmpleado" id="editarEmpleado"><span><img src="imagenes/editar.png"></span></a></td>
                             <td align="center"><a href="#" class="eliminarEmpleado" id="eliminarEmpleado"><span><img src="imagenes/borrar.png"></span></a></td>
-
+                            <%}else if(rol.equals("Secretaria General")){%>
+                            
+                            <td><a id="ver" href="#" class="ver" data-toggle="modal" data-target="#myModal"><span><img src="imagenes/ojo.png"></span></a></td>
+                            
+                            <%}%>
                         </tr>
 
                     </tbody>

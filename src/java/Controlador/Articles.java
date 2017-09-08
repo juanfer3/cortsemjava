@@ -71,6 +71,7 @@ public class Articles extends HttpServlet {
 //       }
         //response.setContentType("application/json");
         // 6. Send List<Article> as JSON to client
+   
     String pro= mapper.writeValueAsString(article);
        // mapper.writeValue(response.getOutputStream(), articles);
        out.println(pro);

@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/Empleados.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/AceptarPedido.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/Telas.js</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/ListarClientesJSP.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/Articles.java</file>
@@ -25,6 +26,7 @@
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/RegistroEmpleados.js</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/Programacionfunc.js</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/EditarPedidos.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/facturaPedidosDetalladoPorID.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/ListarEmpleados.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/RegistrarClientes.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/programacion.js</file>
@@ -35,6 +37,7 @@
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/RegistrarProgramacion.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/ListarEmpleadosJSP.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/RegistroEmpleado.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/Facturas.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/ListarEmpleados.jsp</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/DBEmpleado.java</file>
             <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/index.jsp</file>

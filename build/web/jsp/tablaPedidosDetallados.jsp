@@ -19,6 +19,7 @@
     Listar.clear();
     
     String rc = ((String) session.getAttribute("rolcliente"));
+    String rol =((String) session.getAttribute("rol"));
 
     if (!(rc.equals("Cliente"))) {
 
@@ -30,6 +31,8 @@
         Listar = ped.ListarPedidosDeClientes(cliente);
     
     } %>
+    
+ 
 <script src="script/pedidos.js"></script>
 <div id="listarPedidos">
     <form method="POST">
@@ -87,9 +90,11 @@
             </div>
 
         </div>
+        <%if(rol.equals("Jefe de Ventas") ||rol.equals("Vendedor") ){%>
         <div class="row ">
 
             <div class="col-xs-12 col-md-12"><a href="SeleccionCliente.jsp" class="btn btn-success btn-block btn-lg">Generar Pedido Nuevo</a></div>
         </div>
+        <%}%>
     </form>
 </div>

@@ -42,7 +42,7 @@ public class RegistrarProgramacion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+            String programacion;
             List<ProgramacionDetallada> Listar = new LinkedList<ProgramacionDetallada>();
             BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
             String json= "";
@@ -54,15 +54,13 @@ public class RegistrarProgramacion extends HttpServlet {
             ObjectMapper mapper= new ObjectMapper();
             
             ProgramacionDetallada myprogmacion= mapper.readValue(json,ProgramacionDetallada.class );
-            
-      
-            response.setContentType("application/json");
-            
+            out.println("hollo ");
+
             Listar.add(myprogmacion);
             
-            mapper.writeValue(response.getOutputStream(), Listar);
+            programacion=mapper.writeValueAsString(Listar);
             
-            response.getWriter().print(json);
+//            response.getWriter().print(Listar);
             
             
         }

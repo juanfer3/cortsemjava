@@ -212,4 +212,262 @@ $("#datepicker").datepicker();
             </li>
             
         </header>
-        <%}%>
+        <%}else if (sesion.getAttribute("rol").equals("Secretaria General")){%>
+        
+
+
+
+        <header>
+           <div> 
+            <hr class="rayainicial">
+        </div>
+        
+                                                                
+        <nav class="navbar navbar-inverse barra">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    
+                    
+                    <a class="navbar-brand" href="index.jsp" id="boton">CORTSEM</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="botoncompra"><a href="ListarEmpleados">EMPLEADOS</a></li>
+                    <li class="botoncompra"><a href="ListarClientes">CLIENTES</a></li>
+                    <li class="botoncompra"><a href="#">PRODUCCION</a></li>
+                    <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
+                    <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
+                    <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
+                    <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="CerrarSession"><span class="glyphicon glyphicon-log-in loguito">
+                                         
+                            </span>Cerrar Sesion</a></li>
+                           
+                </ul>
+            </div>
+        </nav>
+        </header>
+       
+        <header class="menu" id="menu">
+            <h5>Bienvenido</h5>
+            <hr>
+            <li class="menu-item">
+                <a href="#">Pedidos</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Empleados</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Clientes</a>
+            </li>
+        </header>
+        
+        
+         <%}else if (sesion.getAttribute("rol").equals("Jefe de Ventas")){%>
+        
+
+
+
+        <header>
+           <div> 
+            <hr class="rayainicial">
+        </div>
+        
+                                                                
+        <nav class="navbar navbar-inverse barra">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    
+                    
+                    <a class="navbar-brand" href="index.jsp" id="boton">CORTSEM</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    
+                    <li class="botoncompra"><a href="ListarClientes">CLIENTES</a></li>
+                   
+                    <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
+                    <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
+                    <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="CerrarSession"><span class="glyphicon glyphicon-log-in loguito">
+                                         
+                            </span>Cerrar Sesion</a></li>
+                           
+                </ul>
+            </div>
+        </nav>
+        </header>
+       
+        <header class="menu" id="menu">
+            <h5>Bienvenido</h5>
+            <hr>
+            <li class="menu-item">
+                <a href="#">Pedidos</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Empleados</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Clientes</a>
+            </li>
+        </header>
+        
+        
+         <%}else if (sesion.getAttribute("rol").equals("Jefe de Insumos")){%>
+        
+
+
+
+        <header>
+           <div> 
+            <hr class="rayainicial">
+        </div>
+        
+                                                                
+        <nav class="navbar navbar-inverse barra">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    
+                    
+                    <a class="navbar-brand" href="index.jsp" id="boton">CORTSEM</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    
+                    <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="CerrarSession"><span class="glyphicon glyphicon-log-in loguito">
+                                         
+                            </span>Cerrar Sesion</a></li>
+                           
+                </ul>
+            </div>
+        </nav>
+        </header>
+       
+        <header class="menu" id="menu">
+            <h5>Bienvenido</h5>
+            <hr>
+            <li class="menu-item">
+                <a href="#">Pedidos</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Empleados</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Clientes</a>
+            </li>
+        </header>
+         
+          <%}else if (sesion.getAttribute("rol").equals("Jefe de Trazo")){%>
+        
+
+
+
+        <header>
+           <div> 
+            <hr class="rayainicial">
+        </div>
+        
+                                                                
+        <nav class="navbar navbar-inverse barra">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    
+                    
+                    <a class="navbar-brand" href="index.jsp" id="boton">CORTSEM</a>
+                </div>
+                <ul class="nav navbar-nav">
+                   
+                    <li class="botoncompra"><a href="#">PRODUCCION</a></li>
+                    
+                    <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
+                    <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
+                    <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="CerrarSession"><span class="glyphicon glyphicon-log-in loguito">
+                                         
+                            </span>Cerrar Sesion</a></li>
+                           
+                </ul>
+            </div>
+        </nav>
+        </header>
+       
+        <header class="menu" id="menu">
+            <h5>Bienvenido</h5>
+            <hr>
+            <li class="menu-item">
+                <a href="#">Pedidos</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Empleados</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Clientes</a>
+            </li>
+        </header>
+          <%}else if (sesion.getAttribute("rol").equals("Jefe de Corte")){%>
+        
+
+
+
+        <header>
+           <div> 
+            <hr class="rayainicial">
+        </div>
+        
+                                                                
+        <nav class="navbar navbar-inverse barra">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    
+                    
+                    
+                    <a class="navbar-brand" href="index.jsp" id="boton">CORTSEM</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    
+                    <li class="botoncompra"><a href="#">PRODUCCION</a></li>
+                    
+                    <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
+                    <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
+                    <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="CerrarSession"><span class="glyphicon glyphicon-log-in loguito">
+                                         
+                            </span>Cerrar Sesion</a></li>
+                           
+                </ul>
+            </div>
+        </nav>
+        </header>
+       
+        <header class="menu" id="menu">
+            <h5>Bienvenido</h5>
+            <hr>
+            <li class="menu-item">
+                <a href="#">Pedidos</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Empleados</a>
+            </li>
+            <li class="menu-item">
+                <a href="#">Clientes</a>
+            </li>
+        </header>
+          <%}%>

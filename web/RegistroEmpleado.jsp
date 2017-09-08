@@ -73,7 +73,7 @@
                                             <select  value="" class="form-control seleccion" style="height:45px !important" name="cargo" id="cargo"> 
                                             
                                                 <option value="Gerente" >Gerente</option>
-                                                <option value="Secretaria general" >Secretaria general</option>
+                                                <option value="Secretaria General" >Secretaria General</option>
                                                 <option value="Jefe de Ventas" >Jefe de Ventas</option>
                                                 <option value="Jefe de Insumos">Jefe de Insumos</option>
                                                 <option value="Jefe de Trazo">Jefe de Trazo</option>

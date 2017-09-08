@@ -10,7 +10,7 @@ $(document).ready(function () {
         $('#listarPedidos').load('jsp/pedidosPorClientedetalle.jsp', {id: id}, function () {
 
 
-            alertify.success("conect0");
+            
         });
 
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
         $('#pedidoDetalleCliente').load('jsp/tablaPedidosDetallados.jsp', function () {
 
 
-            alertify.success("conect0");
+            
         });
 
 
