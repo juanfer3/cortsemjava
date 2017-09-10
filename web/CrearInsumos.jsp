@@ -88,9 +88,9 @@
                                             <input type="number"  class="form-control valor_unitario" value="" id="valor_unitario" name="valor_unitario" placeholder="0">
                                         </td>
                                         <td>
-                                             <p class="form-control valor_total" value="" id="valor_total" name="valor_total" placeholder="0" >  <p>
+                                            <p class="form-control valor_total" value="" id="valor_total" name="valor_total" placeholder="0" >  <p>
                                         </td>
-                                        
+
                                         <td>
                                             <a href="#" class=""><span class="glyphicon glyphicon-ok aceptar" id="aceptar"></span></a>
                                         </td>
@@ -150,7 +150,7 @@
 
 
                                 <tbody class="lista" id="lista">
-                                    
+
 
                                 </tbody>
 
@@ -170,7 +170,13 @@
             </form>
 
 
+            <div class="row ">
 
+                <div class="col-xs-12 col-md-12"><a href="ListarInsumos.jsp" class="btn btn-success btn-block btn-lg">Lista Insumos</a></div>
+
+
+
+            </div>
 
         </div>
 

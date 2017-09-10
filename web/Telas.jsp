@@ -38,7 +38,10 @@
     </head>
 
     <body>
+        <%
 
+    String rol;
+    rol = ((String) session.getAttribute("rol"));%>
         <%@include file="jsp/header.jsp" %>
 
         <div class="container" id="ocultarlistarclientes">
@@ -65,7 +68,8 @@
                                         <th>Referencia de tela</th>
                                         <th>Descripcion</th>
                                         <th>añadir</th>
-
+                                        
+                                        
 
                                     </tr>
                                 </thead>
@@ -79,7 +83,7 @@
                                         <td><input type="text"  class="form-control ref_tela" value="" id="ref_tela" name="ref_tela"></td>
                                         <td><input type="text"  class="form-control descripcion_tela" value="" id="descripcion_tela" name="descripcion_tela" ></td>
                                         <td><a href="#" class=""><span class="glyphicon glyphicon-ok" id="aceptartelas"></span></a></td>
-                                        
+                                      
 
 
 

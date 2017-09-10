@@ -55,7 +55,7 @@ public class InsercionInsumos extends HttpServlet {
             validar=insumos.RegistrarInsumos(nombre, tipo_de_unidad, cantidad, valor_unitario, valor_total, id_empleado);
             if(validar==true){
             
-                out.println("Siiii hay insercion");
+                out.println("Insumo registrado");
                 
             }else{
             

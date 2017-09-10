@@ -235,7 +235,7 @@ $("#datepicker").datepicker();
                     <li class="botoncompra"><a href="ListarEmpleados">EMPLEADOS</a></li>
                     <li class="botoncompra"><a href="ListarClientes">CLIENTES</a></li>
                     <li class="botoncompra"><a href="#">PRODUCCION</a></li>
-                    <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
+                    
                     <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
                     <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
                     <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
@@ -342,6 +342,7 @@ $("#datepicker").datepicker();
                 <ul class="nav navbar-nav">
                     
                     <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
+                    <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     

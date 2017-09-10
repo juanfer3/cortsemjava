@@ -11,7 +11,7 @@
 <%@page import="Modelo.Empleados"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<script src="script/Empleados.js"></script>
+<script src="script/EmpleadosFunc.js"></script>
 <%  
     String rol;
     rol = ((String) session.getAttribute("rol"));

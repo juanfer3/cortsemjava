@@ -9,6 +9,12 @@
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="script/ListarClientes.js"></script>
+<%
+    
+    String rol;
+    rol = ((String) session.getAttribute("rol"));%>
+    
+    <%=rol%>
 <div class="container" id="tablaClientes">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
     <form method="POST">
@@ -29,6 +35,7 @@
                     <table class="table table-hover" id="dev-table">
                         <thead>
                             <tr>
+                                <%if(rol.equals("Gerente") || rol.equals("Jefe de Ventas") || rol.equals("Vendedor") ){%>
                                 <th>#</th>
                                 <th>Nombre</th>
                                 <th>Documento</th>
@@ -38,6 +45,18 @@
                                 <th>Ver Detalle</th>
                                 <th>Editar</th>
                                 <th>Eliminar</th>
+                                <%}else{%>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Documento</th>
+                               
+                                <th>Usuario</th>
+                                 <th></th>
+                                <th>Ver Detalle</th>s
+                                 <%}%>
+                                
+                                
+                                
                             </tr>
                         </thead>
                         <%ArrayList<Clientes> Listar = new ArrayList();
@@ -58,13 +77,17 @@
                                 
                                 <td><%=cli.getUsuarioId().getUsuario()%></td>
                                 <td><input type="text" class="cliente_id" value="<%=cli.getId()%>" style="visibility:hidden" id="id"></td>
+                                
+                                <%if(rol.equals("Gerente") || rol.equals("Jefe de Ventas") || rol.equals("Vendedor") ){%>
+                                
                                 <td><a id="ver" href="#" class="ver"><span><img src="imagenes/ojo.png"></span></a></td>
                                 <td><a href="#" id="editar" class="editar"><span><img src="imagenes/editar.png"></span></a></td>
 
                                 <td><a href="#" class="eliminar" id="eliminar"><span><img src="imagenes/borrar.png"></span></a></td>
+                                            <%}else if(rol.equals("Secretaria General")){%>
 
-
-
+                                <td><a id="ver" href="#" class="ver"><span><img src="imagenes/ojo.png"></span></a></td>
+                                <%}%>
                             </tr>
 
                         </tbody>
@@ -130,8 +153,9 @@
 
         </div>
         <div class="row ">
-
+            <%if(rol.equals("Gerente") || rol.equals("Jefe de Ventas") || rol.equals("Vendedor") ){%>
             <div class="col-xs-12 col-md-12"><a href="RegistroClientes.jsp" class="btn btn-success btn-block btn-lg">Registrar Cliente</a></div>
+            <%}%>
         </div>
     </form>
 </div>

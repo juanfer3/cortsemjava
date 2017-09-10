@@ -10,7 +10,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="script/tablaEmpleados.js"></script>
-<script src="script/Empleados.js"></script>
+<script src="script/EmpleadosFunc.js"></script>
 <div class="container" id="listarEmpleados">
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
     <div class="row">

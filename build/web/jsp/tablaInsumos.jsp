@@ -15,6 +15,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="script/ListarInsumos.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <div class="container" id="">
 
 
@@ -36,6 +37,7 @@
                 <table class="table table-hover" id="dev-table">
                     <thead>
                         <tr>
+                            
                             <th>#</th>
                             <th></th>
                             <th>Nombre</th>
@@ -47,6 +49,7 @@
                             <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
+                            
                         </tr>
                     </thead>
                     <%
@@ -71,11 +74,11 @@
                             <td><p class="cargoEmpleado"><%=myinsumos.getCantidad()%></p></td>
                             <td><p class="userEmpleado"><%=myinsumos.getValorUnitario()%></td>
                             <td><p class="userEmpleado"><%=myinsumos.getValorTotal()%></td>
-
+                            
                             <td><a id="" href="#" class="ver" id="ver" data-toggle="modal" data-target="#myModal"><span><img src="imagenes/ojo.png"></span></a></td>
                             <td align="center"><a href="#" class="editar" id="editarEmpleado"><span><img src="imagenes/editar.png"></span></a></td>
                             <td align="center"><a href="#" class="eliminar" id="eliminarEmpleado"><span><img src="imagenes/borrar.png"></span></a></td>
-
+                            
                         </tr>
 
                     </tbody>
@@ -94,8 +97,9 @@
 
     </div>
     <div class="row ">
-
-        <div class="col-xs-12 col-md-12"><a href="CrearInsumos.jsp" class="btn btn-success btn-block btn-lg">Registrar Insumos</a></div>
+        
+        <div class="col-xs-12 col-md-12"><a href="CrearInsumo.jsp" class="btn btn-success btn-block btn-lg">Ingresar Insumos</a></div>
+        
     </div>
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>
 
