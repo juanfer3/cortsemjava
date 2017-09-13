@@ -3,19 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/facturaPedidosDetalladoPorID.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/FacturasFunc.js</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/pedidosPorClientedetalle.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/ListarClientesJSP.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/pedidos.js</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/ListarClientes.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/header.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/ListarPedidos.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/ListarEmpleadosJSP.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/Facturas.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/RegistroEmpleado.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/tablaPedidosDetallados.jsp</file>
-            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/index.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/Programacionfunc.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/script/perdidas.js</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/ListaPerdida.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/ListProductDetails.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/RegistarPerdida.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/Articles.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/jsp/EditarPerdida.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/Telas.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/RegistrarProgramacion.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/web/ListarPerdidas.jsp</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/JsonUtil.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Controlador/Productos.java</file>
+            <file>file:/C:/Users/Juan/Documents/NetBeansProjects/cortsemjava/src/java/Modelo/Product.java</file>
         </group>
     </open-files>
 </project-private>

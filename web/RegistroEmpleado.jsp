@@ -43,6 +43,7 @@
                             </div>
                             <div class="panel-body">
                                 <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+                            
                             </div>
 
                             <table class="table table-hover" id="dev-table">

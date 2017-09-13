@@ -162,34 +162,42 @@ if($scope.tela==null||$scope.tela==""){
       $scope.registrarPedido = function(){
 
 
-//        this.pro= {
-//          title: "titulo",
-//          url: "url",
-//          numero: 1
-//        };
-//
-//    this.article = new Object();
-//    this.article.title = "titulo";
-//    this.article.url = "url";
-//    this.article.numero=1;
-//
-//
-//
-//        $http({
-//          method: 'POST',
-//          data: this.pro,
-//          url:'Articles'
-//        }).then(function(respuesta){
-//          $scope.ver=respuesta.data;
-//          alertify.success($scope.ver);
-//
-//
-//          console.log($scope.ver.url);
-//          //alert(respuesta.data.url);
-//        }, function(error){
-//          alert("tenemos problemas :(")
-//        });
-//
+        this.pro= {
+          refTela:"tlle-2",
+          descripcion:"color roho"
+          
+          };
+          
+          this.Empleados ={ 
+              nombre:"nombre"
+          
+          };
+          
+          
+          
+    this.article = new Object();
+    this.article.title = "titulo";
+    this.article.url = "url";
+    this.article.numero=1;
+
+
+
+        $http({
+          method: 'POST',
+          data: this.pro,
+          url:'Productos'
+        }).then(function(respuesta){
+          alertify.success(this.pro);
+          $scope.ver=respuesta.data;
+          alertify.success($scope.ver.nombre);
+
+          console.log($scope.ver);
+          console.log($scope.ver.nombre);
+          //alert(respuesta.data.url);
+        }, function(error){
+          alert("tenemos problemas :(")
+        });
+
      }
 
 });

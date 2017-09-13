@@ -17,8 +17,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.json.simple.JSONObject;
+//import org.codehaus.jackson.map.ObjectMapper;
+//import org.json.simple.JSONObject;
 
 /**
  *
@@ -41,43 +41,43 @@ public class Articles extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
    
- try{
-    // This will store all received articles
-    List<Article> articles = new LinkedList<Article>();
-             // 1. get received JSON data from request
-        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-        String json = "";
-        if(br != null){
-            json = br.readLine();
-        }
-       
-        // 2. initiate jackson mapper
-        ObjectMapper mapper = new ObjectMapper();
-        
-        // 3. Convert received JSON to Article
-        Article article = mapper.readValue(json, Article.class);
-        
-        // 4. Set response type to JSON
-                    
- 
-        // 5. Add article to List<Article>
-       articles.add(article);
-       
-//       for(Article m: articles){
-//           out.println(m.getTitle());
-//           out.println(m.getUrl());
-//           out.println(m.getNumero());
+// try{
+//    // This will store all received articles
+//    List<Article> articles = new LinkedList<Article>();
+//             // 1. get received JSON data from request
+//        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+//        String json = "";
+//        if(br != null){
+//            json = br.readLine();
+//        }
 //       
-//       }
-        //response.setContentType("application/json");
-        // 6. Send List<Article> as JSON to client
-   
-    String pro= mapper.writeValueAsString(article);
-       // mapper.writeValue(response.getOutputStream(), articles);
-       out.println(pro);
- }catch(Exception e){
-     e.printStackTrace();
- }
+//        // 2. initiate jackson mapper
+//        ObjectMapper mapper = new ObjectMapper();
+//        
+//        // 3. Convert received JSON to Article
+//        Article article = mapper.readValue(json, Article.class);
+//        
+//        // 4. Set response type to JSON
+//                    
+// 
+//        // 5. Add article to List<Article>
+//       articles.add(article);
+//       
+////       for(Article m: articles){
+////           out.println(m.getTitle());
+////           out.println(m.getUrl());
+////           out.println(m.getNumero());
+////       
+////       }
+//        //response.setContentType("application/json");
+//        // 6. Send List<Article> as JSON to client
+//   
+//    String pro= mapper.writeValueAsString(article);
+//       // mapper.writeValue(response.getOutputStream(), articles);
+//       out.println(pro);
+// }catch(Exception e){
+//     e.printStackTrace();
+// }
         
     }
         

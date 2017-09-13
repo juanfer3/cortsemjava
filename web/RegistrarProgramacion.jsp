@@ -107,7 +107,13 @@
                             </form>
                         </div>
                         <div class="table-container">
-
+                            <div ng-repeat="x in ver">
+                                <p>{{x.nombre}}</p>
+                                <p>{{x.correoPersonal}}</p>
+                                <hr>
+                            </div>
+                                
+                                
 
                             <div class="table-responsive">
                                 <table class="table">
@@ -141,7 +147,6 @@
         </div>
                         <%@include file="jsp/footer.jsp" %>
                         <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
-
-                        <script src="script/Programacionfunc.js"></script>
-                        </body>
+                         <script src="script/Programacionfunc.js"></script>
+    </body>
                         </html>
