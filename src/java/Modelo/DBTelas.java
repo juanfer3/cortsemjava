@@ -278,4 +278,38 @@ public class DBTelas {
             return false;
         }
         
+        public boolean EditarTelaRecibidaPorId(int id, String tipo_de_unidad, int cantidad, int cliente) {
+            
+            String sql = "UPDATE  telas SET tipo_de_unidad= ?, cantidad= ?, id_cliente=? WHERE id=? ;";
+            int r = 0;
+           
+            ConexionBD bd = new ConexionBD();
+            Connection con = bd.conectar();
+
+            try {
+                PreparedStatement pst = con.prepareStatement(sql);
+
+                pst.setString(1, tipo_de_unidad);
+                pst.setInt(2, cantidad);
+                pst.setInt(3, cliente);
+                pst.setInt(4, id);
+                
+                r = pst.executeUpdate();
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                if (r!=0) {
+                    
+                    return true;
+                    
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+            return false;
+        }
+        
+        
 }

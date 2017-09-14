@@ -34,7 +34,7 @@
         <script src="script/cambiotablas.js"></script>
         <script src="script/Telas.js"></script>
         
-        <script ></script>
+       
     </head>
 
     <body>

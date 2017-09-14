@@ -24,6 +24,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -44,6 +45,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Clientes.findByCargo", query = "SELECT c FROM Clientes c WHERE c.cargo = :cargo"),
     @NamedQuery(name = "Clientes.findByHabilitado", query = "SELECT c FROM Clientes c WHERE c.habilitado = :habilitado")})
 public class Clientes implements Serializable {
+
+    @OneToMany(mappedBy = "idCliente")
+    private Collection<Telas> telasCollection;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente")
+    private Collection<TelasRecibidas> telasRecibidasCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -222,6 +229,26 @@ public class Clientes implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Clientes[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<TelasRecibidas> getTelasRecibidasCollection() {
+        return telasRecibidasCollection;
+    }
+
+    public void setTelasRecibidasCollection(Collection<TelasRecibidas> telasRecibidasCollection) {
+        this.telasRecibidasCollection = telasRecibidasCollection;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<Telas> getTelasCollection() {
+        return telasCollection;
+    }
+
+    public void setTelasCollection(Collection<Telas> telasCollection) {
+        this.telasCollection = telasCollection;
     }
     
 }

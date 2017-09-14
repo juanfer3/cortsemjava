@@ -6,26 +6,24 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author USUARIO
+ * @author Juan
  */
 @Entity
 @Table(name = "telas")
@@ -35,6 +33,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Telas.findById", query = "SELECT t FROM Telas t WHERE t.id = :id"),
     @NamedQuery(name = "Telas.findByRefTela", query = "SELECT t FROM Telas t WHERE t.refTela = :refTela"),
     @NamedQuery(name = "Telas.findByDescripcion", query = "SELECT t FROM Telas t WHERE t.descripcion = :descripcion"),
+    @NamedQuery(name = "Telas.findByTipoDeUnidad", query = "SELECT t FROM Telas t WHERE t.tipoDeUnidad = :tipoDeUnidad"),
+    @NamedQuery(name = "Telas.findByCantidad", query = "SELECT t FROM Telas t WHERE t.cantidad = :cantidad"),
+    @NamedQuery(name = "Telas.findByEstado", query = "SELECT t FROM Telas t WHERE t.estado = :estado"),
     @NamedQuery(name = "Telas.findByHabilitado", query = "SELECT t FROM Telas t WHERE t.habilitado = :habilitado")})
 public class Telas implements Serializable {
 
@@ -54,15 +55,22 @@ public class Telas implements Serializable {
     @Size(min = 1, max = 40)
     @Column(name = "descripcion")
     private String descripcion;
+    @Size(max = 40)
+    @Column(name = "tipo_de_unidad")
+    private String tipoDeUnidad;
+    @Column(name = "cantidad")
+    private Integer cantidad;
+    @Size(max = 40)
+    @Column(name = "estado")
+    private String estado;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 3)
     @Column(name = "habilitado")
     private String habilitado;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "telasId")
-    private Collection<PedidosDetallados> pedidosDetalladosCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTela")
-    private Collection<ProgramacionDetallada> programacionDetalladaCollection;
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id")
+    @ManyToOne
+    private Clientes idCliente;
 
     public Telas() {
     }
@@ -102,6 +110,30 @@ public class Telas implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public String getTipoDeUnidad() {
+        return tipoDeUnidad;
+    }
+
+    public void setTipoDeUnidad(String tipoDeUnidad) {
+        this.tipoDeUnidad = tipoDeUnidad;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public String getHabilitado() {
         return habilitado;
     }
@@ -110,22 +142,12 @@ public class Telas implements Serializable {
         this.habilitado = habilitado;
     }
 
-    @XmlTransient
-    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
-        return pedidosDetalladosCollection;
+    public Clientes getIdCliente() {
+        return idCliente;
     }
 
-    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
-        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
-    }
-
-    @XmlTransient
-    public Collection<ProgramacionDetallada> getProgramacionDetalladaCollection() {
-        return programacionDetalladaCollection;
-    }
-
-    public void setProgramacionDetalladaCollection(Collection<ProgramacionDetallada> programacionDetalladaCollection) {
-        this.programacionDetalladaCollection = programacionDetalladaCollection;
+    public void setIdCliente(Clientes idCliente) {
+        this.idCliente = idCliente;
     }
 
     @Override
