@@ -67,9 +67,7 @@ $(document).ready(function (){
        
    
    $('#aceptar').click(function(){
-      url
-       
-       
+      
    });
    
    
