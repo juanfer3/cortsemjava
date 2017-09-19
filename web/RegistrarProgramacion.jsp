@@ -52,68 +52,73 @@
                                 <div class="col-sm-2 ">
                                     <div class="form-group">
                                         <input ng-class="myprenda"
-                                        ng-blur="validarPrenda()"
-                                        type="text"
-                                        class="form-control"
-                                        ng-model="prenda"
-                                        id="prenda"
-                                        placeholder="Prenda">
+                                               ng-blur="validarPrenda()"
+                                               type="text"
+                                               class="form-control"
+                                               ng-model="prenda"
+                                               id="prenda"
+                                               placeholder="Prenda">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <input ng-class="mytela"
-                                         ng-blur="validarTela()"
-                                         type="text"
-                                         class="form-control"
-                                         ng-model="tela"
-                                         id="tela"
-                                         placeholder="Tela">
+                                               ng-blur="validarTela()"
+                                               type="text"
+                                               class="form-control"
+                                               ng-model="tela"
+                                               id="tela"
+                                               placeholder="Tela">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <input type="text"
-                                        ng-class="mytalla"
-                                        ng-blur="validarTalla()"
-                                        class="form-control"
-                                        ng-model="talla"
-                                        id="talla"
-                                        placeholder="Talla">
+                                               ng-class="mytalla"
+                                               ng-blur="validarTalla()"
+                                               class="form-control"
+                                               ng-model="talla"
+                                               id="talla"
+                                               placeholder="Talla">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <input
-                                        ng-class="mycantidad"
-                                        ng-blur="validarCantidad()"
-                                        type="text"
-                                        class="form-control"
-                                        ng-model="cantidad"
-                                        id="cantidad"
-                                        placeholder="Unidades a Cortar">
+                                            ng-class="mycantidad"
+                                            ng-blur="validarCantidad()"
+                                            type="text"
+                                            class="form-control"
+                                            ng-model="cantidad"
+                                            id="cantidad"
+                                            placeholder="Unidades a Cortar">
                                     </div>
                                 </div>
                                 <div class="text-center">
                                     <button
-                                    ng-disabled="habilitado"
-                                    ng-click="InsertProgramacion()"
-                                    id="submit-button"
-                                    type="submit"
-                                    class="btn btn-info">Adicionar</button>
+                                        ng-disabled="habilitado"
+                                        ng-click="InsertProgramacion()"
+                                        id="submit-button"
+                                        type="submit"
+                                        class="btn btn-info">Adicionar</button>
                                 </div>
                                 <div class="col-sm-2"></div>
                             </div>
                             </form>
                         </div>
+                        
+                        
+                        
+                        
+                        
                         <div class="table-container">
                             <div ng-repeat="x in ver">
                                 <p>{{x.nombre}}</p>
                                 <p>{{x.correoPersonal}}</p>
                                 <hr>
                             </div>
-                                
-                                
+
+
 
                             <div class="table-responsive">
                                 <table class="table">
@@ -136,17 +141,17 @@
                                 </table>
                                 <div class="text-center">
                                     <button ng-click="registrarPedido()" 
-                                     id="Registrar"
-                                     type="button"
-                                     class="btn btn-info">Registrar produccion</button>
+                                            id="Registrar"
+                                            type="button"
+                                            class="btn btn-info">Registrar produccion</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
         </div>
-                        <%@include file="jsp/footer.jsp" %>
-                        <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
-                         <script src="script/Programacionfunc.js"></script>
+        <%@include file="jsp/footer.jsp" %>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
+        <script src="script/Programacionfunc.js"></script>
     </body>
-                        </html>
+</html>
