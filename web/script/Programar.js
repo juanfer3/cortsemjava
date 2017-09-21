@@ -22,12 +22,9 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
     $scope.Lista;
 
     $scope.Produccion ;
-    
-    $scope.myModal;
-    
+
     $scope.posts;
-    
-    $scope.datas;
+
 
     getPedidos();
     //getPedidosEnProduccion();
@@ -63,7 +60,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
         }).then(function (response) {
             
             $scope.Produccion = response.data;
-            //console.log($scope.Produccion);
+            console.log($scope.Produccion);
 
 
 
@@ -78,7 +75,13 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
 
 
     $scope.programar = function (lista) {
-        
+        $ionicLoading.show({
+            content: 'cargando...',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
 
         $scope.datos = {
             'id': lista.id
@@ -90,69 +93,17 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
             url: 'ProgramarPedido'
         }).then(function (response) {
 
-            
+            alertify.success(response.data);
             console.log(response.data);
             getPedidos();
-            
-            
+            getPedidosEnProduccion();
+            $ionicLoading.hide();
         }, function (error) {
-           
-            alertify.alert("Tenemos Problemas con el servidor");
-            
-        });
-
-    }
-    
-    $scope.DeshacerProgramacion= function(lista){
-        
-        $scope.datas = {
-            'id': lista.id
-
-        };
-        $http({
-           
-           method:"POST",
-           data: this.datas,
-           url:'DeshacerPedido'
-           
-        }).then(function(response){
-           
-            console.log(response.data);
-            getPedidos();
-            
-            
-        }, function(eror){
-            
-           
+            $ionicLoading.hide();
             alertify.alert("Tenemo Problemas con el servidor");
-        });
-        
-    }
-    
-    $scope.Modal=function(lista){
-        
-         $scope.datos = {
-            'id': lista.id
-
-        };
-       
-        $http({
-            method: 'POST',
-            data: this.datos,
-            url: 'ModalProgramacion'
-        }).then(function (response) {
-
-            
-            console.log(response.data);
-            $scope.myModal=response.data;
-            
-           
-        }, function (error) {
-           
-            alertify.alert("Tenemos Problemas con el servidor");
             
         });
-        
+
     }
 
 

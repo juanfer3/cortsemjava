@@ -150,6 +150,7 @@
                     </div>
                 </div>
         </div>
+        
         <%@include file="jsp/footer.jsp" %>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
         <script src="script/Programacionfunc.js"></script>

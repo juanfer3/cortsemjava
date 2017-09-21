@@ -6,9 +6,11 @@
 package Controlador;
 
 import Modelo.DBPedidos;
+import Modelo.Datos;
 import Modelo.JsonUtil;
-import Modelo.Pedidos;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -21,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "PedidosNuevos", urlPatterns = {"/PedidosNuevos"})
-public class PedidosNuevos extends HttpServlet {
+@WebServlet(name = "ProgramarPedido", urlPatterns = {"/ProgramarPedido"})
+public class ProgramarPedido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,21 +39,24 @@ public class PedidosNuevos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+          
             
-            DBPedidos pedidos=new DBPedidos();
-            JsonUtil jsonUtil=new JsonUtil();
-            String estado="pedido";
-            String json="";
-            ArrayList<Pedidos> Lista=new ArrayList();
-            
-            Lista.clear();
-            Lista=pedidos.ListarPedidosConClientes();
-            
-            json=jsonUtil.JavaToJson(Lista);
-            
-            out.println(json);
-            
-        }
+            BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            String json = "";
+            if(br != null){
+                json = br.readLine();
+            }
+                Datos id= JsonUtil.JsonToJava(json, Datos.class);
+                //out.println(id+"=============");
+                //System.out.println(id.getId());
+                DBPedidos ped=new DBPedidos();
+                boolean validar=ped.ProgramarPedido(id.getId());
+                
+                out.println(validar);
+                
+                
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

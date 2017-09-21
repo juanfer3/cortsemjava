@@ -6,10 +6,8 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,18 +17,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author USUARIO
+ * @author Juan
  */
 @Entity
 @Table(name = "pedidos")
@@ -40,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pedidos.findById", query = "SELECT p FROM Pedidos p WHERE p.id = :id"),
     @NamedQuery(name = "Pedidos.findByFPedido", query = "SELECT p FROM Pedidos p WHERE p.fPedido = :fPedido"),
     @NamedQuery(name = "Pedidos.findByFEntrega", query = "SELECT p FROM Pedidos p WHERE p.fEntrega = :fEntrega"),
+    @NamedQuery(name = "Pedidos.findByEstado", query = "SELECT p FROM Pedidos p WHERE p.estado = :estado"),
     @NamedQuery(name = "Pedidos.findByHabilitado", query = "SELECT p FROM Pedidos p WHERE p.habilitado = :habilitado")})
 public class Pedidos implements Serializable {
 
@@ -52,11 +49,14 @@ public class Pedidos implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "f_pedido")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fPedido;
     @Column(name = "f_entrega")
     @Temporal(TemporalType.DATE)
     private Date fEntrega;
+    @Size(max = 20)
+    @Column(name = "estado")
+    private String estado;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 3)
@@ -65,12 +65,6 @@ public class Pedidos implements Serializable {
     @JoinColumn(name = "cliente_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Clientes clienteId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
-    private Collection<PedidosDetallados> pedidosDetalladosCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedido")
-    private Collection<Facturas> facturasCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPedido")
-    private Collection<Programaciones> programacionesCollection;
 
     public Pedidos() {
     }
@@ -109,6 +103,14 @@ public class Pedidos implements Serializable {
         this.fEntrega = fEntrega;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public String getHabilitado() {
         return habilitado;
     }
@@ -123,33 +125,6 @@ public class Pedidos implements Serializable {
 
     public void setClienteId(Clientes clienteId) {
         this.clienteId = clienteId;
-    }
-
-    @XmlTransient
-    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
-        return pedidosDetalladosCollection;
-    }
-
-    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
-        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
-    }
-
-    @XmlTransient
-    public Collection<Facturas> getFacturasCollection() {
-        return facturasCollection;
-    }
-
-    public void setFacturasCollection(Collection<Facturas> facturasCollection) {
-        this.facturasCollection = facturasCollection;
-    }
-
-    @XmlTransient
-    public Collection<Programaciones> getProgramacionesCollection() {
-        return programacionesCollection;
-    }
-
-    public void setProgramacionesCollection(Collection<Programaciones> programacionesCollection) {
-        this.programacionesCollection = programacionesCollection;
     }
 
     @Override

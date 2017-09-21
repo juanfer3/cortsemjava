@@ -5,10 +5,14 @@
  */
 package Controlador;
 
+import Modelo.DBPedidoDetallado;
 import Modelo.DBPedidos;
+import Modelo.Datos;
 import Modelo.JsonUtil;
-import Modelo.Pedidos;
+import Modelo.PedidosDetallados;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -21,8 +25,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "PedidosNuevos", urlPatterns = {"/PedidosNuevos"})
-public class PedidosNuevos extends HttpServlet {
+@WebServlet(name = "ModalProgramacion", urlPatterns = {"/ModalProgramacion"})
+public class ModalProgramacion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,20 +41,24 @@ public class PedidosNuevos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            DBPedidos pedidos=new DBPedidos();
-            JsonUtil jsonUtil=new JsonUtil();
-            String estado="pedido";
-            String json="";
-            ArrayList<Pedidos> Lista=new ArrayList();
-            
-            Lista.clear();
-            Lista=pedidos.ListarPedidosConClientes();
-            
-            json=jsonUtil.JavaToJson(Lista);
-            
-            out.println(json);
-            
+            /* TODO output your page here. You may use following sample code. */
+            BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            String json = "";
+            if(br != null){
+                json = br.readLine();
+                
+            }
+        
+                Datos id= JsonUtil.JsonToJava(json, Datos.class);
+               
+                System.out.println(id.getId());
+                DBPedidoDetallado ped=new DBPedidoDetallado();
+                ArrayList<PedidosDetallados>Listar=new ArrayList();
+                Listar=ped.BuscarDetallesDePedidosPorIdPedido(id.getId());
+                
+                String MyList=JsonUtil.JavaToJson(Listar);
+                
+                out.println(MyList);
         }
     }
 

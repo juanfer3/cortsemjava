@@ -161,7 +161,7 @@ public class DBPedidos {
         int id;
         String habilitado = "si";
 
-        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "'ORDER BY clientes.nombre ASC;";
+        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.estado,pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "'ORDER BY clientes.nombre ASC;";
 
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -177,11 +177,13 @@ public class DBPedidos {
                 pedido.setId(rs.getInt("pedidos.id"));
                 pedido.setFEntrega(rs.getDate("f_entrega"));
                 pedido.setFPedido(rs.getDate("f_pedido"));
+                pedido.setEstado(rs.getString("pedidos.estado"));
+                System.out.println(rs.getString("pedidos.estado"));
                 user.setId(rs.getInt("clientes.id"));
                 user.setNombre(rs.getString("nombre"));
                 user.setDocumento(rs.getString("documento"));
                 pedido.setClienteId(user);
-
+               
                 Listar.add(pedido);
 
             }
@@ -192,7 +194,7 @@ public class DBPedidos {
         } catch (SQLException ex) {
             Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+         
         return Listar;
     }
 
@@ -312,7 +314,7 @@ public class DBPedidos {
         return false;
     }
     
-     public ArrayList ListarPedidosPorEstado(String estado) {
+     public ArrayList ListarPedidosPorEstadoPedido(String estado) {
 
         ArrayList<Pedidos> Listar = new ArrayList();
         Listar.clear();
@@ -322,6 +324,125 @@ public class DBPedidos {
         int id;
         String habilitado = "si";
         estado="pedido";
+        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "' AND pedidos.estado='"+estado+"' ORDER BY clientes.nombre ASC;";
+
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                Pedidos pedido = new Pedidos();
+                Clientes user = new Clientes();
+
+                pedido.setId(rs.getInt("pedidos.id"));
+                pedido.setFEntrega(rs.getDate("f_entrega"));
+                pedido.setFPedido(rs.getDate("f_pedido"));
+                user.setId(rs.getInt("clientes.id"));
+                user.setNombre(rs.getString("nombre"));
+                user.setDocumento(rs.getString("documento"));
+                pedido.setClienteId(user);
+
+                Listar.add(pedido);
+
+            }
+            rs.close();
+            con.close();
+            st.close();
+            bd.cierraConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return Listar;
+    }
+     
+     
+      public boolean ProgramarPedido(int id) {
+
+        String sql;
+        String estado="En producion";
+
+        int r = 0;
+
+        
+        sql = "UPDATE pedidos SET estado=? WHERE id=?;";
+
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, estado);
+            pst.setInt(2, id);
+
+            r = pst.executeUpdate();
+
+            if (r != 0) {
+
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        
+        }
+
+        return false;
+    }
+      
+      public boolean DeshacerProgramacion(int id) {
+
+        String sql;
+        String estado="pedido";
+
+        int r = 0;
+
+        
+        sql = "UPDATE pedidos SET estado=? WHERE id=?;";
+
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, estado);
+            pst.setInt(2, id);
+
+            r = pst.executeUpdate();
+
+            if (r != 0) {
+
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        
+        }
+
+        return false;
+    }
+      
+      
+       public ArrayList ListarPedidosPorEstadoEnProducion(String estado) {
+
+        ArrayList<Pedidos> Listar = new ArrayList();
+        Listar.clear();
+        ResultSet rs = null;
+        int u = 0;
+        
+        int id;
+        String habilitado = "si";
+        estado="En producion";
         String sql = "SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "' AND pedidos.estado='"+estado+"' ORDER BY clientes.nombre ASC;";
 
         ConexionBD bd = new ConexionBD();
