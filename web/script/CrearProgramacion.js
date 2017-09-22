@@ -1,24 +1,30 @@
-var app = angular.module('myPrograment', ['ionic']);
+var app = angular.module('myPrograment', []);
 
-app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoading) {
 
-    $ionicLoading.show({
-        content: 'cargando...',
-        animation: 'fade-in',
-        showBackdrop: true,
-        maxWidth: 200,
-        showDelay: 0
-    });
+
+app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
+
+
+
+//    $ionicLoading.show({
+//        content: 'cargando...',
+//        animation: 'fade-in',
+//        showBackdrop: true,
+//        maxWidth: 200,
+//        showDelay: 0
+//    });
     // $scope.t=$('.tomo').val();
     // alertify.alert($scope.t);
     //$scope.result = document.getElementsByClassName("tomo");
     //console.log($scope.result);
     //alertify.success($scope.result);
+   
 
+    
+    $scope.valor;
 
-
-
-
+    $scope.nombre="";
+    
     $scope.Lista;
 
     $scope.Produccion ;
@@ -29,6 +35,8 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
     
     $scope.datas;
 
+    $scope.CurrentDate ;
+    
     getPedidos();
     //getPedidosEnProduccion();
     function getPedidos() {
@@ -77,12 +85,13 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
     }
 
 
-    $scope.programar = function (lista) {
+    $scope.programar = function () {
         
-
+ 
+       
         $scope.datos = {
-            'id': lista.id
-
+            'id': this.myId,
+            'fecha':$scope.fProgramada
         };
         $http({
             method: 'POST',
@@ -130,7 +139,9 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
     }
     
     $scope.Modal=function(lista){
-        
+       
+        this.myId=lista.id;
+       
          $scope.datos = {
             'id': lista.id
 
@@ -154,8 +165,13 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
         });
         
     }
+    
+
+
 
 
 });
+
+
 
 

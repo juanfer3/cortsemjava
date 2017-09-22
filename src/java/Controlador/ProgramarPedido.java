@@ -51,7 +51,7 @@ public class ProgramarPedido extends HttpServlet {
                 //out.println(id+"=============");
                 //System.out.println(id.getId());
                 DBPedidos ped=new DBPedidos();
-                boolean validar=ped.ProgramarPedido(id.getId());
+                boolean validar=ped.ProgramarPedido(id.getId(),id.getFecha());
                 
                 out.println(validar);
                 

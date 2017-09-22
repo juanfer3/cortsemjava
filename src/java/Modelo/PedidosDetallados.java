@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author USUARIO
+ * @author Juan
  */
 @Entity
 @Table(name = "pedidos_detallados")
@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "PedidosDetallados.findByTalla", query = "SELECT p FROM PedidosDetallados p WHERE p.talla = :talla"),
     @NamedQuery(name = "PedidosDetallados.findByCantidad", query = "SELECT p FROM PedidosDetallados p WHERE p.cantidad = :cantidad"),
     @NamedQuery(name = "PedidosDetallados.findByValorUnitario", query = "SELECT p FROM PedidosDetallados p WHERE p.valorUnitario = :valorUnitario"),
+    @NamedQuery(name = "PedidosDetallados.findByCantidadProducida", query = "SELECT p FROM PedidosDetallados p WHERE p.cantidadProducida = :cantidadProducida"),
     @NamedQuery(name = "PedidosDetallados.findByValorTotal", query = "SELECT p FROM PedidosDetallados p WHERE p.valorTotal = :valorTotal"),
     @NamedQuery(name = "PedidosDetallados.findByHabilitado", query = "SELECT p FROM PedidosDetallados p WHERE p.habilitado = :habilitado")})
 public class PedidosDetallados implements Serializable {
@@ -63,6 +64,8 @@ public class PedidosDetallados implements Serializable {
     @NotNull
     @Column(name = "valor_unitario")
     private float valorUnitario;
+    @Column(name = "cantidad_producida")
+    private Integer cantidadProducida;
     @Basic(optional = false)
     @NotNull
     @Column(name = "valor_total")
@@ -72,12 +75,12 @@ public class PedidosDetallados implements Serializable {
     @Size(min = 1, max = 3)
     @Column(name = "habilitado")
     private String habilitado;
-    @JoinColumn(name = "telas_id", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private Telas telasId;
     @JoinColumn(name = "pedido_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Pedidos pedidoId;
+    @JoinColumn(name = "telas_id", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Telas telasId;
 
     public PedidosDetallados() {
     }
@@ -136,6 +139,14 @@ public class PedidosDetallados implements Serializable {
         this.valorUnitario = valorUnitario;
     }
 
+    public Integer getCantidadProducida() {
+        return cantidadProducida;
+    }
+
+    public void setCantidadProducida(Integer cantidadProducida) {
+        this.cantidadProducida = cantidadProducida;
+    }
+
     public float getValorTotal() {
         return valorTotal;
     }
@@ -152,20 +163,20 @@ public class PedidosDetallados implements Serializable {
         this.habilitado = habilitado;
     }
 
-    public Telas getTelasId() {
-        return telasId;
-    }
-
-    public void setTelasId(Telas telasId) {
-        this.telasId = telasId;
-    }
-
     public Pedidos getPedidoId() {
         return pedidoId;
     }
 
     public void setPedidoId(Pedidos pedidoId) {
         this.pedidoId = pedidoId;
+    }
+
+    public Telas getTelasId() {
+        return telasId;
+    }
+
+    public void setTelasId(Telas telasId) {
+        this.telasId = telasId;
     }
 
     @Override

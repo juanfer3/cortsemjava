@@ -6,8 +6,10 @@
 package Modelo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +19,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -36,9 +41,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Pedidos.findById", query = "SELECT p FROM Pedidos p WHERE p.id = :id"),
     @NamedQuery(name = "Pedidos.findByFPedido", query = "SELECT p FROM Pedidos p WHERE p.fPedido = :fPedido"),
     @NamedQuery(name = "Pedidos.findByFEntrega", query = "SELECT p FROM Pedidos p WHERE p.fEntrega = :fEntrega"),
+    @NamedQuery(name = "Pedidos.findByFProgramacion", query = "SELECT p FROM Pedidos p WHERE p.fProgramacion = :fProgramacion"),
     @NamedQuery(name = "Pedidos.findByEstado", query = "SELECT p FROM Pedidos p WHERE p.estado = :estado"),
     @NamedQuery(name = "Pedidos.findByHabilitado", query = "SELECT p FROM Pedidos p WHERE p.habilitado = :habilitado")})
 public class Pedidos implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
+    private Collection<PedidosDetallados> pedidosDetalladosCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,6 +63,9 @@ public class Pedidos implements Serializable {
     @Column(name = "f_entrega")
     @Temporal(TemporalType.DATE)
     private Date fEntrega;
+    @Column(name = "f_programacion")
+    @Temporal(TemporalType.DATE)
+    private Date fProgramacion;
     @Size(max = 20)
     @Column(name = "estado")
     private String estado;
@@ -103,6 +115,14 @@ public class Pedidos implements Serializable {
         this.fEntrega = fEntrega;
     }
 
+    public Date getFProgramacion() {
+        return fProgramacion;
+    }
+
+    public void setFProgramacion(Date fProgramacion) {
+        this.fProgramacion = fProgramacion;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -150,6 +170,16 @@ public class Pedidos implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Pedidos[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
+        return pedidosDetalladosCollection;
+    }
+
+    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
+        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
     }
     
 }

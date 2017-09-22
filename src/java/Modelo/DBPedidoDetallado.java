@@ -177,6 +177,7 @@ public class DBPedidoDetallado {
                 ped.setId(rs.getInt("pedidos.id"));
                 ped.setFEntrega(rs.getDate("f_entrega"));
                 ped.setFPedido(rs.getDate("f_pedido"));
+                ped.setFProgramacion(rs.getDate("f_programacion"));
                 ped.setId(rs.getInt("pedidos.id"));
                 ped.setClienteId(client);
                 
@@ -209,7 +210,7 @@ public class DBPedidoDetallado {
         ResultSet rs=null;
         
         String habilitado = "si";
-        String sql = "SELECT pedidos_detallados.id, pedidos_detallados.pedido_id, pedidos_detallados.prenda, pedidos_detallados.telas_id, pedidos_detallados.talla, pedidos_detallados.cantidad, pedidos_detallados.valor_unitario, pedidos_detallados.valor_total,pedidos.id, pedidos.f_pedido, pedidos.f_entrega, pedidos.cliente_id, telas.id, telas.ref_tela, telas.descripcion,clientes.id, clientes.nombre, clientes.documento FROM pedidos_detallados INNER JOIN pedidos ON pedidos_detallados.pedido_id = pedidos.id INNER JOIN telas ON pedidos_detallados.telas_id=telas.id INNER JOIN clientes ON pedidos.cliente_id=clientes.id  WHERE  pedidos.id='"+id+"' ;";
+        String sql = "SELECT pedidos_detallados.id, pedidos.f_programacion,pedidos_detallados.pedido_id, pedidos_detallados.prenda, pedidos_detallados.telas_id, pedidos_detallados.talla, pedidos_detallados.cantidad, pedidos_detallados.valor_unitario, pedidos_detallados.valor_total,pedidos.id, pedidos.f_pedido, pedidos.f_entrega, pedidos.cliente_id, telas.id, telas.ref_tela, telas.descripcion,clientes.id, clientes.nombre, clientes.documento FROM pedidos_detallados INNER JOIN pedidos ON pedidos_detallados.pedido_id = pedidos.id INNER JOIN telas ON pedidos_detallados.telas_id=telas.id INNER JOIN clientes ON pedidos.cliente_id=clientes.id  WHERE  pedidos.id='"+id+"' ;";
         
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -241,6 +242,7 @@ public class DBPedidoDetallado {
                 ped.setId(rs.getInt("pedidos.id"));
                 ped.setFEntrega(rs.getDate("f_entrega"));
                 ped.setFPedido(rs.getDate("f_pedido"));
+                ped.setFProgramacion(rs.getDate("f_programacion"));
                 ped.setId(rs.getInt("pedidos.id"));
                 ped.setClienteId(client);
                 

@@ -324,7 +324,7 @@ public class DBPedidos {
         int id;
         String habilitado = "si";
         estado="pedido";
-        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "' AND pedidos.estado='"+estado+"' ORDER BY clientes.nombre ASC;";
+        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento,pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "' AND pedidos.estado='"+estado+"' ORDER BY clientes.nombre ASC;";
 
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -360,7 +360,7 @@ public class DBPedidos {
     }
      
      
-      public boolean ProgramarPedido(int id) {
+      public boolean ProgramarPedido(int id,String fecha) {
 
         String sql;
         String estado="En producion";
@@ -368,7 +368,7 @@ public class DBPedidos {
         int r = 0;
 
         
-        sql = "UPDATE pedidos SET estado=? WHERE id=?;";
+        sql = "UPDATE pedidos SET estado=?, f_programacion=? WHERE id=?;";
 
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -376,7 +376,8 @@ public class DBPedidos {
         try {
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, estado);
-            pst.setInt(2, id);
+            pst.setString(2, fecha);
+            pst.setInt(3, id);
 
             r = pst.executeUpdate();
 

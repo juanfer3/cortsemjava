@@ -1,31 +1,42 @@
-var app = angular.module('myPrograment', ['ionic']);
+var app = angular.module('myPrograment', []);
 
-app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoading) {
 
-    $ionicLoading.show({
-        content: 'cargando...',
-        animation: 'fade-in',
-        showBackdrop: true,
-        maxWidth: 200,
-        showDelay: 0
-    });
+
+app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
+
+
+
+//    $ionicLoading.show({
+//        content: 'cargando...',
+//        animation: 'fade-in',
+//        showBackdrop: true,
+//        maxWidth: 200,
+//        showDelay: 0
+//    });
     // $scope.t=$('.tomo').val();
     // alertify.alert($scope.t);
     //$scope.result = document.getElementsByClassName("tomo");
     //console.log($scope.result);
     //alertify.success($scope.result);
+   
 
+    
+    $scope.valor;
 
-
-
-
+    $scope.nombre="";
+    
     $scope.Lista;
 
     $scope.Produccion ;
-
+    
+    $scope.myModal;
+    
     $scope.posts;
+    
+    $scope.datas;
 
-
+    $scope.CurrentDate ;
+    
     getPedidos();
     //getPedidosEnProduccion();
     function getPedidos() {
@@ -60,7 +71,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
         }).then(function (response) {
             
             $scope.Produccion = response.data;
-            console.log($scope.Produccion);
+            //console.log($scope.Produccion);
 
 
 
@@ -74,18 +85,13 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
     }
 
 
-    $scope.programar = function (lista) {
-        $ionicLoading.show({
-            content: 'cargando...',
-            animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
-            showDelay: 0
-        });
-
+    $scope.programar = function () {
+        
+       
+       
         $scope.datos = {
-            'id': lista.id
-
+            'id': $scope.valor,
+            'fecha':$scope.fProgramada
         };
         $http({
             method: 'POST',
@@ -93,20 +99,79 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout, $ionicLoa
             url: 'ProgramarPedido'
         }).then(function (response) {
 
-            alertify.success(response.data);
+            
             console.log(response.data);
             getPedidos();
-            getPedidosEnProduccion();
-            $ionicLoading.hide();
+            
+            
         }, function (error) {
-            $ionicLoading.hide();
-            alertify.alert("Tenemo Problemas con el servidor");
+           
+            alertify.alert("Tenemos Problemas con el servidor");
             
         });
 
     }
+    
+    $scope.DeshacerProgramacion= function(lista){
+        
+        $scope.datas = {
+            'id': lista.id
+
+        };
+        $http({
+           
+           method:"POST",
+           data: this.datas,
+           url:'DeshacerPedido'
+           
+        }).then(function(response){
+           
+            console.log(response.data);
+            getPedidos();
+            
+            
+        }, function(eror){
+            
+           
+            alertify.alert("Tenemo Problemas con el servidor");
+        });
+        
+    }
+    
+    $scope.Modal=function(lista){
+     
+        $scope.valor=lista.id;
+       
+         $scope.datos = {
+            'id': lista.id
+
+        };
+       
+        $http({
+            method: 'POST',
+            data: this.datos,
+            url: 'ModalProgramacion'
+        }).then(function (response) {
+
+            
+            console.log(response.data);
+            $scope.myModal=response.data;
+            
+           
+        }, function (error) {
+           
+            alertify.alert("Tenemos Problemas con el servidor");
+            
+        });
+        
+    }
+    
+
+
 
 
 });
+
+
 
 

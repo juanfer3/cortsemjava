@@ -10,7 +10,18 @@ package Modelo;
  * @author Juan
  */
 public class Datos {
+    
+    private Integer id;
+    private String fecha;
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -19,6 +30,5 @@ public class Datos {
         this.id = id;
     }
     
-    private Integer id;
     
 }
