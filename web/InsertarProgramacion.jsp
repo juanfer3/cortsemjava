@@ -44,7 +44,7 @@
                 </div>
                 
                 <div  ng-repeat="lista in Lista  |filter:busqueda track by $index"  >
-                    <div ng-show="Lista.estado == 'En produccion'"><h4>No hay Pedidos en este momento</h4></div>
+                   
                     <table  id="keywords" cellspacing="0" cellpadding="0" class="" border="5" >
                         <thead>
                             <tr >
@@ -162,7 +162,7 @@
                 </div>
                 
                 <div  ng-repeat="lista in Lista3  |filter:busquedaTerminados track by $index"  >
-                    <div ng-show="Lista.estado == 'En produccion'"><h4>No hay Pedidos en este momento</h4></div>
+                   
                     <table  id="keywords" cellspacing="0" cellpadding="0" class="" border="5" >
                         <thead>
                             <tr >
@@ -284,8 +284,8 @@
                                 
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-dismiss="modal">Terminar Pedido</button>
+                        <div class="modal-footer" ng-repeat="modal in myModal track by $index " ng-if="$first" >
+                            <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="FinalizarProduccion(modal)">Terminar Pedido</button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="ProducirPedidos()">Procesar Pedido</button>
                         </div>
                     </div>

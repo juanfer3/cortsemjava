@@ -39,12 +39,12 @@ public class PedidosEnProduccion extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             DBPedidos pedidos=new DBPedidos();
             JsonUtil jsonUtil=new JsonUtil();
-            String estado="En Bodega";
+            String estado="En producion";
             String json="";
             ArrayList<Pedidos> Lista=new ArrayList();
             
             Lista.clear();
-            Lista=pedidos.ListarPedidosPorEstadoEnProducion(estado);
+            Lista=pedidos.ListarPedidosPorEstadoPedido(estado);
             
             json=jsonUtil.JavaToJson(Lista);
             

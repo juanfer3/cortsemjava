@@ -16,6 +16,7 @@ app.controller('myController', function($scope, $http){
     $scope.CurrentDate = new Date();
     getPedidosEnProduccion();
     getPedidosEnProceso();
+    getPedidosTerminados()
     function getPedidosEnProduccion() {
 
         $http({
@@ -150,6 +151,37 @@ $scope.registros= function(lista) {
         });
 
     }
+    
+    $scope.FinalizarProduccion = function (lista) {
+        $scope.CurrentDate = new Date();
+        
+        this.fecha=$('#fecha').val();
+        alertify.error(lista.pedidoId.id);
+        alertify.error(this.fecha);
+        $scope.datos = {
+            'id': lista.pedidoId.id,
+            'fecha':this.fecha
+        };
+        $http({
+            method: 'POST',
+            data: this.datos,
+            url: 'TerminarProduccion'
+        }).then(function (response) {
+
+            
+            console.log(response.data);
+            getPedidosEnProduccion();
+            getPedidosEnProceso();
+            
+            
+        }, function (error) {
+           
+            alertify.alert("Tenemos Problemas con el servidor");
+            
+        });
+
+    }
+    
     
 });
 

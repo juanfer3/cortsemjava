@@ -38,14 +38,14 @@ public class ProcesarProduccion extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           DBPedidos pedidos=new DBPedidos();
+            DBPedidos pedidos=new DBPedidos();
             JsonUtil jsonUtil=new JsonUtil();
             String estado="En Proceso";
             String json="";
             ArrayList<Pedidos> Lista=new ArrayList();
             
             Lista.clear();
-            Lista=pedidos.ListarPedidosConClientes();
+            Lista=pedidos.ListarPedidosPorEstadoPedido(estado);
             
             json=jsonUtil.JavaToJson(Lista);
             

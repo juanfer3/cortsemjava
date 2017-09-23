@@ -224,8 +224,8 @@
                         <div class="modal-body" id="VerModal">
                             <input type="date" class="form-control" ng-model="CurrentDate" id="fecha">
                         </div>
-                        <div class="modal-footer" >
-                            <button type="button" class="btn btn-success"  ng-click="programar()" data-dismiss="modal">Confirmar Fecha</button>
+                        <div class="modal-footer" ng-repeat="modal in myModal track by $index " ng-if="$first" >
+                            <button type="button" class="btn btn-success"  ng-click="programar(modal)" data-dismiss="modal">Confirmar Fecha</button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
