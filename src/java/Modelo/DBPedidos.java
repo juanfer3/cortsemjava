@@ -478,5 +478,80 @@ public class DBPedidos {
 
         return Listar;
     }
+       
+       
+       public boolean ProducirPedido(int id,String fecha) {
+
+        String sql;
+        String estado="En Proceso";
+
+        int r = 0;
+
+        
+        sql = "UPDATE pedidos SET estado=?, f_produccion=? WHERE id=?;";
+
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, estado);
+            pst.setString(2, fecha);
+            pst.setInt(3, id);
+
+            r = pst.executeUpdate();
+
+            if (r != 0) {
+
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        
+        }
+
+        return false;
+    }
+       
+       public boolean TerminarPedido(int id,String fecha) {
+
+        String sql;
+        String estado="Terminado";
+
+        int r = 0;
+
+        
+        sql = "UPDATE pedidos SET estado=?, f_terminado=? WHERE id=?;";
+
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, estado);
+            pst.setString(2, fecha);
+            pst.setInt(3, id);
+
+            r = pst.executeUpdate();
+
+            if (r != 0) {
+
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        
+        }
+
+        return false;
+    }
     
 }

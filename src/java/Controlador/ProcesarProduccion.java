@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "PedidosEnProduccion", urlPatterns = {"/PedidosEnProduccion"})
-public class PedidosEnProduccion extends HttpServlet {
+@WebServlet(name = "ProcesarProduccion", urlPatterns = {"/ProcesarProduccion"})
+public class ProcesarProduccion extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,19 +37,19 @@ public class PedidosEnProduccion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            DBPedidos pedidos=new DBPedidos();
+            /* TODO output your page here. You may use following sample code. */
+           DBPedidos pedidos=new DBPedidos();
             JsonUtil jsonUtil=new JsonUtil();
-            String estado="En Bodega";
+            String estado="En Proceso";
             String json="";
             ArrayList<Pedidos> Lista=new ArrayList();
             
             Lista.clear();
-            Lista=pedidos.ListarPedidosPorEstadoEnProducion(estado);
+            Lista=pedidos.ListarPedidosConClientes();
             
             json=jsonUtil.JavaToJson(Lista);
             
             out.println(json);
-            
         }
     }
 

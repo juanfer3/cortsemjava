@@ -6,11 +6,12 @@
 package Controlador;
 
 import Modelo.DBPedidos;
+import Modelo.Datos;
 import Modelo.JsonUtil;
-import Modelo.Pedidos;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "PedidosEnProduccion", urlPatterns = {"/PedidosEnProduccion"})
-public class PedidosEnProduccion extends HttpServlet {
+@WebServlet(name = "TerminarPedido", urlPatterns = {"/TerminarPedido"})
+public class TerminarPedido extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,19 +38,19 @@ public class PedidosEnProduccion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            DBPedidos pedidos=new DBPedidos();
-            JsonUtil jsonUtil=new JsonUtil();
-            String estado="En Bodega";
-            String json="";
-            ArrayList<Pedidos> Lista=new ArrayList();
-            
-            Lista.clear();
-            Lista=pedidos.ListarPedidosPorEstadoEnProducion(estado);
-            
-            json=jsonUtil.JavaToJson(Lista);
-            
-            out.println(json);
-            
+            /* TODO output your page here. You may use following sample code. */
+            BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            String json = "";
+            if(br != null){
+                json = br.readLine();
+            }
+                Datos datos= JsonUtil.JsonToJava(json, Datos.class);
+                //out.println(id+"=============");
+                //System.out.println(id.getId());
+                DBPedidos ped=new DBPedidos();
+                boolean validar=ped.TerminarPedido(datos.getId(), datos.getFecha());
+                
+                out.println(validar);
         }
     }
 

@@ -210,7 +210,7 @@ public class DBPedidoDetallado {
         ResultSet rs=null;
         
         String habilitado = "si";
-        String sql = "SELECT pedidos_detallados.id, pedidos.f_programacion,pedidos_detallados.pedido_id, pedidos_detallados.prenda, pedidos_detallados.telas_id, pedidos_detallados.talla, pedidos_detallados.cantidad, pedidos_detallados.valor_unitario, pedidos_detallados.valor_total,pedidos.id, pedidos.f_pedido, pedidos.f_entrega, pedidos.cliente_id, telas.id, telas.ref_tela, telas.descripcion,clientes.id, clientes.nombre, clientes.documento FROM pedidos_detallados INNER JOIN pedidos ON pedidos_detallados.pedido_id = pedidos.id INNER JOIN telas ON pedidos_detallados.telas_id=telas.id INNER JOIN clientes ON pedidos.cliente_id=clientes.id  WHERE  pedidos.id='"+id+"' ;";
+        String sql = "SELECT pedidos_detallados.id, pedidos.f_programacion,pedidos_detallados.pedido_id, pedidos_detallados.prenda, pedidos_detallados.telas_id, pedidos_detallados.talla, pedidos_detallados.cantidad, pedidos_detallados.valor_unitario, pedidos_detallados.valor_total,pedidos_detallados.cantidad_producida,pedidos.id, pedidos.f_pedido, pedidos.f_entrega, pedidos.cliente_id, telas.id, telas.ref_tela, telas.descripcion,clientes.id, clientes.nombre, clientes.documento FROM pedidos_detallados INNER JOIN pedidos ON pedidos_detallados.pedido_id = pedidos.id INNER JOIN telas ON pedidos_detallados.telas_id=telas.id INNER JOIN clientes ON pedidos.cliente_id=clientes.id  WHERE  pedidos.id='"+id+"' ;";
         
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -228,12 +228,13 @@ public class DBPedidoDetallado {
                 Clientes client= new Clientes();
                 
                 
-                pedido.setId(rs.getInt("id"));
+                pedido.setId(rs.getInt("pedidos_detallados.id"));
                 pedido.setCantidad(rs.getInt("cantidad"));
                 pedido.setPrenda(rs.getString("prenda"));
                 pedido.setTalla(rs.getString("talla"));
                 pedido.setValorTotal(rs.getFloat("valor_total"));
                 pedido.setValorUnitario(rs.getFloat("valor_unitario"));
+                pedido.setCantidadProducida(rs.getInt("cantidad_producida"));
  
                 client.setId(rs.getInt("clientes.id"));
                 client.setNombre(rs.getString("clientes.nombre"));
@@ -273,6 +274,41 @@ public class DBPedidoDetallado {
         
         
         
+    }
+    
+    public boolean RegistrarPieza(int pedido_id, int cantidad){
+    String habilitado="si";
+    String sql="update pedidos_detallados set cantidad_producida=? where id = ?;";
+    int r=0;
+    
+    
+    
+    ConexionBD bd=new ConexionBD ();
+    Connection con= bd.conectar();
+    
+        try {
+            PreparedStatement pst= con.prepareStatement(sql);
+            pst.setInt(1, cantidad);
+            pst.setInt(2, pedido_id);
+            
+            r=pst.executeUpdate();
+            
+            pst.close();
+            con.close();
+            bd.cierraConexion();
+            
+            if(r!=0){
+            
+                return true;
+            
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return false ;
     }
     
 }

@@ -1,16 +1,19 @@
+package Controlador;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
 
+import Modelo.DBPedidoDetallado;
 import Modelo.DBPedidos;
+import Modelo.Datos;
 import Modelo.JsonUtil;
-import Modelo.Pedidos;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "PedidosEnProduccion", urlPatterns = {"/PedidosEnProduccion"})
-public class PedidosEnProduccion extends HttpServlet {
+@WebServlet(urlPatterns = {"/RegistrarPieza"})
+public class RegistrarPieza extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,18 +40,23 @@ public class PedidosEnProduccion extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            DBPedidos pedidos=new DBPedidos();
-            JsonUtil jsonUtil=new JsonUtil();
-            String estado="En Bodega";
-            String json="";
-            ArrayList<Pedidos> Lista=new ArrayList();
+            /* TODO output your page here. You may use following sample code. */
             
-            Lista.clear();
-            Lista=pedidos.ListarPedidosPorEstadoEnProducion(estado);
+            BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+            String json = "";
+            if(br != null){
+                json = br.readLine();
+            }
+                out.println(json);
+                Datos datos= JsonUtil.JsonToJava(json, Datos.class);
+                //out.println(id+"=============");
+                System.out.println(datos.getCantidad());
+                DBPedidoDetallado ped=new DBPedidoDetallado();
+                boolean validar=ped.RegistrarPieza(datos.getId(),datos.getCantidad());
+           
+                out.println(validar);
             
-            json=jsonUtil.JavaToJson(Lista);
             
-            out.println(json);
             
         }
     }

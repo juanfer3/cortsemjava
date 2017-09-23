@@ -80,9 +80,9 @@
                                         ng-click="Modal(lista)"
                                     data-toggle="modal" data-target="#myModal2" href="#">
                                     <span   
+                                        	
                                         
-                                        
-                                        class="glyphicon glyphicon-scissors" 
+                                        class="glyphicon glyphicon-pencil" 
                                         style="font-size:24px;color:#00796b;text-shadow:1px 1px 2px #000000;">
                                     </span>
                                 </a>

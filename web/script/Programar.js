@@ -87,7 +87,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
 
     $scope.programar = function () {
         
-       
+       alertify.error($scope.fProgramada);
        
         $scope.datos = {
             'id': $scope.valor,

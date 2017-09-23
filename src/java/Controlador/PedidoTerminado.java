@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "PedidosEnProduccion", urlPatterns = {"/PedidosEnProduccion"})
-public class PedidosEnProduccion extends HttpServlet {
+@WebServlet(name = "PedidoTerminado", urlPatterns = {"/PedidoTerminado"})
+public class PedidoTerminado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,17 +39,16 @@ public class PedidosEnProduccion extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             DBPedidos pedidos=new DBPedidos();
             JsonUtil jsonUtil=new JsonUtil();
-            String estado="En Bodega";
+            String estado="Pedido Terminado";
             String json="";
             ArrayList<Pedidos> Lista=new ArrayList();
             
             Lista.clear();
-            Lista=pedidos.ListarPedidosPorEstadoEnProducion(estado);
+            Lista=pedidos.ListarPedidosConClientes();
             
             json=jsonUtil.JavaToJson(Lista);
             
             out.println(json);
-            
         }
     }
 
