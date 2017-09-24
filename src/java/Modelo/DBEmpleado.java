@@ -264,6 +264,30 @@ public class DBEmpleado {
         
         }
         
+        public boolean ConsultarDocumento(String documento) {
+            int u = 0;
+            boolean validar;
+            String sql = "SELECT * FROM empleados WHERE documento='" + documento + "';";
+            ConexionBD bd = new ConexionBD();
+            Connection con = bd.conectar();
+
+            try {
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+
+                if (rs.next()) {
+                
+                  return true;
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+         
+            return false;
+        }
+        
         
     }
    

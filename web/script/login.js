@@ -2,6 +2,9 @@ $(document).ready(function(){
    
     
     
+    
+    
+    
     $('#enviarCorreo').click(function(){
        
         var correo_personal= $('#correo_personal').val();

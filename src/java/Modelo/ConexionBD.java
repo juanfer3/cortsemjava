@@ -51,7 +51,7 @@ public class ConexionBD{
         this.db ="cortsem";
         this.host = "jdbc:mysql://localhost:3306/";
         this.usuario = "root";
-        this.clave = "1234";
+        this.clave = "";
         this.url = host + db + "?user=" + usuario + "&password="+clave;
         this.driverClassName = "com.mysql.jdbc.Driver";
     }

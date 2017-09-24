@@ -6,7 +6,7 @@
     <form class="form-signin" action="Loguin" method="POST">       
         <h2 class="form-signin-heading textologuin">Iniciar Sesion</h2>
         <input type="text" class="form-control spaceinput" name="usuario" placeholder="Correo" required="" autofocus="" />
-        <input type="password" class="form-control spaceinput" name="contrasena" placeholder="Clave" required=""/>      
+        <input type="password" class="form-control spaceinput" id="contrasena" name="contrasena" placeholder="Clave" required=""/>      
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>   
         <label class="checkbox">

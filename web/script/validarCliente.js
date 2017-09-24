@@ -89,18 +89,45 @@ $(document).ready(function () {
             $('#grabar').attr("disabled", false);
         }
     });
-    $('#usua').focusout(function (event) {
+    
+    $('#usuario').focusout(function () {
+        
         $('#grabar').attr("disabled", true);
-        var documento = $('#usua').val();
-        if (documento == "") {
-            $('#usua').css("border", "1px solid #a94442");
-            alertify.error("El campo nombre no puede estar vacio");
-        } else {
-
-            $('#usua').css("border", "1px solid #3c763d");
-            $('#grabar').attr("disabled", false);
-        }
+        var usuario = $('#usuario').val();
+        
+        if(usuario=="" || usuario==null){
+            
+        $('#usuario').css("border", "1px solid #a94442");
+        alertify.error("El campo usuario no puede estar vacio");
+        
+        }else{
+          
+           $.ajax({
+           url:'ConsultarUsuario',
+           type:"POST",
+           data:{usuario:usuario},
+           success: function (data) {
+               var validar=data
+               
+               
+                if(data==1){
+                    
+                    $('#usuario').css("border", "1px solid #a94442");
+                    alertify.error("este usuario ya existe");
+                    
+                }else{
+                    
+                    $('#usuario').css("border", "1px solid #3c763d");
+                    $('#grabar').attr("disabled", false);
+                }
+              
+                
+           }
+           });
+       }
     });
+    
+    
     $('#clave').focusout(function (event) {
         $('#grabar').attr("disabled", true);
         var documento = $('#clave').val();

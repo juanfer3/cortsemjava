@@ -27,18 +27,42 @@ $(document).ready(function(){
         }
     });
     
-    $('#documento').focusout(function (event) {
+    $('#documento').focusout(function () {
+        
         $('#aceptar').attr("disabled", true);
         var documento = $('#documento').val();
-        if(documento==""){
-        $('#documento').css("border", "1px solid #a94442");
-        alertify.error("El campo nombre no puede estar vacio");
-        }else{
+        
+        if(documento=="" || documento==null){
             
-           $('#documento').css("border", "1px solid #3c763d");
-           $('#aceptar').attr("disabled", false);
-        }
+        $('#documento').css("border", "1px solid #a94442");
+        alertify.error("El campo documento no puede estar vacio");
+        
+        }else{
+          
+           $.ajax({
+           url:'ConsultarDocumento',
+           type:"POST",
+           data:{documento:documento},
+           success: function (data) {
+               var validar=data
+               
+                if(data==1){
+                    
+                    $('#documento').css("border", "1px solid #a94442");
+                    alertify.error("este documento ya existe");
+                    
+                }else{
+                    
+                    $('#documento').css("border", "1px solid #3c763d");
+                    $('#aceptar').attr("disabled", false);
+                }
+              
+                
+           }
+           });
+       }
     });
+    
     
     $('#cargo').focusout(function () {
         $('#aceptar').attr("disabled", true);
@@ -121,18 +145,18 @@ $(document).ready(function(){
     });
     
     
-    $('#usuario').focusout(function () {
-        $('#aceptar').attr("disabled", true);
-        var usuario = $('#usuario').val();
-        if(usuario==""){
-        $('#usuario').css("border", "1px solid #a94442");
-        alertify.error("El campo usuario no puede estar vacio");
-        }else{
-            
-           $('#usuario').css("border", "1px solid #3c763d");
-           $('#aceptar').attr("disabled", false);
-        }
-    });
+//    $('#usuario').focusout(function () {
+//        $('#aceptar').attr("disabled", true);
+//        var usuario = $('#usuario').val();
+//        if(usuario==""){
+//        $('#usuario').css("border", "1px solid #a94442");
+//        alertify.error("El campo usuario no puede estar vacio");
+//        }else{
+//            
+//           $('#usuario').css("border", "1px solid #3c763d");
+//           $('#aceptar').attr("disabled", false);
+//        }
+//    });
     
     
     $('#contrasena').focusout(function () {
@@ -146,6 +170,45 @@ $(document).ready(function(){
            $('#contrasena').css("border", "1px solid #3c763d");
            $('#aceptar').attr("disabled", false);
         }
+    });
+    
+    
+    
+    $('#usuario').focusout(function () {
+        
+        $('#aceptar').attr("disabled", true);
+        var usuario = $('#usuario').val();
+        
+        if(usuario=="" || usuario==null){
+            
+        $('#usuario').css("border", "1px solid #a94442");
+        alertify.error("El campo usuario no puede estar vacio");
+        
+        }else{
+          
+           $.ajax({
+           url:'ConsultarUsuario',
+           type:"POST",
+           data:{usuario:usuario},
+           success: function (data) {
+               var validar=data
+               
+               
+                if(data==1){
+                    
+                    $('#usuario').css("border", "1px solid #a94442");
+                    alertify.error("este usuario ya existe");
+                    
+                }else{
+                    
+                    $('#usuario').css("border", "1px solid #3c763d");
+                    $('#aceptar').attr("disabled", false);
+                }
+              
+                
+           }
+           });
+       }
     });
     
 });

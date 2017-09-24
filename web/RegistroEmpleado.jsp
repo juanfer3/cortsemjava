@@ -16,7 +16,7 @@
         <link href="https://file.myfontastic.com/wBMVThpWoWLWzeaWjCkHtV/icons.css" rel="stylesheet">     
        
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
-        <script src="script/RegistroEmpleados.js"></script>
+        <script src="script/RegistrarEmpleado.js"></script>
         <link rel="stylesheet" href="bootstrap/css/estilos.css">
         <title>Registrar Empleado</title>
     </head>
@@ -62,11 +62,11 @@
                                     </tr>
                                     <tr>
                                         <th>Documento</th>
-                                        <td><input type="text" style="" value="" class="form-control" name="documento" id="cargo"></td>
+                                        <td><input type="text" style="" value="" class="form-control" name="documento"  id="documento"></td>
                                     </tr>
                                     <tr>
                                         <th>Correo Personal</th>
-                                        <td><input type="text" style="" value="" class="form-control nombre" name="correo" id="nombre"> </td>
+                                        <td><input type="text" style="" value="" class="form-control nombre" name="correo" id="correo"> </td>
                                     </tr>
                                     <tr>
                                         <th>Cargo</th>

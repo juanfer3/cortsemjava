@@ -11,7 +11,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+       
+        <script src="java/alertify.min.js"></script>
+        <!-- include alertify.css -->
+        <link rel="stylesheet" href="estilos/alertify.core.css">
+        <link rel="stylesheet" href="estilos/alertify.default.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="imagenes">
         <link href="https://file.myfontastic.com/wBMVThpWoWLWzeaWjCkHtV/icons.css" rel="stylesheet">
@@ -56,31 +60,31 @@
 
                                     <div class="form-group col-md-6 col-sm-6">
                                         <label for="mobile">Telefono</label>
-                                        <input type="text" class="form-control input-sm" id="mobile" placeholder="" name="telefono">
+                                        <input type="text" class="form-control input-sm" id="telefono" placeholder="" name="telefono">
                                     </div>
 
                                     <div class="form-group col-md-6 col-sm-6">
                                         <label for="address">celular</label>
-                                        <input type="text" class="form-control input-sm" id="mobile" placeholder="" name="celular">
+                                        <input type="text" class="form-control input-sm" id="celular" placeholder="" name="celular">
                                     </div>
 
                                     <div class="form-group col-md-6 col-sm-6">
                                         <label for="city">Correo*</label>
-                                        <input type="email" class="form-control input-sm" id="city" placeholder="" name="correo">
+                                        <input type="email" class="form-control input-sm" id="correo" placeholder="" name="correo">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6">
                                         <label for="city">Direccion*</label>
-                                        <input type="text" class="form-control input-sm" id="city" placeholder="" name="direccion">
+                                        <input type="text" class="form-control input-sm" id="direccion" placeholder="" name="direccion">
                                     </div>
                                     
                                     
                                     <div class="form-group col-md-6 col-sm-6">
                                         <label for="city">Usuario*</label>
-                                        <input type="email" class="form-control input-sm" id="city" placeholder="" name="usuario">
+                                        <input type="email" class="form-control input-sm" id="usuario" placeholder="" name="usuario">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6">
                                         <label for="city">Contraseña*</label>
-                                        <input type="password" class="form-control input-sm" id="city" placeholder="" name="contrasena">
+                                        <input type="password" class="form-control input-sm" id="contrasena" placeholder="" name="contrasena">
                                     </div>
                                     <div class="row">
 
