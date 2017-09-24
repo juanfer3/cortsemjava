@@ -8,8 +8,9 @@ $(document).ready(function () {
     total = parseFloat(total);
     iva = parseFloat(iva);
 
-
-    var total_final = (total * iva) - descuento;
+    var iva1=(total * iva/100);
+    
+    var total_final = (total+iva1)-descuento;
     total_final = parseFloat(total_final);
     $("#total_final").text(total_final);
 
