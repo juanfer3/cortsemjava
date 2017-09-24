@@ -14,6 +14,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <script src="script/ListarInsumos.js"></script>
+<script src="script/editarInsumo.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <div class="container" id="">
@@ -98,7 +99,7 @@
     </div>
     <div class="row ">
         
-        <div class="col-xs-12 col-md-12"><a href="CrearInsumo.jsp" class="btn btn-success btn-block btn-lg">Ingresar Insumos</a></div>
+        <div class="col-xs-12 col-md-12"><a href="CrearInsumos.jsp" class="btn btn-success btn-block btn-lg">Ingresar Insumos</a></div>
         
     </div>
     <%--<h1>Click the filter icon <small>(<i class="glyphicon glyphicon-filter"></i>)</small></h1>--%>

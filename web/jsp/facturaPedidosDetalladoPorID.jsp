@@ -33,7 +33,7 @@
 
 
 
-<script src="script/FacturasFunc.js"></script>
+<script src="script/Facturas.js"></script>
 <div class="container" id="Facturas">
     
     <div class="row">
@@ -93,12 +93,12 @@
                     </tr>
                     <tr>
                         <td colspan="4" align="right"><p >Iva%</p></td>
-                        <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="19"></td>
+                        <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="19" style="text-align:right" ></td>
                     </tr>
 
                     <tr>
                         <td colspan="4" align="right"><p >Descuento%</p></td>
-                        <td colspan="1" align="right"><input name="descuento" id="descuento" class="form" value="0"></td>
+                        <td colspan="1" align="right"><input name="descuento" id="descuento" class="form" value="0" style="text-align:right" ></td>
                     </tr>
                     <tr>
                         <td colspan="5" align="right"><p id="total_final"></p></td>

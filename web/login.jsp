@@ -5,10 +5,10 @@
 <div class="wrapper">
     <form class="form-signin" action="Loguin" method="POST">       
         <h2 class="form-signin-heading textologuin">Iniciar Sesion</h2>
-        <input type="text" class="form-control spaceinput" name="usuario" placeholder="Correo" required="" autofocus="" />
+        <input type="text" class="form-control spaceinput" id="usuario" name="usuario" placeholder="Correo" required="" autofocus="" />
         <input type="password" class="form-control spaceinput" id="contrasena" name="contrasena" placeholder="Clave" required=""/>      
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>   
+        <button class="btn btn-lg btn-primary btn-block" id="aceptar" type="submit">Entrar</button>   
         <label class="checkbox">
             <a href="#" value="remember-me" id="rememberMe" name="rememberMe" id="busco"> No tienes cuenta?</a>
             <a href="#" value="remember-me"  data-toggle="modal" data-target="#myModal"  id="reponerContrasena" name="rememberMe"> Olvidaste tu contraseña?</a>

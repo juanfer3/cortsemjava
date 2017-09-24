@@ -265,7 +265,26 @@ public class DBUsuarios {
         return false;
     }
     
+    public boolean ValidarContraena(String contrasena,String usuario) {
+        ResultSet rs = null;
+        String sql = "SELECT * FROM usuarios WHERE contrasena='"+contrasena+"' AND usuario='"+usuario+"';";
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
 
+        try {
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+
+            if (rs.next()) {
+                
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return false;
+    }
 
 }
 

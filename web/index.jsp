@@ -28,8 +28,8 @@
 
         <title>Index Cortsem</title>
         
-        <script src="script/cambiotablas.js"></script>
-        <script ></script>
+      
+      
     </head>
     <body>
 

@@ -28,9 +28,9 @@ $(document).ready(function () {
             type:'POST',
             data:data,
             success: function () {
-                $("#tablaInsumos").show('slow');
-
-                $('#EditarPedido').hide('slow');
+//                $("#tablaInsumos").show('slow');
+//
+//                $('#EditarPedido').hide('slow');
                 
                 
                 $('#tablaInsumos').load('jsp/tablaInsumos.jsp',function(){

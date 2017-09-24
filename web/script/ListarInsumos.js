@@ -24,7 +24,7 @@ $(document).ready(function () {
         var id = $(this).parents("tr").find(".id").text();
         $.get('jsp/tablaEdicionInsumos.jsp', {id: id}, function (data) {
 
-
+        
             $('#tablaInsumos').hide('slow');
 
             $("#EditarPedido").html(data).show('slow');

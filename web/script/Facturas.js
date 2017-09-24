@@ -2,13 +2,14 @@ $(document).ready(function () {
     var total = $("#total").text();
     var iva = $('#iva').val();
     var descuento = $('#descuento').val();
+    
     $("#total_final").text();
 
     total = parseFloat(total);
     iva = parseFloat(iva);
 
 
-    var total_final = total + iva - descuento;
+    var total_final = (total * iva) - descuento;
     total_final = parseFloat(total_final);
     $("#total_final").text(total_final);
 
