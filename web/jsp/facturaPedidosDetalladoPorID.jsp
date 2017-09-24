@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : facturaPedidosDetalladoPorID
     Created on : 15/07/2017, 10:46:55 PM
     Author     : Juan
@@ -11,22 +11,22 @@
 <%
     DBPedidos pedidos=new DBPedidos();
     DBPedidoDetallado detalle=new DBPedidoDetallado();
-    
+
     ArrayList<Pedidos> ListarPedidos=new ArrayList();
     ArrayList<PedidosDetallados> ListarDetalle=new ArrayList();
 
     ListarDetalle.clear();
     ListarPedidos.clear();
-    
+
     String id1;
     int pedido_id=0;
     float total=0;
-    
+
     id1=(String) request.getAttribute("id");
- 
-    
+
+
     pedido_id=Integer.parseInt(id1);
-    
+
     ListarPedidos=pedidos.BuscarUltimoPedido(pedido_id);
     ListarDetalle=detalle.BuscarDetallesDePedidosPorIdPedido(pedido_id);
 %>
@@ -34,7 +34,8 @@
 
 
 <script src="script/FacturasFunc.js"></script>
-<div class="container">
+<div class="container" id="Facturas">
+    
     <div class="row">
         <%for(Pedidos mispedidos:ListarPedidos){%>
             <div class="col-md-3 ">
@@ -44,9 +45,9 @@
             <h5>Fecha de Entrega:<%=mispedidos.getFEntrega()%></h5>
             <input style="visibility: hidden" value="<%=mispedidos.getId() %>">
             </div>
-            
+
             <div class="col-md- col-md-offset-9">
-                <h6>Factura N°<p id="pedido_id"><%=mispedidos.getId() %></p></h6>
+                <h6>Factura Nï¿½<p id="pedido_id"><%=mispedidos.getId() %></p></h6>
             <h6>Cortsem </h6>
             <h6>Nit: 2345776-5</h6>
             <h6>Telefono: 3732682</h6>
@@ -54,7 +55,7 @@
             </div>
             <%}%>
         <div class="span5">
-            
+
             <table class="table table-striped table-condensed">
                 <thead>
                     <tr>
@@ -63,17 +64,17 @@
                         <th>Talla</th>
                         <th>Cantidad</th>
                         <th>Valor Total</th>
-                        
-                                                             
+
+
                     </tr>
-                </thead>   
+                </thead>
                 <tbody>
                     <%
-                        
+
                         for(PedidosDetallados misdetalle:ListarDetalle){
-                        
+
                         total=total+misdetalle.getValorTotal();
-                        
+
                     %>
                     <tr>
                         <td><%=misdetalle.getPrenda()%></td>
@@ -81,9 +82,9 @@
                         <td><%=misdetalle.getTalla()%></td>
                         <td><%=misdetalle.getCantidad() %></td>
                          <td><%=misdetalle.getValorTotal() %></td>
-                       
+
                     </tr>
-                    <%}%>                       
+                    <%}%>
                 </tbody>
                 <tfoot>
                     <tr>
@@ -94,7 +95,7 @@
                         <td colspan="4" align="right"><p >Iva%</p></td>
                         <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="19"></td>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="4" align="right"><p >Descuento%</p></td>
                         <td colspan="1" align="right"><input name="descuento" id="descuento" class="form" value="0"></td>
@@ -103,11 +104,12 @@
                         <td colspan="5" align="right"><p id="total_final"></p></td>
                     </tr>
                 </tfoot>
-                
+
             </table>
         </div>
     </div>
-                    
-            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="ListarPedidos.jsp" class="btn btn-success btn-block btn-lg aceptarFactura">Crear Factura</a></div>                                    
-            
+
+            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="ListarPedidos.jsp" class="btn btn-success btn-block btn-lg aceptarFactura">Crear Factura</a></div>
+            <div class="col-xs-3 col-md-3 col-md-offset-9"><a href="javascript:OpenPDF()" class="btn btn-danger btn-block btn-lg aceptarFactura">Crear PDF</a></div>
+
 </div>

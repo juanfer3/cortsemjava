@@ -92,9 +92,9 @@
                         </thead>
                         <tbody >
                             <tr>
-                                <td class="lalign">Num: {{lista.id}}</td>
-                                <td>6,000</td>
-                                <td></td>
+                                <td class="lalign">Num de Pedido: {{lista.id}}</td>
+                                <td>fecha de entrega:</td>
+                                <td>{{lista.fentrega}}</td>
 
                             </tr>
 
@@ -107,8 +107,8 @@
             </div >
 
             <div class=" col-lg-5 col-lg-offset-1 " ng-repeat-end>
-                <h1>Pedidos en proceso</h1>
-                <div>
+                <h1>Pedidos Programados</h1>
+                <div class="col-lg-5 col-lg-offset-4">
                 
                     <input type="text"  class="form-control" value="" id="f_entrega" name="f_entrega" ng-model="busFecha" >
                 </div>
@@ -141,9 +141,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="lalign">silly tshirts</td>
-                                <td>6,000</td>
-                                <td>110</td>
+                                <td class="lalign">Num de Pedido: {{lista.id}}</td>
+                                <td>fecha de entrega:</td>
+                                <td>{{lista.fentrega}}</td>
 
                             </tr>
 
@@ -162,6 +162,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title" id="tituloModal" ng-repeat="modal in myModal track by $index " ng-if="$first">{{modal.pedidoId.clienteId.nombre}}</h4>
+                            <h4 class="modal-title" id="tituloModal" ng-repeat="modal in myModal track by $index " ng-if="$first">Numero de Pedido:{{modal.pedidoId.id}}</h4>
                         </div>
                         <div class="modal-body" id="VerModal">
                             <div class="span5">
@@ -244,7 +245,7 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
         
         <!--script src="https://code.ionicframework.com/nightly/js/ionic.bundle.js"></script-->
-        <script src="script/Programar.js"></script>
+        <script src="script/CrearProgramacion.js"></script>
         
     </body>
 </html>

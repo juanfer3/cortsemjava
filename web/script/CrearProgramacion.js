@@ -6,18 +6,6 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
 
 
 
-//    $ionicLoading.show({
-//        content: 'cargando...',
-//        animation: 'fade-in',
-//        showBackdrop: true,
-//        maxWidth: 200,
-//        showDelay: 0
-//    });
-    // $scope.t=$('.tomo').val();
-    // alertify.alert($scope.t);
-    //$scope.result = document.getElementsByClassName("tomo");
-    //console.log($scope.result);
-    //alertify.success($scope.result);
    
 
     
@@ -35,10 +23,10 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
     
     $scope.datas;
 
-    $scope.CurrentDate ;
+    $scope.CurrentDate = Date();
     
     getPedidos();
-    //getPedidosEnProduccion();
+    
     function getPedidos() {
 
         $http({
@@ -54,9 +42,9 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
             
 
 
-            //console.log(this.tamano);
+          
 
-            $ionicLoading.hide();
+            
         }), function (error) {
             alertify.error("Hay Un fallo en la conexion");
         }
@@ -71,11 +59,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
         }).then(function (response) {
             
             $scope.Produccion = response.data;
-            //console.log($scope.Produccion);
-
-
-
-            //console.log(this.tamano);
+            
 
 
         }), function (error) {
@@ -85,13 +69,14 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
     }
 
 
-    $scope.programar = function () {
+    $scope.programar = function (lista) {
         
- 
+      this.fecha=$('#fecha').val();
+     
        
         $scope.datos = {
-            'id': this.myId,
-            'fecha':$scope.fProgramada
+            'id': lista.pedidoId.id,
+            'fecha':this.fecha
         };
         $http({
             method: 'POST',
@@ -130,7 +115,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
             getPedidos();
             
             
-        }, function(eror){
+        }, function(error){
             
            
             alertify.alert("Tenemo Problemas con el servidor");
@@ -139,8 +124,8 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
     }
     
     $scope.Modal=function(lista){
-       
-        this.myId=lista.id;
+     
+        $scope.valor=lista.id;
        
          $scope.datos = {
             'id': lista.id

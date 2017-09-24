@@ -16,7 +16,7 @@ app.controller('myController', function($scope, $http){
     $scope.CurrentDate = new Date();
     getPedidosEnProduccion();
     getPedidosEnProceso();
-    getPedidosTerminados()
+    getPedidosTerminados();
     function getPedidosEnProduccion() {
 
         $http({
@@ -96,11 +96,13 @@ app.controller('myController', function($scope, $http){
     }
     
 $scope.registros= function(lista) {
+    $scope.CurrentDate = new Date();
+    this.fecha=$('#fecha').val();
         
         $scope.datos={
             'id':lista.id,
-            'cantidad':lista.cantidadProducida
-            
+            'cantidad':lista.cantidadProducida,
+            'fecha':this.fecha
         }
         
         $http({
@@ -114,6 +116,7 @@ $scope.registros= function(lista) {
 //            console.log(response.data);
             getPedidosEnProduccion();
         getPedidosEnProceso();
+        getPedidosTerminados();
         },function(){
             alertify.error("Tenemos Problemas con el servidor");
         });
@@ -126,8 +129,7 @@ $scope.registros= function(lista) {
         
         
         this.fecha=$('#fecha').val();
-        alertify.error(lista.pedidoId.id);
-        alertify.error(this.fecha);
+        
         $scope.datos = {
             'id': lista.pedidoId.id,
             'fecha':this.fecha

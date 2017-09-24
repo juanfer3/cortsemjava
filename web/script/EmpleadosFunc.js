@@ -24,7 +24,7 @@ $(document).ready(function () {
     $('.editarEmpleado').on('click', function () {
         var id = $(this).parents("tr").find('.empleado_id').text();
 
-        alertify.success(id);
+        
         $("#listarEmpleados").load('jsp/tablaEdicionEmpleados.jsp', {id: id}, function () {
 
         });

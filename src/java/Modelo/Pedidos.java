@@ -46,6 +46,13 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Pedidos.findByHabilitado", query = "SELECT p FROM Pedidos p WHERE p.habilitado = :habilitado")})
 public class Pedidos implements Serializable {
 
+    @Column(name = "f_produccion")
+    @Temporal(TemporalType.DATE)
+    private Date fProduccion;
+    @Column(name = "f_terminado")
+    @Temporal(TemporalType.DATE)
+    private Date fTerminado;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
     private Collection<PedidosDetallados> pedidosDetalladosCollection;
 
@@ -180,6 +187,22 @@ public class Pedidos implements Serializable {
 
     public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
         this.pedidosDetalladosCollection = pedidosDetalladosCollection;
+    }
+
+    public Date getFProduccion() {
+        return fProduccion;
+    }
+
+    public void setFProduccion(Date fProduccion) {
+        this.fProduccion = fProduccion;
+    }
+
+    public Date getFTerminado() {
+        return fTerminado;
+    }
+
+    public void setFTerminado(Date fTerminado) {
+        this.fTerminado = fTerminado;
     }
     
 }

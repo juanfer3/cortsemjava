@@ -23,7 +23,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
     
     $scope.datas;
 
-    $scope.CurrentDate ;
+    $scope.CurrentDate = Date();
     
     getPedidos();
     
@@ -72,8 +72,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
     $scope.programar = function (lista) {
         
       this.fecha=$('#fecha').val();
-       alertify.error(lista.pedidoId.id);
-        alertify.error(this.fecha);
+     
        
         $scope.datos = {
             'id': lista.pedidoId.id,
@@ -116,7 +115,7 @@ app.controller('CrearProgramacion', function ($scope, $http, $timeout) {
             getPedidos();
             
             
-        }, function(eror){
+        }, function(error){
             
            
             alertify.alert("Tenemo Problemas con el servidor");

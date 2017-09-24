@@ -78,9 +78,9 @@
                         </thead>
                         <tbody >
                             <tr>
-                                <td class="lalign">Num: {{lista.id}}</td>
-                                <td>6,000</td>
-                                <td></td>
+                                <td class="lalign">Num de Pedido: {{lista.id}}</td>
+                                <td>fecha de entrega:</td>
+                                <td>{{lista.fentrega}}</td>
 
                             </tr>
 
@@ -137,9 +137,9 @@
                         </thead>
                         <tbody >
                             <tr>
-                                <td class="lalign">Num: {{lista.id}}</td>
-                                <td>6,000</td>
-                                <td></td>
+                                <td class="lalign">Num de Pedido: {{lista.id}}</td>
+                                <td>fecha de entrega:</td>
+                                <td>{{lista.fentrega}}</td>
 
                             </tr>
 
@@ -196,9 +196,9 @@
                         </thead>
                         <tbody >
                             <tr>
-                                <td class="lalign">Num: {{lista.id}}</td>
-                                <td>6,000</td>
-                                <td></td>
+                                <td class="lalign">Num de Pedido: {{lista.id}}</td>
+                                <td>fecha de entrega:</td>
+                                <td>{{lista.fentrega}}</td>
 
                             </tr>
 
@@ -220,7 +220,7 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title" id="tituloModal" ng-repeat="modal in myModal track by $index " ng-if="$first" >{{modal.pedidoId.clienteId.nombre}}</h4>
                             <h4 id="myid" class="modal-title" id="tituloModal" ng-repeat="modal in myModal track by $index " ng-if="$first" >Pedido N°:{{modal.pedidoId.id}}</h4>
-                            <h4 class="modal-title" id="tituloModal">Programar para:</h4>
+                            <h4 class="modal-title" id="tituloModal">Inicio de Produccion:</h4>
                         </div>
                         <div class="modal-body" id="VerModal">
                             <input type="date" class="form-control" ng-model="CurrentDate" id="fecha">

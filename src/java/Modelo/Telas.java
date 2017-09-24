@@ -6,7 +6,9 @@
 package Modelo;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,10 +18,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -38,6 +43,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Telas.findByEstado", query = "SELECT t FROM Telas t WHERE t.estado = :estado"),
     @NamedQuery(name = "Telas.findByHabilitado", query = "SELECT t FROM Telas t WHERE t.habilitado = :habilitado")})
 public class Telas implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "telasId")
+    private Collection<PedidosDetallados> pedidosDetalladosCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -173,6 +181,16 @@ public class Telas implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Telas[ id=" + id + " ]";
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
+        return pedidosDetalladosCollection;
+    }
+
+    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
+        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
     }
     
 }

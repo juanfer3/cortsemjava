@@ -8,6 +8,7 @@ package Controlador;
 
 import Modelo.DBPedidoDetallado;
 import Modelo.DBPedidos;
+import Modelo.DBProduccion;
 import Modelo.Datos;
 import Modelo.JsonUtil;
 import java.io.BufferedReader;
@@ -52,9 +53,10 @@ public class RegistrarPieza extends HttpServlet {
                 //out.println(id+"=============");
                 System.out.println(datos.getCantidad());
                 DBPedidoDetallado ped=new DBPedidoDetallado();
+                DBProduccion pro=new DBProduccion();
                 boolean validar=ped.RegistrarPieza(datos.getId(),datos.getCantidad());
-           
-                out.println(validar);
+                boolean validar2= pro.RegistrarPiezas(datos.getId(),datos.getCantidad(), datos.getFecha());
+                out.println(validar +"+"+validar2);
             
             
             
