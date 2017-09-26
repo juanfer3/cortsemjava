@@ -18,17 +18,19 @@ $(document).ready(function () {
 
 
         var total = $("#total").text();
-        var iva = $('#iva').val();
-        var descuento = $('#descuento').val();
-        $("#total_final").text();
+    var iva = $('#iva').val();
+    var descuento = $('#descuento').val();
+    
+    $("#total_final").text();
 
+    total = parseFloat(total);
+    iva = parseFloat(iva);
 
-        total = parseFloat(total);
-        iva = parseFloat(iva);
-
-        var total_final = total + iva - descuento;
-        total_final = parseFloat(total_final);
-        $("#total_final").text(total_final);
+    var iva1=(total * iva/100);
+    
+    var total_final = (total+iva1)-descuento;
+    total_final = parseFloat(total_final);
+    $("#total_final").text(total_final);
 
     });
 
@@ -36,16 +38,19 @@ $(document).ready(function () {
 
 
         var total = $("#total").text();
-        var iva = $('#iva').val();
-        var descuento = $('#descuento').val();
-        $("#total_final").text();
+    var iva = $('#iva').val();
+    var descuento = $('#descuento').val();
+    
+    $("#total_final").text();
 
-        total = parseFloat(total);
-        iva = parseFloat(iva);
+    total = parseFloat(total);
+    iva = parseFloat(iva);
 
-        var total_final = total + iva - descuento;
-        total_final = parseFloat(total_final);
-        $("#total_final").text(total_final);
+    var iva1=(total * iva/100);
+    
+    var total_final = (total+iva1)-descuento;
+    total_final = parseFloat(total_final);
+    $("#total_final").text(total_final);
     });
 
     $('.aceptarFactura').click(function () {
