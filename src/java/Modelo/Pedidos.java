@@ -6,10 +6,8 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,15 +17,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -42,19 +37,14 @@ import org.codehaus.jackson.annotate.JsonIgnore;
     @NamedQuery(name = "Pedidos.findByFPedido", query = "SELECT p FROM Pedidos p WHERE p.fPedido = :fPedido"),
     @NamedQuery(name = "Pedidos.findByFEntrega", query = "SELECT p FROM Pedidos p WHERE p.fEntrega = :fEntrega"),
     @NamedQuery(name = "Pedidos.findByFProgramacion", query = "SELECT p FROM Pedidos p WHERE p.fProgramacion = :fProgramacion"),
+    @NamedQuery(name = "Pedidos.findByFProduccion", query = "SELECT p FROM Pedidos p WHERE p.fProduccion = :fProduccion"),
+    @NamedQuery(name = "Pedidos.findByFTerminado", query = "SELECT p FROM Pedidos p WHERE p.fTerminado = :fTerminado"),
+    @NamedQuery(name = "Pedidos.findByIva", query = "SELECT p FROM Pedidos p WHERE p.iva = :iva"),
+    @NamedQuery(name = "Pedidos.findByDescuento", query = "SELECT p FROM Pedidos p WHERE p.descuento = :descuento"),
+    @NamedQuery(name = "Pedidos.findByTotal", query = "SELECT p FROM Pedidos p WHERE p.total = :total"),
     @NamedQuery(name = "Pedidos.findByEstado", query = "SELECT p FROM Pedidos p WHERE p.estado = :estado"),
     @NamedQuery(name = "Pedidos.findByHabilitado", query = "SELECT p FROM Pedidos p WHERE p.habilitado = :habilitado")})
 public class Pedidos implements Serializable {
-
-    @Column(name = "f_produccion")
-    @Temporal(TemporalType.DATE)
-    private Date fProduccion;
-    @Column(name = "f_terminado")
-    @Temporal(TemporalType.DATE)
-    private Date fTerminado;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoId")
-    private Collection<PedidosDetallados> pedidosDetalladosCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -73,6 +63,19 @@ public class Pedidos implements Serializable {
     @Column(name = "f_programacion")
     @Temporal(TemporalType.DATE)
     private Date fProgramacion;
+    @Column(name = "f_produccion")
+    @Temporal(TemporalType.DATE)
+    private Date fProduccion;
+    @Column(name = "f_terminado")
+    @Temporal(TemporalType.DATE)
+    private Date fTerminado;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "iva")
+    private Float iva;
+    @Column(name = "descuento")
+    private Float descuento;
+    @Column(name = "Total")
+    private Float total;
     @Size(max = 20)
     @Column(name = "estado")
     private String estado;
@@ -130,6 +133,46 @@ public class Pedidos implements Serializable {
         this.fProgramacion = fProgramacion;
     }
 
+    public Date getFProduccion() {
+        return fProduccion;
+    }
+
+    public void setFProduccion(Date fProduccion) {
+        this.fProduccion = fProduccion;
+    }
+
+    public Date getFTerminado() {
+        return fTerminado;
+    }
+
+    public void setFTerminado(Date fTerminado) {
+        this.fTerminado = fTerminado;
+    }
+
+    public Float getIva() {
+        return iva;
+    }
+
+    public void setIva(Float iva) {
+        this.iva = iva;
+    }
+
+    public Float getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Float descuento) {
+        this.descuento = descuento;
+    }
+
+    public Float getTotal() {
+        return total;
+    }
+
+    public void setTotal(Float total) {
+        this.total = total;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -177,32 +220,6 @@ public class Pedidos implements Serializable {
     @Override
     public String toString() {
         return "Modelo.Pedidos[ id=" + id + " ]";
-    }
-
-    @XmlTransient
-    @JsonIgnore
-    public Collection<PedidosDetallados> getPedidosDetalladosCollection() {
-        return pedidosDetalladosCollection;
-    }
-
-    public void setPedidosDetalladosCollection(Collection<PedidosDetallados> pedidosDetalladosCollection) {
-        this.pedidosDetalladosCollection = pedidosDetalladosCollection;
-    }
-
-    public Date getFProduccion() {
-        return fProduccion;
-    }
-
-    public void setFProduccion(Date fProduccion) {
-        this.fProduccion = fProduccion;
-    }
-
-    public Date getFTerminado() {
-        return fTerminado;
-    }
-
-    public void setFTerminado(Date fTerminado) {
-        this.fTerminado = fTerminado;
     }
     
 }

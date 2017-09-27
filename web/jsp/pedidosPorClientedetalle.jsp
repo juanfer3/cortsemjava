@@ -31,8 +31,9 @@
     ListarDetalle=detalle.BuscarDetallesDePedidosPorIdPedido(pedido_id);
 %>
 
-
+<script src="script/myFacturas.js"></script>
 <script src="script/pedidos.js"></script>
+
 <div class="container" id="pedidoDetalleCliente">
     <div class="row">
         <%for(Pedidos mispedidos:ListarPedidos){%>
@@ -87,16 +88,20 @@
                 <tfoot>
                     <tr>
                         <td colspan="4" align="right" style=""><p>Total</p></td>
-                        <td colspan="1" align="right" style=""><p id="total"><%=total%></p></td>
+                        <td colspan="1" align="right" style=""><p id="total"><%=total%> </p></td>
                     </tr>
                     <tr>
+                        <%for(Pedidos mispedidos:ListarPedidos){%>
                         <td colspan="4" align="right"><p >Iva%</p></td>
-                        <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="19"></td>
+                        <td colspan="1" align="right"><input name="iva" id="iva" class="form" value="<%=mispedidos.getIva() %>" style="text-align:right" disabled></td>
+                        <%}%>
                     </tr>
                     
                     <tr>
+                        <%for(Pedidos mispedidos:ListarPedidos){%>
                         <td colspan="4" align="right"><p >Descuento%</p></td>
-                        <td colspan="1" align="right"><input name="descuento" id="descuento" class="form" value="0"></td>
+                        <td colspan="1" align="right"><input name="descuento" id="descuento" class="form" value="<%=mispedidos.getDescuento() %>" style="text-align:right" disabled></td>
+                        <%}%>
                     </tr>
                     <tr>
                         <td colspan="5" align="right"><p id="total_final"></p></td>

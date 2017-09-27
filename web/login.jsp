@@ -1,7 +1,7 @@
 
 
 
-<script src="script/login.js"></script>
+<script src="script/myLogin.js"></script>
 <div class="wrapper">
     <form class="form-signin" action="Loguin" method="POST">       
         <h2 class="form-signin-heading textologuin">Iniciar Sesion</h2>

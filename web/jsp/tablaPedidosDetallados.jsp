@@ -90,7 +90,7 @@
             </div>
 
         </div>
-        <%if(rol.equals("Jefe de Ventas") ||rol.equals("Vendedor") ){%>
+                            <%if(rol.equals("Jefe de Ventas") ||rol.equals("Vendedor") || rol.equals("Gerente")){%>
         <div class="row ">
 
             <div class="col-xs-12 col-md-12"><a href="SeleccionCliente.jsp" class="btn btn-success btn-block btn-lg">Generar Pedido Nuevo</a></div>

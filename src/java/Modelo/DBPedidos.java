@@ -25,7 +25,8 @@ public class DBPedidos {
     public boolean RegistrarPedido( int cliente_id) {
         String habilitado = "no";
         String estado="pedido";
-        String sql = "INSERT INTO pedidos(cliente_id, estado,habilitado) VALUES(?,?,?);";
+        float iva=19;
+        String sql = "INSERT INTO pedidos(cliente_id, estado,iva,habilitado) VALUES(?,?,?,?);";
         int r = 0;
 
         ConexionBD bd = new ConexionBD();
@@ -38,7 +39,8 @@ public class DBPedidos {
             
             pst.setInt(1, cliente_id);
             pst.setString(2, estado);
-            pst.setString(3, habilitado);
+            pst.setFloat(3,iva);
+            pst.setString(4, habilitado);
             r = pst.executeUpdate();
             if (r != 0) {
 
@@ -85,7 +87,7 @@ public class DBPedidos {
 
         int id;
 
-        String sql = "SELECT clientes.nombre,clientes.id,pedidos.id,clientes.documento,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.id='" + pedido_id + "';";
+        String sql = "SELECT clientes.nombre,clientes.id,pedidos.id,clientes.documento,pedidos.f_pedido,pedidos.f_entrega,pedidos.iva,pedidos.descuento,pedidos.Total from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.id='" + pedido_id + "';";
 
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -101,6 +103,11 @@ public class DBPedidos {
                 pedido.setId(rs.getInt("pedidos.id"));
                 pedido.setFEntrega(rs.getDate("f_entrega"));
                 pedido.setFPedido(rs.getDate("f_pedido"));
+                pedido.setIva(rs.getFloat("pedidos.iva"));
+                pedido.setDescuento(rs.getFloat("pedidos.descuento"));
+                pedido.setTotal(rs.getFloat("pedidos.Total"));
+                
+                
                 user.setId(rs.getInt("clientes.id"));
                 user.setNombre(rs.getString("nombre"));
                 user.setDocumento(rs.getString("documento"));

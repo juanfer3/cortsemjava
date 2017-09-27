@@ -86,15 +86,15 @@ $("#datepicker").datepicker();
                     <a class="navbar-brand" href="index.jsp" id="boton">CORTSEM</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="botoncompra"><a href="ListarEmpleados">EMPLEADOS</a></li>
+                    <li class="botoncompra myHeader"><a class="myHeader" href="ListarEmpleados">EMPLEADOS</a></li>
                     <li class="botoncompra"><a href="ListarClientes">CLIENTES</a></li>
                     
-                    <li class="botoncompra"><a href="SeleccionCliente.jsp">VENTAS</a></li>
+                    <li class="botoncompra myHeader"><a href="SeleccionCliente.jsp">VENTAS</a></li>
                     <li class="botoncompra"><a href="ListarPedidos.jsp">PEDIDOS</a></li>
                     <li class="botoncompra"><a href="ListarTelas.jsp">TELAS</a></li>
                     <li class="botoncompra"><a href="ListarInsumos.jsp">INSUMOS</a></li>
-                    <li class="botoncompra"><a href="TelasEnBodega.jsp">TELAS EN BODEGA</a></li>
-                    <li class="botoncompra"><a href="CrearProgramacion.jsp">PROGRAMAR CORTES</a></li>
+                    <li class="botoncompra"><a href="TelasEnBodega.jsp">ALMACEN TELAS</a></li>
+                    <li class="botoncompra"><a href="CrearProgramacion.jsp">PROGRAMACION</a></li>
                     <li class="botoncompra"><a href="InsertarProgramacion.jsp">PRODUCCION</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

@@ -6,12 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+
         <footer >
             
             <div class="contenedorTexto">
@@ -28,5 +23,4 @@
                 <a href="#"><span class="icon-google-plus iconosFooter"></span> </a>
             </div>
         </footer>
-    </body>
-</html>
+ 
