@@ -562,4 +562,40 @@ public class DBPedidos {
         return false;
     }
     
+        public boolean DeshacerProceso(int id, String estado) {
+
+        String sql;
+        
+
+        int r = 0;
+
+        
+        sql = "UPDATE pedidos SET estado=? WHERE id=?;";
+
+        ConexionBD bd = new ConexionBD();
+        Connection con = bd.conectar();
+
+        try {
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, estado);
+            pst.setInt(2, id);
+
+            r = pst.executeUpdate();
+
+            if (r != 0) {
+
+                pst.close();
+                con.close();
+                bd.cierraConexion();
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        
+        }
+
+        return false;
+    }
+       
 }

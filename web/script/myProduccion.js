@@ -190,9 +190,37 @@ $scope.registros= function(lista) {
 
     }
     
-    $scope.DeshacerFinalizacion= function (){
+    $scope.DeshacerFinalizacion= function (lista){
         alertify.confirm("Deshacer Pedido Terminado?", function(e){
+            if(e){
+                $scope.data = {
+                    'id': lista.id
+
+                };
+                alertify.success($scope.data.id);
+        $http({
+           
+           method:"POST",
+           data: $scope.data,
+           url:'DeshacerPedidoTerminado'
+           
+        }).then(function(response){
+           
+            alertify.error(response.data);
+            getPedidosEnProduccion();
+            getPedidosEnProceso();
+            getPedidosTerminados();
             
+            
+        }, function(error){
+            
+           
+            alertify.alert("Tenemo Problemas con el servidor");
+        });
+              
+            }else{
+                alertify.error("Cancelar");
+            }
         });
     }
     

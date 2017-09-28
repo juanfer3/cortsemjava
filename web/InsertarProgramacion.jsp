@@ -180,13 +180,13 @@
                                 <th>
                                     
                                 </th>
-                                <th><a 
+                                <th><a  ng-click="DeshacerFinalizacion(lista)"
                                         ng-click="Modal(lista)"
                                     data-toggle="modal" data-target="#myModal" href="#">
                                     <span   
                                         
                                         
-                                        class="glyphicon glyphicon-scissors" 
+                                        class="glyphicon glyphicon-remove" 
                                         style="font-size:24px;color:#00796b;text-shadow:1px 1px 2px #000000;">
                                     </span>
                                 </a>
@@ -301,6 +301,6 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
         
     
-        <script src="script/InsertarProgramacion.js"></script>
+        <script src="script/myProduccion.js"></script>
     </body>
 </html>
