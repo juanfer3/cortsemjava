@@ -5,13 +5,12 @@
  */
 package Controlador;
 
-import Modelo.DBPedidos;
-import Modelo.Datos;
+import Modelo.DBTelas;
 import Modelo.JsonUtil;
-import java.io.BufferedReader;
+import Modelo.Telas;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan
  */
-@WebServlet(name = "DeshacerProceso", urlPatterns = {"/DeshacerProceso"})
-public class DeshacerProceso extends HttpServlet {
+@WebServlet(name = "ListarTelas", urlPatterns = {"/ListarTelas"})
+public class ListarTelas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,21 +37,16 @@ public class DeshacerProceso extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-            String json = "";
-            if(br != null){
-                json = br.readLine();
-                
-            }
-                
-                Datos datos= JsonUtil.JsonToJava(json, Datos.class);
-                String estado="En producion";
-                
-                DBPedidos ped=new DBPedidos();
-                boolean validar=ped.DeshacerProceso(datos.getId(), estado);
-                
-                out.println(validar);
-        
+            /* TODO output your page here. You may use following sample code. */
+            DBTelas cloth=new DBTelas();
+            ArrayList<Telas> Lista=new ArrayList();
+            Lista.clear();
+            
+            Lista=cloth.ListarTelas();
+            
+            String myLista=JsonUtil.JavaToJson(Lista);
+           
+            out.println(myLista);
         }
     }
 

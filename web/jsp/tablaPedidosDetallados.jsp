@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : tablaPedidosDetalladosPorID
     Created on : 26/06/2017, 08:52:26 PM
     Author     : Juan
@@ -17,7 +17,7 @@
     DBPedidos ped = new DBPedidos();
     ArrayList<Pedidos> Listar = new ArrayList();
     Listar.clear();
-    
+
     String rc = ((String) session.getAttribute("rolcliente"));
     String rol =((String) session.getAttribute("rol"));
 
@@ -26,14 +26,14 @@
         Listar = ped.ListarPedidosConClientes();
 
     }else{
-    
+
         String cliente =(String) session.getAttribute("nombre_cliente");
         Listar = ped.ListarPedidosDeClientes(cliente);
-    
+
     } %>
-    
- 
-<script src="script/pedidos.js"></script>
+
+
+<script src="script/Pedido.js"></script>
 <div id="listarPedidos">
     <form method="POST">
         <div class="row">
@@ -56,13 +56,14 @@
 
                                 <th>Nombre</th>
                                 <th>Documento</th>
-                                <th>N° pedido</th>
+                                <th>N: pedido</th>
                                 <th>Fecha del pedido</th>
 
                                 <th>Fecha de entrega</th>
 
                                 <th></th>
                                 <th>Detalles</th>
+                                <th>Editar</th>
                             </tr>
                         </thead>
 
@@ -77,6 +78,8 @@
                                 <td><%=mypedido.getFEntrega()%></td>
                                 <td><p class="id" style="visibility: hidden;"><%=mypedido.getId()%></p></td>
                                 <td><a href='#' id="ver" class='ver'><span class='glyphicon glyphicon-eye-open borrar'></a></td>
+                                <td><a href="#" id="editar" class="editar"><span><img src="imagenes/editar.png"></span></a></td>
+
                             </tr>
 
                             <%}%>
@@ -98,3 +101,4 @@
         <%}%>
     </form>
 </div>
+ 
