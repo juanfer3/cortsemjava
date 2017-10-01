@@ -111,6 +111,7 @@
                                             <select class="form-control" id="tela">
                                                 <%for (Telas misTelas : ListarTelas) {%>
                                                 <option value="<%=misTelas.getId()%>" id="nombretela" class="nombretela"><%=misTelas.getRefTela()%></option>
+                                                
                                                 <%}%>
 
                                             </select>

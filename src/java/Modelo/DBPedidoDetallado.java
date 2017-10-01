@@ -63,45 +63,7 @@ public class DBPedidoDetallado {
     return false ;
     }
     
-//    public ArrayList BuscarDetallesDePedidosPorIdPedido(int id){
-//        ArrayList<PedidosDetallados> Listar=new ArrayList();
-//        Listar.clear();
-//        ResultSet rs=null;
-//        
-//        String habilitado = "si";
-//        String sql = "SELECT * FROM pedidos_detallados WHERE pedido_id='"+id+"' AND habilitado='"+habilitado+"'ORDER BY id DESC;";
-//        ConexionBD bd = new ConexionBD();
-//        Connection con = bd.conectar();
-//
-//        try {
-//            Statement st = con.createStatement();
-//           
-//            rs=st.executeQuery(sql);
-//
-//            while (rs.next()) {
-//                PedidosDetallados pedido=new PedidosDetallados();
-//                
-//                pedido.setId(rs.getInt("id"));
-//                pedido.setCantidad(rs.getInt("cantidad"));
-//                pedido.setPrenda(rs.getString("prenda"));
-//                pedido.setTalla(rs.getString("talla"));
-//                pedido.setValorTotal(rs.getFloat("valor_total"));
-//                pedido.setValorUnitario(rs.getFloat("valor_unitario"));
-//                
-//                Listar.add(pedido);
-//                
-//                
-//               
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DBClientes.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        return Listar;
-//        
-//        
-//        
-//    }
+
     
     
     public boolean EliminarPedidoDetallado(int pedido_id){
@@ -290,6 +252,47 @@ public class DBPedidoDetallado {
             PreparedStatement pst= con.prepareStatement(sql);
             pst.setInt(1, cantidad);
             pst.setInt(2, pedido_id);
+            
+            r=pst.executeUpdate();
+            
+            pst.close();
+            con.close();
+            bd.cierraConexion();
+            
+            if(r!=0){
+            
+                return true;
+            
+            
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBPedidos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return false ;
+    }
+    
+    public boolean EditarPedido(
+            int id,String prenda,String talla,int telas_id,
+            int cantidad,float valor_unitario,float valor_total){
+    
+    String sql="update pedidos_detallados set prenda=?, talla=?,telas_id=?,cantidad=?,valor_unitario=?,valor_total=? where id = ?;";
+    int r=0;
+    
+    
+    
+    ConexionBD bd=new ConexionBD ();
+    Connection con= bd.conectar();
+    
+        try {
+            PreparedStatement pst= con.prepareStatement(sql);
+            pst.setString(1, prenda);
+            pst.setString(2, talla);
+            pst.setInt(3, telas_id);
+            pst.setInt(4,cantidad);
+            pst.setFloat(5, valor_unitario);
+            pst.setFloat(6, valor_total);
             
             r=pst.executeUpdate();
             

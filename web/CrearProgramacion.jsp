@@ -107,7 +107,7 @@
             </div >
 
             <div class=" col-lg-5 col-lg-offset-1 " ng-repeat-end>
-                <h1>Pedidos Programados</h1>
+                <h1> Programados</h1>
                 <div class="col-lg-5 col-lg-offset-4">
                 
                     <input type="text"  class="form-control" value="" id="f_entrega" name="f_entrega" ng-model="busFecha" >
@@ -146,7 +146,12 @@
                                 <td>{{lista.fentrega}}</td>
 
                             </tr>
+                            <tr>
+                                <td class="lalign">fecha de entrega:</td>
+                                <td></td>
+                                <td>{{lista.fprogramacion}}</td>
 
+                            </tr>
                         </tbody>
                     </table>
                 </div> 

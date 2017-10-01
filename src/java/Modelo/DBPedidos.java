@@ -168,7 +168,7 @@ public class DBPedidos {
         int id;
         String habilitado = "si";
 
-        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.estado,pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "'ORDER BY clientes.nombre ASC;";
+        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento, pedidos.estado,pedidos.id,pedidos.f_pedido,pedidos.f_entrega,pedidos.f_programacion,pedidos.f_produccion,pedidos.f_terminado from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "'ORDER BY clientes.nombre ASC;";
 
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -185,7 +185,9 @@ public class DBPedidos {
                 pedido.setFEntrega(rs.getDate("f_entrega"));
                 pedido.setFPedido(rs.getDate("f_pedido"));
                 pedido.setEstado(rs.getString("pedidos.estado"));
-                System.out.println(rs.getString("pedidos.estado"));
+                pedido.setFProgramacion(rs.getDate("pedidos.f_programacion"));
+                pedido.setFProduccion(rs.getDate("pedidos.f_produccion"));
+                pedido.setFTerminado(rs.getDate("pedidos.f_terminado"));
                 user.setId(rs.getInt("clientes.id"));
                 user.setNombre(rs.getString("nombre"));
                 user.setDocumento(rs.getString("documento"));
@@ -331,7 +333,7 @@ public class DBPedidos {
         int id;
         String habilitado = "si";
         
-        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento,pedidos.id,pedidos.f_pedido,pedidos.f_entrega from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "' AND pedidos.estado='"+estado+"' ORDER BY clientes.nombre ASC;";
+        String sql = "SELECT clientes.nombre,clientes.id,clientes.documento,pedidos.id,pedidos.f_pedido,pedidos.f_entrega,pedidos.f_programacion,pedidos.f_produccion,pedidos.f_terminado from clientes inner join pedidos on clientes.id = pedidos.cliente_id where pedidos.habilitado='" + habilitado + "' AND pedidos.estado='"+estado+"' ORDER BY clientes.nombre ASC;";
 
         ConexionBD bd = new ConexionBD();
         Connection con = bd.conectar();
@@ -347,6 +349,10 @@ public class DBPedidos {
                 pedido.setId(rs.getInt("pedidos.id"));
                 pedido.setFEntrega(rs.getDate("f_entrega"));
                 pedido.setFPedido(rs.getDate("f_pedido"));
+                pedido.setFProgramacion(rs.getDate("pedidos.f_programacion"));
+                pedido.setFProduccion(rs.getDate("pedidos.f_produccion"));
+                pedido.setFTerminado(rs.getDate("pedidos.f_terminado"));
+                
                 user.setId(rs.getInt("clientes.id"));
                 user.setNombre(rs.getString("nombre"));
                 user.setDocumento(rs.getString("documento"));
